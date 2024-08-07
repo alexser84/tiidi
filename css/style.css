@@ -277,7 +277,7 @@ footer {
         font-size: 1.2rem;
     }
 
-    .service {
+    .card {
         flex-basis: calc(50% - 20px);
     }
 
@@ -292,7 +292,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .service {
+    .card {
         flex-basis: 100%;
     }
 }
