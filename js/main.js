@@ -134,9 +134,20 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
 document.addEventListener('DOMContentLoaded', (event) => {
     const menuIcon = document.querySelector('.menu-icon');
     const navMenu = document.querySelector('.nav-menu');
+    const menuItems = document.querySelectorAll('.nav-menu li a');
 
-    menuIcon.addEventListener('click', () => {
+    function toggleMenu() {
         navMenu.classList.toggle('active');
         menuIcon.classList.toggle('active');
+    }
+
+    menuIcon.addEventListener('click', toggleMenu);
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     });
 });
