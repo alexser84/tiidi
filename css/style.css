@@ -376,7 +376,7 @@ footer {
 .card::before {
     content: "";
     position: absolute;
-    inset: -1.5px;
+    inset: -2px;
     background: linear-gradient(90deg, #ff00ff, #00ffff, #00ff00, #ffff00, #ff00ff);
     background-size: 400% 400%;
     border-radius: 17.5px; /* 16px + 1.5px */
