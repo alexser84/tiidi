@@ -41,25 +41,71 @@ header.scrolled {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-nav ul {
+nav {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+}
+
+.nav-menu {
+    display: flex;
     list-style-type: none;
 }
 
-nav ul li {
+.nav-menu li {
     margin: 0 15px;
 }
 
-nav ul li a {
+.nav-menu li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+.nav-menu li a:hover {
     color: var(--neon-blue);
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--main-bg);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        margin: 25px 0;
+    }
 }
 
 #particles-js {

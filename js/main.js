@@ -130,3 +130,13 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     // Aquí iría la lógica para manejar el envío del formulario
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const menuIcon = document.querySelector('.menu-icon');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuIcon.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuIcon.classList.toggle('active');
+    });
+});
