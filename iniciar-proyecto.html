@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <title>Iniciar Proyecto - Tiidi Soluciones Informáticas</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TTD3Z6R9B"></script>
@@ -126,7 +127,7 @@
                     <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all"
                         href="contacto.html">Contacto</a>
                 </nav>
-                <a href="iniciar-proyecto.html"
+                <a href="contacto.html"
                     class="group flex items-center justify-center rounded-full h-9 px-5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300">
                     <span class="truncate">Iniciar Proyecto</span>
                     <span
@@ -160,7 +161,9 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-[2rem] pointer-events-none">
                         </div>
-                        <form class="relative z-10 flex flex-col gap-8">
+                        <form action="https://usebasin.com/f/464b7bb38efe" method="POST"
+                            class="relative z-10 flex flex-col gap-8">
+                            <input type="hidden" name="_gotcha" /> <!-- Spam protection -->
                             <!-- Sección: Datos Personales -->
                             <div class="flex flex-col gap-6">
                                 <h3 class="text-white text-xl font-bold border-b border-white/5 pb-2">1. Información de
@@ -171,14 +174,16 @@
                                             for="name">Nombre</label>
                                         <input
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all"
-                                            id="name" placeholder="Tu nombre completo" type="text" required />
+                                            id="name" name="name" placeholder="Tu nombre completo" type="text"
+                                            required />
                                     </div>
                                     <div class="flex flex-col gap-2">
                                         <label class="text-sm font-semibold text-gray-300 ml-1" for="email">Email
                                             Corporativo</label>
                                         <input
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all"
-                                            id="email" placeholder="nombre@empresa.com" type="email" required />
+                                            id="email" name="email" placeholder="nombre@empresa.com" type="email"
+                                            required />
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +198,7 @@
                                             Software</label>
                                         <select
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer"
-                                            id="type">
+                                            id="type" name="project_type">
                                             <option>E-commerce / Tienda Online</option>
                                             <option>SaaS / Plataforma Web</option>
                                             <option>App Móvil (iOS/Android)</option>
@@ -206,7 +211,7 @@
                                             Estimado</label>
                                         <select
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer"
-                                            id="budget">
+                                            id="budget" name="budget">
                                             <option>Menos de $5,000 USD</option>
                                             <option>$5,000 - $15,000 USD</option>
                                             <option>$15,000 - $30,000 USD</option>
@@ -219,9 +224,9 @@
                                         construir?</label>
                                     <textarea
                                         class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-all resize-none"
-                                        id="details"
-                                        placeholder="Háblanos sobre tus objetivos, funcionalidades clave..."
-                                        rows="5"></textarea>
+                                        id="details" name="details"
+                                        placeholder="Háblanos sobre tus objetivos, funcionalidades clave..." rows="5"
+                                        required></textarea>
                                 </div>
                             </div>
 

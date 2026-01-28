@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <title>Contacto - Tiidi Soluciones Informáticas</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TTD3Z6R9B"></script>
@@ -130,7 +131,7 @@
                     <a class="text-primary neon-text text-sm font-bold transition-all relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-primary after:shadow-[0_0_8px_#0da6f2]"
                         href="contacto.html">Contacto</a>
                 </nav>
-                <a href="iniciar-proyecto.html"
+                <a href="contacto.html"
                     class="group flex items-center justify-center rounded-full h-9 px-5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300">
                     <span class="truncate">Iniciar Proyecto</span>
                     <span
@@ -226,21 +227,25 @@
                             <div
                                 class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-[2rem] pointer-events-none">
                             </div>
-                            <form class="relative z-10 flex flex-col gap-6">
+                            <form action="https://usebasin.com/f/464b7bb38efe" method="POST"
+                                class="relative z-10 flex flex-col gap-6">
+                                <input type="hidden" name="_gotcha" /> <!-- Spam protection -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div class="flex flex-col gap-2">
                                         <label class="text-sm font-semibold text-gray-300 ml-1"
                                             for="name">Nombre</label>
                                         <input
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all"
-                                            id="name" placeholder="Tu nombre completo" type="text" />
+                                            id="name" name="name" placeholder="Tu nombre completo" type="text"
+                                            required />
                                     </div>
                                     <div class="flex flex-col gap-2">
                                         <label class="text-sm font-semibold text-gray-300 ml-1" for="email">Email
                                             Corporativo</label>
                                         <input
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all"
-                                            id="email" placeholder="nombre@empresa.com" type="email" />
+                                            id="email" name="email" placeholder="nombre@empresa.com" type="email"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -249,14 +254,14 @@
                                             for="phone">Teléfono</label>
                                         <input
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all"
-                                            id="phone" placeholder="+56 (9) 0000-0000" type="tel" />
+                                            id="phone" name="phone" placeholder="+56 (9) 0000-0000" type="tel" />
                                     </div>
                                     <div class="flex flex-col gap-2">
                                         <label class="text-sm font-semibold text-gray-300 ml-1"
                                             for="service">Interés</label>
                                         <select
                                             class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all appearance-none cursor-pointer"
-                                            id="service">
+                                            id="service" name="service">
                                             <option>Desarrollo de Apps</option>
                                             <option>Software a Medida</option>
                                             <option>Automatización de Procesos</option>
@@ -270,8 +275,9 @@
                                         for="message">Mensaje</label>
                                     <textarea
                                         class="w-full bg-background-dark/50 border border-white/10 rounded-xl px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(13,166,242,0.2)] transition-all resize-none"
-                                        id="message" placeholder="Cuéntanos los detalles de tu proyecto..."
-                                        rows="4"></textarea>
+                                        id="message" name="message"
+                                        placeholder="Cuéntanos los detalles de tu proyecto..." rows="4"
+                                        required></textarea>
                                 </div>
                                 <div class="flex items-center gap-3 py-2">
                                     <input
