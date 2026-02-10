@@ -36,6 +36,7 @@
     rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="../js/components.js"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -46,6 +47,7 @@
             "secondary": "#7a2df6",
             "background-dark": "#0B1114",
             "surface-dark": "#162228",
+            "surface-glass": "rgba(22, 34, 40, 0.7)",
           },
           fontFamily: {
             "display": ["Space Grotesk", "sans-serif"],
@@ -92,73 +94,7 @@
   </div>
   <div class="relative z-10 min-h-screen flex flex-col items-center">
     <!-- Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
-      <div
-        class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
-        <div class="flex items-center gap-3 text-white">
-          <a href="../index.html" class="flex items-center gap-3">
-            <div class="size-10 text-primary relative flex items-center justify-center">
-              <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                  style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
-                <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
-                  style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
-                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                  style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
-                <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
-                  style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
-                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
-                  style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
-                <circle cx="24" cy="38" fill="#fff" r="2" style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));">
-                </circle>
-                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
-                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
-              </svg>
-            </div>
-            <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
-          </a>
-        </div>
-        <nav class="hidden md:flex items-center gap-8">
-          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-            href="../index.html">
-            Inicio
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-            href="../servicios/index.html">
-            Servicios
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a class="text-primary neon-text text-sm font-medium transition-all relative group" href="index.html">
-            Industrias
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary transition-all duration-300"></span>
-          </a>
-          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-            href="../blog/index.html">
-            Blog
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-            href="../contacto/index.html">
-            Contacto
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-        </nav>
-        <div class="flex items-center gap-4">
-          <a href="../contacto/index.html"
-            class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
-            <span class="truncate relative z-10">Iniciar Proyecto</span>
-            <span
-              class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <tiidi-header root="../" active-page="industrias"></tiidi-header>
 
     <main class="flex-1 w-full max-w-[1400px] pt-32 px-6 lg:px-20 pb-20">
       <!-- Breadcrumbs -->
@@ -219,9 +155,7 @@
       </section>
     </main>
 
-    <footer class="w-full border-t border-white/5 py-10 text-center text-xs text-gray-600">
-      <p>© 2026 Tiidi - Logística del Futuro para Chile.</p>
-    </footer>
+    <tiidi-footer root="../"></tiidi-footer>
   </div>
 </body>
 

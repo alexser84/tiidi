@@ -184,6 +184,7 @@
     }
     </script>
 
+    <script src="js/components.js"></script>
     <style type="text/tailwindcss">
         @layer utilities {
             .neon-border {
@@ -268,75 +269,7 @@
                 style="animation-delay: 3s;">
             </div>
         </div>
-        <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
-            <div
-                class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
-                <div class="flex items-center gap-3 text-white">
-                    <a href="index.html" class="flex items-center gap-3">
-                        <div class="size-10 text-primary relative flex items-center justify-center">
-                            <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
-                                <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
-                                    style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
-                                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
-                                <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
-                                    style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
-                                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
-                                    style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
-                                <circle cx="24" cy="38" fill="#fff" r="2"
-                                    style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));"></circle>
-                                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
-                                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
-                            </svg>
-                        </div>
-                        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
-                    </a>
-                </div>
-                <nav class="hidden md:flex items-center gap-8">
-                    <a class="text-primary neon-text text-sm font-medium transition-all relative group"
-                        href="index.html">
-                        Inicio
-                        <span
-                            class="absolute bottom-0 left-0 w-full h-0.5 bg-primary transition-all duration-300"></span>
-                    </a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-                        href="servicios/index.html">
-                        Servicios
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-                        href="industrias/index.html">
-                        Industrias
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-                        href="blog/index.html">
-                        Blog
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
-                        href="contacto/index.html">
-                        Contacto
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                </nav>
-                <div class="flex items-center gap-4">
-                    <a href="contacto/index.html"
-                        class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
-                        <span class="truncate relative z-10">Iniciar Proyecto</span>
-                        <span
-                            class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-        </header>
+        <tiidi-header root="./" active-page="inicio"></tiidi-header>
         <main class="flex-1 flex flex-col items-center pt-24 px-4 sm:px-6 lg:px-20 w-full">
             <div class="max-w-[1400px] w-full flex flex-col gap-12 lg:gap-20 pb-20">
                 <section class="@container relative mt-10 lg:mt-20">
@@ -667,99 +600,7 @@
                 </section>
             </div>
         </main>
-        <footer class="border-t border-white/5 bg-[#0B1114] py-20">
-            <div class="max-w-[1400px] mx-auto px-8 lg:px-20">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
-                    <div class="flex flex-col gap-6 md:col-span-1">
-                        <div class="flex items-center gap-3 text-white">
-                            <div class="size-10 text-primary relative flex items-center justify-center">
-                                <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="3"></path>
-                                    <circle cx="10" cy="12" fill="#0da6f2" r="2.5"></circle>
-                                    <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="3"></path>
-                                    <circle cx="38" cy="12" fill="#7a2df6" r="2.5"></circle>
-                                    <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"></path>
-                                    <circle cx="24" cy="38" fill="#fff" r="2"></circle>
-                                </svg>
-                            </div>
-                            <h3 class="text-white text-2xl font-black tracking-tighter">Tiidi</h3>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            Soluciones de software a medida que transforman empresas. Operando para todo Chile.
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="https://www.linkedin.com/company/tiidi"
-                                class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
-                                <span class="material-symbols-outlined text-xl">share</span>
-                            </a>
-                            <a href="https://github.com/tiidi"
-                                class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
-                                <span class="material-symbols-outlined text-xl">code</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Servicios</h4>
-                        <ul class="flex flex-col gap-4 text-sm text-gray-500">
-                            <li><a href="servicios/sitios-web-ecommerce.html"
-                                    class="hover:text-primary transition-colors">Web & E-commerce</a></li>
-                            <li><a href="servicios/apps-moviles.html" class="hover:text-primary transition-colors">Apps
-                                    Móviles</a></li>
-                            <li><a href="servicios/software-empresarial.html"
-                                    class="hover:text-primary transition-colors">Software a Medida</a></li>
-                            <li><a href="servicios/automatizacion-ia.html"
-                                    class="hover:text-primary transition-colors">Automatización IA</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Empresa</h4>
-                        <ul class="flex flex-col gap-4 text-sm text-gray-500">
-                            <li><a href="nosotros/index.html" class="hover:text-primary transition-colors">Sobre
-                                    Nosotros</a></li>
-                            <li><a href="blog/index.html" class="hover:text-primary transition-colors">Blog &
-                                    Noticias</a></li>
-                            <li><a href="recursos/index.html" class="hover:text-primary transition-colors">Recursos</a>
-                            </li>
-                        </ul>
-                    </div>
-
-
-
-                    <div>
-                        <h4 class="text-white font-bold mb-6">Contacto</h4>
-                        <ul class="flex flex-col gap-4 text-sm text-gray-500">
-                            <li class="flex gap-3">
-                                <span class="material-symbols-outlined text-primary text-lg">mail</span>
-                                <a href="mailto:contacto@tiidi.cl"
-                                    class="hover:text-primary transition-colors">contacto@tiidi.cl</a>
-                            </li>
-                            <li class="flex gap-3">
-                                <span class="material-symbols-outlined text-primary text-lg">call</span>
-                                <a href="tel:+56949574770" class="hover:text-primary transition-colors">+56 9 4957
-                                    4770</a>
-                            </li>
-                            <li class="flex gap-3">
-                                <span>Santiago, Chile</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div
-                    class="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p class="text-xs text-gray-600">© 2026 Tiidi. Todos los derechos reservados.</p>
-                    <div class="flex gap-8 text-xs text-gray-600">
-                        <a href="privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
-                        <a href="terminos.html" class="hover:text-white transition-colors">Términos</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <tiidi-footer root="./"></tiidi-footer>
     </div>
 </body>
 

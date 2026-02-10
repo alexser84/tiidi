@@ -75,34 +75,7 @@
     </div>
 
     <!-- Header (Same as index but simplified) -->
-    <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
-        <div
-            class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
-            <div class="flex items-center gap-3 text-white">
-                <a href="index.html" class="flex items-center gap-3">
-                    <div class="size-10 text-primary relative flex items-center justify-center">
-                        <svg class="w-full h-full" fill="none" viewBox="0 0 48 48">
-                            <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3"></path>
-                            <circle cx="10" cy="12" fill="#0da6f2" r="2.5"></circle>
-                            <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3"></path>
-                            <circle cx="38" cy="12" fill="#7a2df6" r="2.5"></circle>
-                            <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"></path>
-                            <circle cx="24" cy="38" fill="#fff" r="2"></circle>
-                        </svg>
-                    </div>
-                    <h2 class="text-white text-xl font-bold tracking-tighter">Tiidi</h2>
-                </a>
-            </div>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a class="text-gray-300 hover:text-primary transition-all" href="index.html">Inicio</a>
-                <a class="text-gray-300 hover:text-primary transition-all" href="servicios/index.html">Servicios</a>
-                <a class="text-gray-300 hover:text-primary transition-all" href="blog/index.html">Blog</a>
-                <a class="text-gray-300 hover:text-primary transition-all" href="contacto/index.html">Contacto</a>
-            </nav>
-        </div>
-    </header>
+    <tiidi-header root="./"></tiidi-header>
 
     <main class="relative z-10 pt-32 pb-20 px-6 max-w-4xl mx-auto">
         <h1 class="text-white text-4xl md:text-6xl font-black mb-12">Política de <span
@@ -164,9 +137,7 @@
         </div>
     </main>
 
-    <footer class="w-full border-t border-white/5 py-10 text-center text-xs text-gray-600">
-        <p>© 2026 Tiidi - Ingeniería de Software para todo Chile.</p>
-    </footer>
+    <tiidi-footer root="./"></tiidi-footer>
 </body>
 
 </html>
