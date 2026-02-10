@@ -14,7 +14,7 @@ class TiidiHeader extends HTMLElement {
 
         this.innerHTML = `
         <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
-            <div class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
+            <div class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border relative">
                 <div class="flex items-center gap-3 text-white">
                     <a href="${root}index.html" class="flex items-center gap-3">
                         <div class="size-10 text-primary relative flex items-center justify-center">
@@ -32,6 +32,8 @@ class TiidiHeader extends HTMLElement {
                         <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
                     </a>
                 </div>
+
+                <!-- Desktop Nav -->
                 <nav class="hidden md:flex items-center gap-8">
                     <a class="${activePage === 'inicio' ? 'text-primary neon-text' : 'text-gray-300 hover:text-primary hover:neon-text'} text-sm font-medium transition-all relative group" href="${root}index.html">
                         Inicio
@@ -54,15 +56,60 @@ class TiidiHeader extends HTMLElement {
                         <span class="absolute bottom-0 left-0 ${activePage === 'contacto' ? 'w-full' : 'w-0'} h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
                     </a>
                 </nav>
-                <div class="flex items-center gap-4">
-                    <a href="${root}contacto/index.html" class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+
+                <div class="flex items-center gap-2 lg:gap-4">
+                    <a href="${root}contacto/index.html" class="hidden sm:flex neon-button group items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
                         <span class="truncate relative z-10">Iniciar Proyecto</span>
                         <span class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden size-10 flex items-center justify-center text-white bg-white/5 rounded-full hover:bg-white/10 transition-colors">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Overlay -->
+                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 enhanced-glass rounded-3xl p-6 border border-white/10 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
+                    <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html">Inicio</a>
+                    <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html">Servicios</a>
+                    <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html">Industrias</a>
+                    <a class="${activePage === 'blog' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}blog/index.html">Blog</a>
+                    <a class="${activePage === 'contacto' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}contacto/index.html">Contacto</a>
+                    <div class="h-[1px] bg-white/10 my-2"></div>
+                    <a href="${root}contacto/index.html" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">
+                        Iniciar Proyecto
                     </a>
                 </div>
             </div>
         </header>
         `;
+
+        // Mobile Menu Logic
+        const btn = this.querySelector('#mobile-menu-btn');
+        const menu = this.querySelector('#mobile-menu');
+        const icon = btn?.querySelector('.material-symbols-outlined');
+
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.contains('hidden');
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    if (icon) icon.textContent = 'close';
+                } else {
+                    menu.classList.add('hidden');
+                    if (icon) icon.textContent = 'menu';
+                }
+            });
+
+            // Close menu on resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    menu.classList.add('hidden');
+                    if (icon) icon.textContent = 'menu';
+                }
+            });
+        }
     }
 }
 
