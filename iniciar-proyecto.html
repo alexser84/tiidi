@@ -11,10 +11,14 @@
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
         gtag('config', 'G-1TTD3Z6R9B');
     </script>
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="CL-RM">
+    <meta name="geo.placename" content="Santiago, Chile">
+    <meta name="geo.position" content="-33.4489;-70.6693">
+    <meta name="ICBM" content="-33.4489, -70.6693">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
@@ -80,59 +84,105 @@
         }
     </style>
 </head>
+<style type="text/tailwindcss">
+    @layer utilities {
+            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
+            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
+            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
+            .floating { animation: floating 3s ease-in-out infinite; }
+            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
+            .pulse-glow { animation: pulse-glow 2s infinite; }
+            @keyframes pulse-glow { 0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); } 50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); } }
+            .particle-bg { @apply absolute w-[2px] h-[2px] bg-primary rounded-full; box-shadow: 0 0 6px theme('colors.primary'); animation: particle-float 10s infinite linear; }
+            @keyframes particle-float { 0% { transform: translateY(100vh) translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) translateX(100px); opacity: 0; } }
+        }
+        @media (max-width: 768px) { .particle-bg { display: none; } h1 { font-size: 2.5rem !important; } }
+    </style>
 
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-            <div
-                class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] mix-blend-screen animate-pulse">
+            <div class="particle-bg" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle-bg" style="left: 30%; animation-delay: 2s;"></div>
+            <div class="particle-bg" style="left: 50%; animation-delay: 4s;"></div>
+            <div class="particle-bg" style="left: 70%; animation-delay: 6s;"></div>
+            <div class="particle-bg" style="left: 90%; animation-delay: 8s;"></div>
+
+            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[150px] mix-blend-screen floating"
+                style="animation-delay: 1.5s;">
             </div>
-            <div
-                class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px] mix-blend-screen">
+            <div class="absolute top-[50%] left-[60%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] mix-blend-screen floating"
+                style="animation-delay: 3s;">
             </div>
         </div>
         <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
             <div
-                class="w-full max-w-[1400px] glass-panel bg-surface-glass border border-white/10 dark:border-white/5 rounded-full px-6 py-3 shadow-lg flex items-center justify-between">
+                class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
                 <div class="flex items-center gap-3 text-white">
-                    <div class="size-10 text-primary relative flex items-center justify-center">
-                        <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" style="filter: drop-shadow(0 0 4px rgba(13,166,242,0.8));"></path>
-                            <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
-                                style="filter: drop-shadow(0 0 4px rgba(13,166,242,0.8));"></circle>
-                            <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="3" style="filter: drop-shadow(0 0 4px rgba(122,45,246,0.6));"></path>
-                            <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
-                                style="filter: drop-shadow(0 0 4px rgba(122,45,246,0.6));"></circle>
-                            <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
-                                style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));"></path>
-                            <circle cx="24" cy="38" fill="#fff" r="2"
-                                style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));"></circle>
-                            <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
-                            <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
-                        </svg>
-                    </div>
-                    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi
-                    </h2>
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="size-10 text-primary relative flex items-center justify-center">
+                            <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
+                                <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
+                                    style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
+                                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
+                                <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
+                                    style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
+                                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
+                                    style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
+                                <circle cx="24" cy="38" fill="#fff" r="2"
+                                    style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));"></circle>
+                                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
+                                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
+                    </a>
                 </div>
                 <nav class="hidden md:flex items-center gap-8">
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all"
-                        href="index.html">Inicio</a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all"
-                        href="index.html#servicios">Servicios</a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all"
-                        href="index.html#proceso">Proceso</a>
-                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all"
-                        href="contacto.html">Contacto</a>
+                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+                        href="index.html">
+                        Inicio
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+                        href="servicios/index.html">
+                        Servicios
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+                        href="industrias/index.html">
+                        Industrias
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+                        href="blog/index.html">
+                        Blog
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+                        href="contacto/index.html">
+                        Contacto
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                    </a>
                 </nav>
-                <a href="contacto.html"
-                    class="group flex items-center justify-center rounded-full h-9 px-5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300">
-                    <span class="truncate">Iniciar Proyecto</span>
-                    <span
-                        class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                </a>
+                <div class="flex items-center gap-4">
+                    <a href="contacto.html"
+                        class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+                        <span class="truncate relative z-10">Iniciar Proyecto</span>
+                        <span
+                            class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -274,7 +324,7 @@
                     <a class="hover:text-primary hover:neon-text transition-all" href="index.html#proceso">Proceso</a>
                     <a class="hover:text-primary hover:neon-text transition-all" href="contacto.html">Contacto</a>
                 </div>
-                <p class="text-xs text-gray-600">© 2026 Tiidi. Soluciones Informáticas. Todos los derechos reservados.
+                <p class="text-xs text-gray-600">© 2026 Tiidi. Ingeniería de Software para todo Chile.
                 </p>
             </div>
         </footer>

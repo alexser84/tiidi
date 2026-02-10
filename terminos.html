@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TTD3Z6R9B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1TTD3Z6R9B');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones | Tiidi</title>
+    <meta name="description" content="Términos y Condiciones de uso de los servicios y sitio web de Tiidi.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0da6f2",
+                        secondary: "#7a2df6",
+                        "background-dark": "#0B1114",
+                        "surface-dark": "#162228",
+                        "surface-glass": "rgba(22, 34, 40, 0.7)",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                        body: ["Noto Sans", "sans-serif"],
+                    },
+                    boxShadow: {
+                        neon: "0 0 20px rgba(13, 166, 242, 0.4)",
+                        "neon-hover": "0 0 30px rgba(13, 166, 242, 0.6)",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
+            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
+            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
+            .floating { animation: floating 3s ease-in-out infinite; }
+            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
+    <!-- Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div
+            class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[150px] mix-blend-screen floating">
+        </div>
+        <div class="absolute top-[-10%] left-[-10%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] mix-blend-screen floating"
+            style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
+        <div
+            class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
+            <div class="flex items-center gap-3 text-white">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="size-10 text-primary relative flex items-center justify-center">
+                        <svg class="w-full h-full" fill="none" viewBox="0 0 48 48">
+                            <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="3"></path>
+                            <circle cx="10" cy="12" fill="#0da6f2" r="2.5"></circle>
+                            <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="3"></path>
+                            <circle cx="38" cy="12" fill="#7a2df6" r="2.5"></circle>
+                            <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"></path>
+                            <circle cx="24" cy="38" fill="#fff" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h2 class="text-white text-xl font-bold tracking-tighter">Tiidi</h2>
+                </a>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a class="text-gray-300 hover:text-primary transition-all" href="index.html">Inicio</a>
+                <a class="text-gray-300 hover:text-primary transition-all" href="servicios/index.html">Servicios</a>
+                <a class="text-gray-300 hover:text-primary transition-all" href="blog/index.html">Blog</a>
+                <a class="text-gray-300 hover:text-primary transition-all" href="contacto/index.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-32 pb-20 px-6 max-w-4xl mx-auto">
+        <h1 class="text-white text-4xl md:text-6xl font-black mb-12">Términos y <span
+                class="neon-gradient-text">Condiciones</span></h1>
+
+        <div class="space-y-12 text-gray-300 leading-relaxed font-medium">
+            <section>
+                <h2 class="text-white text-2xl font-bold mb-4">1. Aceptación de los Términos</h2>
+                <p>Al acceder y utilizar el sitio web de Tiidi, aceptas estar sujeto a estos términos y condiciones. Si
+                    no estás de acuerdo con alguna parte, te pedimos que no utilices nuestro sitio ni nuestros
+                    servicios.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-2xl font-bold mb-4">2. Uso de Servicios</h2>
+                <p>Tiidi proporciona servicios de ingeniería de software, desarrollo web y aplicaciones móviles. El uso
+                    de estos servicios está sujeto a acuerdos contractuales específicos que prevalecerán en caso de
+                    conflicto con estos términos generales.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-2xl font-bold mb-4">3. Propiedad Intelectual</h2>
+                <p>Todo el contenido de este sitio, incluyendo pero no limitado a textos, gráficos, logos, iconos e
+                    imágenes, es propiedad de Tiidi o sus licenciantes y está protegido por las leyes de propiedad
+                    intelectual.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-2xl font-bold mb-4">4. Limitación de Responsabilidad</h2>
+                <p>Tiidi no se hace responsable por daños indirectos, incidentales o consecuentes que surjan del uso o
+                    la imposibilidad de uso de nuestro sitio web o servicios.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-2xl font-bold mb-4">5. Enlaces a Terceros</h2>
+                <p>Nuestro sitio puede contener enlaces a sitios externos. No tenemos control sobre el contenido o las
+                    políticas de privacidad de estos sitios y no asumimos ninguna responsabilidad por ellos.</p>
+            </section>
+
+            <section>
+                <h2 class="text-white text-2xl font-bold mb-4">6. Jurisdicción</h2>
+                <p>Estos términos se rigen por las leyes de la República de Chile. Cualquier disputa será resuelta ante
+                    los tribunales competentes de Santiago de Chile.</p>
+            </section>
+
+            <section class="pt-8 border-t border-white/5 text-sm">
+                <p>Última actualización: 10 de febrero de 2026</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-white/5 py-10 text-center text-xs text-gray-600">
+        <p>© 2026 Tiidi - Ingeniería de Software para todo Chile.</p>
+    </footer>
+</body>
+
+</html>

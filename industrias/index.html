@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TTD3Z6R9B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-1TTD3Z6R9B');
+  </script>
+
+  <!-- Meta Tags Básicos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Software para Industrias | Retail, Logística y Manufactura | Tiidi Chile</title>
+  <meta name="description"
+    content="Soluciones tecnológicas especializadas por sector. Optimizamos el Retail, la Logística y la Manufactura en Chile con software de alto rendimiento.">
+
+  <!-- Geo Tags -->
+  <meta name="geo.region" content="CL-RM">
+  <meta name="geo.placename" content="Santiago, Chile">
+  <meta name="geo.position" content="-33.4489;-70.6693">
+  <meta name="ICBM" content="-33.4489, -70.6693">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://tiidi.cl/industrias/">
+
+  <!-- Preconnect para performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0da6f2",
+            "secondary": "#7a2df6",
+            "background-dark": "#0B1114",
+            "surface-dark": "#162228",
+            "surface-glass": "rgba(22, 34, 40, 0.7)",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"],
+            "body": ["Noto Sans", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
+            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
+            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
+            .floating { animation: floating 3s ease-in-out infinite; }
+            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
+            .pulse-glow { animation: pulse-glow 2s infinite; }
+            @keyframes pulse-glow { 0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); } 50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); } }
+            .particle-bg { @apply absolute w-[2px] h-[2px] bg-primary rounded-full; box-shadow: 0 0 6px theme('colors.primary'); animation: particle-float 10s infinite linear; }
+            @keyframes particle-float { 0% { transform: translateY(100vh) translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) translateX(100px); opacity: 0; } }
+        }
+    </style>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://tiidi.cl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Industrias",
+          "item": "https://tiidi.cl/industrias/"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+    <div class="particle-bg" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle-bg" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="particle-bg" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="particle-bg" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="particle-bg" style="left: 90%; animation-delay: 8s;"></div>
+
+    <div
+      class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[150px] mix-blend-screen floating"
+      style="animation-delay: 1.5s;">
+    </div>
+    <div
+      class="absolute top-[50%] left-[60%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] mix-blend-screen floating"
+      style="animation-delay: 3s;">
+    </div>
+  </div>
+
+  <div class="relative z-10 min-h-screen flex flex-col items-center">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
+      <div
+        class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
+        <div class="flex items-center gap-3 text-white">
+          <a href="../index.html" class="flex items-center gap-3">
+            <div class="size-10 text-primary relative flex items-center justify-center">
+              <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                  style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
+                <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
+                  style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
+                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                  style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
+                <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
+                  style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
+                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
+                  style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
+                <circle cx="24" cy="38" fill="#fff" r="2" style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));">
+                </circle>
+                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
+                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+              </svg>
+            </div>
+            <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
+          </a>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../index.html">
+            Inicio
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../servicios/index.html">
+            Servicios
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-primary neon-text text-sm font-medium transition-all relative group" href="index.html">
+            Industrias
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../blog/index.html">
+            Blog
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../contacto/index.html">
+            Contacto
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="../contacto/index.html"
+            class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+            <span class="truncate relative z-10">Iniciar Proyecto</span>
+            <span
+              class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 w-full max-w-[1400px] pt-32 px-6 lg:px-20 pb-20">
+      <!-- Hero Industrias -->
+      <section class="max-w-4xl mb-20">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase mb-6">
+          Vertical Excellence
+        </div>
+        <h1 class="text-white text-5xl md:text-8xl font-black leading-tight tracking-tight mb-8">
+          Software con <br /> <span class="neon-gradient-text">ADN Industrial</span>
+        </h1>
+        <p class="text-gray-300 text-xl font-medium leading-relaxed max-w-2xl">
+          Cada industria tiene sus propias reglas. Nosotros las conocemos y creamos tecnología que se adapta a tus
+          desafíos operativos específicos.
+        </p>
+      </section>
+
+      <!-- Grid Industrias -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Retail -->
+        <a href="retail-ecommerce.html"
+          class="group relative aspect-[3/4] p-10 rounded-[3rem] overflow-hidden border border-white/5 flex flex-col justify-end gap-4 hover:border-primary/50 transition-all duration-500">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent z-10">
+          </div>
+          <!-- Placeholder Icon Background -->
+          <div class="absolute top-10 right-10 text-primary/10 group-hover:text-primary/20 transition-colors">
+            <span class="material-symbols-outlined text-[120px]">shopping_cart</span>
+          </div>
+          <div class="relative z-20 flex flex-col gap-4">
+            <h3 class="text-white text-4xl font-black group-hover:text-primary transition-colors">Retail & E-commerce
+            </h3>
+            <p class="text-gray-400 group-hover:text-gray-200 transition-colors">Omnicanalidad, gestión de inventario y
+              experiencias de compra inteligentes.</p>
+            <span
+              class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+
+        <!-- Logística -->
+        <a href="logistica-transporte.html"
+          class="group relative aspect-[3/4] p-10 rounded-[3rem] overflow-hidden border border-white/5 flex flex-col justify-end gap-4 hover:border-secondary/50 transition-all duration-500">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent z-10">
+          </div>
+          <div class="absolute top-10 right-10 text-secondary/10 group-hover:text-secondary/20 transition-colors">
+            <span class="material-symbols-outlined text-[120px]">local_shipping</span>
+          </div>
+          <div class="relative z-20 flex flex-col gap-4">
+            <h3 class="text-white text-4xl font-black group-hover:text-secondary transition-colors">Logística &
+              Transporte</h3>
+            <p class="text-gray-400 group-hover:text-gray-200 transition-colors">Optimización de rutas, trazabilidad en
+              tiempo real y gestión de flotas.</p>
+            <span
+              class="material-symbols-outlined text-secondary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+
+        <!-- Manufactura -->
+        <a href="manufactura.html"
+          class="group relative aspect-[3/4] p-10 rounded-[3rem] overflow-hidden border border-white/5 flex flex-col justify-end gap-4 hover:border-primary/50 transition-all duration-500">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent z-10">
+          </div>
+          <div class="absolute top-10 right-10 text-primary/10 group-hover:text-primary/20 transition-colors">
+            <span class="material-symbols-outlined text-[120px]">precision_manufacturing</span>
+          </div>
+          <div class="relative z-20 flex flex-col gap-4">
+            <h3 class="text-white text-4xl font-black group-hover:text-primary transition-colors">Manufactura 4.0</h3>
+            <p class="text-gray-400 group-hover:text-gray-200 transition-colors">Digitalización de planta, control de
+              calidad con IA y mantenimiento predictivo.</p>
+            <span
+              class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-white/5 py-20 flex justify-center">
+      <div class="max-w-[1400px] w-full px-8 lg:px-20 text-center">
+        <p class="text-xs text-gray-600">© 2026 Tiidi - Ingeniería de Software para todo Chile.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

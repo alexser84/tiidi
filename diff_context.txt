@@ -1,0 +1,1163 @@
+diff --git a/index.html b/index.html
+index 7f41bf1..cf55250 100644
+--- a/index.html
++++ b/index.html
+@@ -1,36 +1,75 @@
+ <!DOCTYPE html>
+ <html class="dark" lang="es">
+ 
+ <head>
+     <!-- Google tag (gtag.js) -->
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TTD3Z6R9B"></script>
+     <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() { dataLayer.push(arguments); }
+         gtag('js', new Date());
+-
+         gtag('config', 'G-1TTD3Z6R9B');
+     </script>
+-    <meta charset="utf-8" />
+-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
++
++    <!-- Meta Tags Básicos -->
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
++
++    <title>Tiidi - Desarrollo de Software, Apps y Consultoría DevOps en Chile</title>
++    <meta name="description"
++        content="Expertos en desarrollo de software a medida, aplicaciones móviles, consultoría DevOps y automatización con IA en Chile. ¡Potencia tu empresa con Tiidi hoy!">
++    <meta name="keywords"
++        content="desarrollo de software chile, apps moviles, devops, automatizacion ia, software a medida valparaiso, tiidi">
++
++    <!-- Canonical URL -->
++    <link rel="canonical" href="https://tiidi.cl/">
++
++    <!-- Open Graph (Redes Sociales) -->
++    <meta property="og:type" content="website">
++    <meta property="og:title" content="Tiidi - Transformación Digital y Software a Medida en Chile">
++    <meta property="og:description"
++        content="Desarrollamos soluciones tecnológicas que impulsan tu negocio: Apps, Software Empresarial y DevOps.">
++    <meta property="og:image" content="https://tiidi.cl/images/og-image-1200x630.jpg">
++    <meta property="og:url" content="https://tiidi.cl/">
++    <meta property="og:site_name" content="Tiidi">
++
++    <!-- Twitter Card -->
++    <meta name="twitter:card" content="summary_large_image">
++    <meta name="twitter:title" content="Tiidi - Desarrollo de Software y Apps en Chile">
++    <meta name="twitter:description"
++        content="Soluciones de software a medida para empresas que buscan innovación y escalabilidad.">
++    <meta name="twitter:image" content="https://tiidi.cl/images/twitter-card.jpg">
++
++    <!-- Geo Tags -->
++    <meta name="geo.region" content="CL-RM">
++    <meta name="geo.placename" content="Santiago, Chile">
++    <meta name="geo.position" content="-33.4489;-70.6693">
++    <meta name="ICBM" content="-33.4489, -70.6693">
++
++    <!-- Robots -->
++    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
++
++    <!-- Preconnect para performance -->
++    <link rel="preconnect" href="https://fonts.googleapis.com">
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
++
+     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+-    <title>Tiidi - Desarrollo de Aplicaciones y Soluciones a Medida</title>
+-    <link href="https://fonts.googleapis.com" rel="preconnect" />
+-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+         rel="stylesheet" />
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;display=swap"
+         rel="stylesheet" />
+     <link
+         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+         rel="stylesheet" />
++
+     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+     <script id="tailwind-config">
+         tailwind.config = {
+             darkMode: "class",
+             theme: {
+                 extend: {
+                     colors: {
+                         "primary": "#0da6f2", // Cyan neon
+                         "primary-glow": "#0da6f2",
+                         "secondary": "#7a2df6", // Purple accent for gradients
+@@ -54,580 +93,674 @@
+                         'neon-hover': '0 0 15px rgba(13, 166, 242, 0.8), 0 0 30px rgba(13, 166, 242, 0.5)',
+                         'card-glow': '0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(13, 166, 242, 0.1)',
+                     },
+                     backgroundImage: {
+                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                     }
+                 },
+             },
+         }
+     </script>
+-    <style>
+-        html {
+-            scroll-behavior: smooth;
+-        }
+-
+-        body {
+-            font-family: 'Space Grotesk', sans-serif;
+-        }
+-
+-        .neon-text {
+-            text-shadow: 0 0 10px rgba(13, 166, 242, 0.5),
+-                0 0 20px rgba(13, 166, 242, 0.3),
+-                0 0 30px rgba(13, 166, 242, 0.2);
+-        }
+-
+-        .glass-panel {
+-            backdrop-filter: blur(12px);
+-            -webkit-backdrop-filter: blur(12px);
+-        }
+-
+-        .neon-border {
+-            border: 2px solid transparent;
+-            background: linear-gradient(surface-dark, surface-dark) padding-box,
+-                linear-gradient(45deg, #0da6f2, #7a2df6) border-box;
+-            animation: border-glow 3s ease-in-out infinite;
+-        }
+-
+-        .floating {
+-            animation: floating 3s ease-in-out infinite;
+-        }
+-
+-        .pulse-glow {
+-            animation: pulse-glow 2s ease-in-out infinite;
+-        }
+ 
+-        .neon-gradient-text {
+-            background: linear-gradient(45deg, #0da6f2, #7a2df6, #0da6f2);
+-            background-size: 200% 200%;
+-            -webkit-background-clip: text;
+-            background-clip: text;
+-            -webkit-text-fill-color: transparent;
+-            animation: gradient-shift 3s ease-in-out infinite;
+-        }
+-
+-        .card-hover-effect {
+-            transition: all 0.3s ease;
+-            position: relative;
+-            overflow: hidden;
+-        }
+-
+-        .card-hover-effect::before {
+-            content: '';
+-            position: absolute;
+-            top: 0;
+-            left: -100%;
+-            width: 100%;
+-            height: 100%;
+-            background: linear-gradient(90deg, transparent, rgba(13, 166, 242, 0.1), transparent);
+-            transition: left 0.5s ease;
+-        }
++    <!-- Schema Markup JSON-LD -->
++    <script type="application/ld+json">
++    {
++      "@context": "https://schema.org",
++      "@type": "ProfessionalService",
++      "name": "Tiidi",
++      "description": "Desarrollo de software a medida, aplicaciones web y móviles, consultoría DevOps y automatización con IA para empresas chilenas",
++      "url": "https://tiidi.cl",
++      "logo": "https://tiidi.cl/images/tiidi-logo.png",
++      "image": "https://tiidi.cl/images/tiidi-hero.jpg",
++      "telephone": "+56949574770",
++      "email": "contacto@tiidi.cl",
++      "address": {
++        "@type": "PostalAddress",
++        "streetAddress": "Santiago, Chile",
++        "addressLocality": "Santiago",
++        "addressRegion": "Santiago",
++        "postalCode": "8320000",
++        "addressCountry": "CL"
++      },
++      "geo": {
++        "@type": "GeoCoordinates",
++        "latitude": "-33.4489",
++        "longitude": "-70.6693"
++      },
++      "areaServed": {
++        "@type": "Country",
++        "name": "Chile"
++      },
++      "priceRange": "$$-$$$",
++      "openingHours": "Mo-Fr 09:00-18:00"
++    }
++    </script>
+ 
+-        .card-hover-effect:hover::before {
+-            left: 100%;
+-        }
++    <!-- WebSite Schema -->
++    <script type="application/ld+json">
++    {
++      "@context": "https://schema.org",
++      "@type": "WebSite",
++      "name": "Tiidi",
++      "url": "https://tiidi.cl",
++      "potentialAction": {
++        "@type": "SearchAction",
++        "target": "https://tiidi.cl/buscar?q={search_term_string}",
++        "query-input": "required name=search_term_string"
++      }
++    }
++    </script>
+ 
+-        .typing-effect {
+-            overflow: hidden;
+-            border-right: 3px solid #0da6f2;
+-            white-space: nowrap;
+-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
++    <!-- FAQ Schema -->
++    <script type="application/ld+json">
++    {
++      "@context": "https://schema.org",
++      "@type": "FAQPage",
++      "mainEntity": [
++        {
++          "@type": "Question",
++          "name": "¿Cuánto cuesta desarrollar una aplicación móvil en Chile?",
++          "acceptedAnswer": {
++            "@type": "Answer",
++            "text": "El costo de desarrollo de una aplicación móvil en Chile varía según la complejidad: Aplicación básica (MVP): $2.5M - $5M CLP (2-3 meses de desarrollo). Aplicación media (funcionalidades estándar): $8M - $15M CLP (4-6 meses). Aplicación compleja (características avanzadas, integraciones): $20M - $50M CLP (6-12 meses). En Tiidi ofrecemos presupuestos personalizados basados en tus necesidades específicas."
++          }
++        },
++        {
++          "@type": "Question",
++          "name": "¿Cuánto tiempo toma desarrollar software a medida?",
++          "acceptedAnswer": {
++            "@type": "Answer",
++            "text": "El tiempo de desarrollo depende del alcance: Proyectos simples: 4-8 semanas. Proyectos medios: 8-16 semanas. Proyectos complejos: 16-24 semanas. Trabajamos con metodología ágil, con entregas parciales cada 2 semanas, por lo que no tienes que esperar meses para ver resultados."
++          }
++        },
++        {
++          "@type": "Question",
++          "name": "¿Qué incluye el soporte post-lanzamiento?",
++          "acceptedAnswer": {
++            "@type": "Answer",
++            "text": "Todos nuestros proyectos incluyen soporte técnico: Corrección de bugs críticos en menos de 24 horas, actualizaciones de seguridad, monitoreo de performance, soporte por email/Slack con respuesta en menos de 4 horas laborales, y ajustes menores de funcionalidad."
++          }
+         }
++      ]
++    }
++    </script>
+ 
+-        @keyframes border-glow {
+-
+-            0%,
+-            100% {
+-                box-shadow: 0 0 5px rgba(13, 166, 242, 0.5),
+-                    0 0 10px rgba(13, 166, 242, 0.3),
+-                    0 0 15px rgba(13, 166, 242, 0.1);
+-            }
+-
+-            50% {
+-                box-shadow: 0 0 10px rgba(13, 166, 242, 0.8),
+-                    0 0 20px rgba(13, 166, 242, 0.5),
+-                    0 0 30px rgba(13, 166, 242, 0.3);
++    <style type="text/tailwindcss">
++        @layer utilities {
++            .neon-border {
++                @apply border border-white/5 hover:border-primary/50 transition-colors duration-500;
+             }
+-        }
+-
+-        @keyframes floating {
+-
+-            0%,
+-            100% {
+-                transform: translateY(0px);
++            .neon-gradient-text {
++                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
+             }
+-
+-            50% {
+-                transform: translateY(-10px);
++            .enhanced-glass {
++                @apply bg-surface-glass backdrop-blur-xl border border-white/10;
+             }
+-        }
+-
+-        @keyframes pulse-glow {
+-
+-            0%,
+-            100% {
+-                box-shadow: 0 0 5px rgba(13, 166, 242, 0.5),
+-                    0 0 10px rgba(13, 166, 242, 0.3),
+-                    inset 0 0 5px rgba(13, 166, 242, 0.1);
++            .floating {
++                animation: floating 3s ease-in-out infinite;
+             }
+-
+-            50% {
+-                box-shadow: 0 0 20px rgba(13, 166, 242, 0.8),
+-                    0 0 30px rgba(13, 166, 242, 0.5),
+-                    inset 0 0 10px rgba(13, 166, 242, 0.3);
++            @keyframes floating {
++                0%, 100% { transform: translateY(0); }
++                50% { transform: translateY(-10px); }
+             }
+-        }
+-
+-        @keyframes gradient-shift {
+-
+-            0%,
+-            100% {
+-                background-position: 0% 50%;
++            .neon-text {
++                text-shadow: 0 0 10px rgba(13, 166, 242, 0.5);
+             }
+-
+-            50% {
+-                background-position: 100% 50%;
+-            }
+-        }
+-
+-        @keyframes typing {
+-            from {
+-                width: 0;
++            .pulse-glow {
++                animation: pulse-glow 2s infinite;
+             }
+-
+-            to {
+-                width: 100%;
++            @keyframes pulse-glow {
++                0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); }
++                50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); }
+             }
+-        }
+-
+-        @keyframes blink-caret {
+-
+-            from,
+-            to {
+-                border-color: transparent;
++            .particle-bg {
++                @apply absolute w-[2px] h-[2px] bg-primary rounded-full;
++                box-shadow: 0 0 6px theme('colors.primary');
++                animation: particle-float 10s infinite linear;
+             }
+-
+-            50% {
+-                border-color: #0da6f2;
++            @keyframes particle-float {
++                0% { transform: translateY(100vh) translateX(0); opacity: 0; }
++                10% { opacity: 1; }
++                90% { opacity: 1; }
++                100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+             }
+-        }
+-
+-        .particle-bg {
+-            position: absolute;
+-            width: 2px;
+-            height: 2px;
+-            background: #0da6f2;
+-            border-radius: 50%;
+-            box-shadow: 0 0 6px #0da6f2;
+-            animation: particle-float 10s infinite linear;
+-        }
+-
+-        @keyframes particle-float {
+-            0% {
+-                transform: translateY(100vh) translateX(0);
+-                opacity: 0;
++            .typing-effect {
++                @apply overflow-hidden border-right-[3px] border-primary whitespace-nowrap;
++                animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+             }
+-
+-            10% {
+-                opacity: 1;
++            @keyframes typing { from { width: 0; } to { width: 100%; } }
++            @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: theme('colors.primary'); } }
++            
++            .card-hover-effect {
++                @apply relative overflow-hidden transition-all duration-300;
+             }
+-
+-            90% {
+-                opacity: 1;
++            .card-hover-effect::before {
++                content: '';
++                @apply absolute top-0 -left-full w-full h-full;
++                background: linear-gradient(90deg, transparent, rgba(13, 166, 242, 0.1), transparent);
++                transition: left 0.5s ease;
+             }
+-
+-            100% {
+-                transform: translateY(-100vh) translateX(100px);
+-                opacity: 0;
++            .card-hover-effect:hover::before {
++                @apply left-full;
+             }
+         }
+ 
+         @media (max-width: 768px) {
+-            .particle-bg {
+-                display: none;
+-            }
+-
+-            .floating {
+-                animation-duration: 4s;
+-            }
+-
+-            .neon-border {
+-                border-width: 1px;
+-            }
+-
+-            h1 {
+-                font-size: 2.5rem !important;
+-            }
+-        }
+-
+-        @media (max-width: 640px) {
+-            .enhanced-glass {
+-                backdrop-filter: blur(10px);
+-                -webkit-backdrop-filter: blur(10px);
+-            }
+-        }
+-
+-        .enhanced-glass {
+-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+-            backdrop-filter: blur(20px);
+-            -webkit-backdrop-filter: blur(20px);
+-            border: 1px solid rgba(255, 255, 255, 0.2);
+-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+-        }
+-
+-        .neon-button {
+-            position: relative;
+-            overflow: hidden;
+-            transition: all 0.3s ease;
+-        }
+-
+-        .neon-button::before {
+-            content: '';
+-            position: absolute;
+-            top: 50%;
+-            left: 50%;
+-            width: 0;
+-            height: 0;
+-            background: rgba(255, 255, 255, 0.2);
+-            border-radius: 50%;
+-            transform: translate(-50%, -50%);
+-            transition: width 0.6s ease, height 0.6s ease;
+-        }
+-
+-        .neon-button:hover::before {
+-            width: 300px;
+-            height: 300px;
++            .particle-bg { display: none; }
++            h1 { font-size: 2.5rem !important; }
+         }
+     </style>
+ </head>
+ 
+-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
++<body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
+     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
+         <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+             <div class="particle-bg" style="left: 10%; animation-delay: 0s;"></div>
+             <div class="particle-bg" style="left: 30%; animation-delay: 2s;"></div>
+             <div class="particle-bg" style="left: 50%; animation-delay: 4s;"></div>
+             <div class="particle-bg" style="left: 70%; animation-delay: 6s;"></div>
+             <div class="particle-bg" style="left: 90%; animation-delay: 8s;"></div>
+ 
+-            <div
+-                class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[150px] mix-blend-screen floating pulse-glow">
+-            </div>
++            <!-- Blue blob removed -->
+             <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[150px] mix-blend-screen floating"
+                 style="animation-delay: 1.5s;">
+             </div>
+             <div class="absolute top-[50%] left-[60%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] mix-blend-screen floating"
+                 style="animation-delay: 3s;">
+             </div>
+         </div>
+         <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
+             <div
+                 class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
+                 <div class="flex items-center gap-3 text-white">
+-                    <div class="size-10 text-primary relative flex items-center justify-center floating">
+-                        <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
+-                            xmlns="http://www.w3.org/2000/svg">
+-                            <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
+-                                stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
+-                            <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
+-                                style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
+-                            <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
+-                                stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
+-                            <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
+-                                style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
+-                            <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
+-                                style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
+-                            <circle cx="24" cy="38" fill="#fff" r="2"
+-                                style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));"></circle>
+-                            <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
+-                            <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+-                        </svg>
+-                    </div>
+-                    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi
+-                    </h2>
++                    <a href="index.html" class="flex items-center gap-3">
++                        <div class="size-10 text-primary relative flex items-center justify-center">
++                            <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
++                                xmlns="http://www.w3.org/2000/svg">
++                                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
++                                    stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
++                                <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
++                                    style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
++                                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
++                                    stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
++                                <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
++                                    style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
++                                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
++                                    style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
++                                <circle cx="24" cy="38" fill="#fff" r="2"
++                                    style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));"></circle>
++                                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
++                                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
++                            </svg>
++                        </div>
++                        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
++                    </a>
+                 </div>
+                 <nav class="hidden md:flex items-center gap-8">
+                     <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+                         href="index.html">
+                         Inicio
+                         <span
+                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                     </a>
+                     <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+-                        href="#servicios">
++                        href="servicios/index.html">
+                         Servicios
+                         <span
+                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                     </a>
+                     <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+-                        href="#proceso">
+-                        Proceso
++                        href="industrias/index.html">
++                        Industrias
+                         <span
+                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                     </a>
+                     <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+-                        href="contacto.html">
++                        href="blog/index.html">
++                        Blog
++                        <span
++                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
++                    </a>
++                    <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
++                        href="contacto/index.html">
+                         Contacto
+                         <span
+                             class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                     </a>
+                 </nav>
+-                <a href="contacto.html"
+-                    class="neon-button group flex items-center justify-center rounded-full h-9 px-5 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+-                    <span class="truncate relative z-10">Iniciar Proyecto</span>
+-                    <span
+-                        class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
+-                </a>
++                <div class="flex items-center gap-4">
++                    <a href="contacto/index.html"
++                        class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
++                        <span class="truncate relative z-10">Iniciar Proyecto</span>
++                        <span
++                            class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
++                    </a>
++                </div>
+             </div>
+         </header>
+         <main class="flex-1 flex flex-col items-center pt-24 px-4 sm:px-6 lg:px-20 w-full">
+             <div class="max-w-[1400px] w-full flex flex-col gap-12 lg:gap-20 pb-20">
+                 <section class="@container relative mt-10 lg:mt-20">
+                     <div
+-                        class="relative overflow-hidden rounded-3xl bg-surface-dark border border-white/5 shadow-2xl neon-border">
++                        class="relative overflow-hidden rounded-[2.5rem] bg-surface-dark border border-white/5 shadow-2xl neon-border">
+                         <div class="absolute inset-0 z-0 opacity-40">
+                             <div class="w-full h-full bg-cover bg-center"
+-                                data-alt="Futuristic neon city abstract geometric shapes glowing blue and purple"
+                                 style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhfs1oRESRev4cxThmWUTBZzdjS3ACMBcjXS45pUfm2Hc51iM02eWCdUUkkqREoSFifs-SFPPO6oPAqW6II79ampYZv_5G2ezRv3iSb7XWwO6uR7yv5Uj3SaBIygyEBmvjXMPUyntDsMxgrOer5V3wNR7mrdqIMfwq3ktUVqu0CAyXXE2w-QrAVouh3aaw72kTjSDdy_oKY934lzVKCOp9UZyyYaGy4zCmEhDqUYWqnJWKzYNrVaD9gEkQnJBQOpPmNgdqlLTvYX4");'>
+                             </div>
+                             <div
+-                                class="absolute inset-0 bg-gradient-to-t from-background-dark via-surface-dark/80 to-transparent">
++                                class="absolute inset-0 bg-gradient-to-t from-background-dark via-surface-dark/90 to-transparent">
+                             </div>
+                         </div>
+                         <div
+-                            class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 lg:py-32 gap-6">
+-
++                            class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-24 lg:py-40 gap-8">
++                            <div
++                                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold tracking-wide animate-bounce">
++                                <span class="relative flex h-2 w-2">
++                                    <span
++                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
++                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
++                                </span>
++                                Innovación Digital
++                            </div>
+                             <h1
+-                                class="text-white text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-[-0.02em] neon-gradient-text">
+-                                Desarrollo de Software y <br />
+-                                <span class="neon-gradient-text">Soluciones a Medida</span>
++                                class="text-white text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
++                                Creamos el Futuro <br />
++                                <span class="neon-gradient-text">de tu Empresa</span>
+                             </h1>
+-                            <p class="text-gray-400 text-lg sm:text-2xl font-normal leading-relaxed max-w-[850px]">
+-                                Transformamos tus ideas en realidades digitales con desarrollo de aplicaciones robustas,
+-                                escalables y soluciones informáticas diseñadas exclusivamente para tu negocio.
++                            <p class="text-gray-300 text-lg sm:text-2xl font-medium leading-relaxed max-w-[900px]">
++                                Desarrollo de software estratégico, aplicaciones de alto impacto y soluciones con IA
++                                diseñadas para escalar tu negocio en Chile y el mundo.
+                             </p>
+-                            <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
+-                                <a href="#servicios"
+-                                    class="neon-button flex items-center justify-center rounded-full h-12 px-8 bg-primary hover:bg-primary/90 text-white text-base font-bold tracking-wide shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+-                                    <span class="relative z-10">Nuestros Servicios</span>
++                            <div class="flex flex-col sm:flex-row gap-6 mt-6 w-full justify-center items-center">
++                                <a href="contacto/index.html"
++                                    class="flex items-center justify-center rounded-full h-14 px-10 bg-white text-background-dark hover:bg-primary hover:text-white text-lg font-black tracking-wide transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] group">
++                                    Iniciar Proyecto Hoy
++                                    <span
++                                        class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">bolt</span>
+                                 </a>
++                                <a href="servicios/index.html"
++                                    class="flex items-center justify-center rounded-full h-14 px-10 border border-white/20 hover:bg-white/5 text-white text-lg font-bold tracking-wide transition-all">
++                                    Ver Servicios
++                                </a>
++                            </div>
++                            <div class="mt-12 flex flex-col items-center gap-4">
++                                <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Confían en nosotros
++                                </p>
++                                <!-- Client Logos Grid -->
++                                <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-80">
++                                    <!-- BevFood Center -->
++                                    <a href="https://www.bevfoodcenter.cl/" target="_blank" rel="noopener noreferrer"
++                                        class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
++                                        <div
++                                            class="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
++                                        </div>
++                                        <svg class="h-12 w-auto opacity-70 group-hover:opacity-100 transition-opacity duration-500 px-4"
++                                            viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
++                                            <title>BevFood Center</title>
++                                            <text x="5" y="32" font-family="Arial, sans-serif" font-weight="900"
++                                                font-size="28" fill="currentColor" class="text-white">BEVFOOD</text>
++                                            <text x="148" y="32" font-family="Arial, sans-serif" font-weight="400"
++                                                font-size="28" fill="currentColor" class="text-gray-300">CENTER</text>
++                                            <rect x="5" y="40" width="138" height="4" fill="currentColor"
++                                                class="text-[#Eab308] group-hover:text-[#Eab308] transition-colors" />
++                                        </svg>
++                                    </a>
++
++                                    <!-- SBP -->
++                                    <a href="https://www.sbp.cl/" target="_blank" rel="noopener noreferrer"
++                                        class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
++                                        <div
++                                            class="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
++                                        </div>
++                                        <svg class="h-12 w-auto opacity-70 group-hover:opacity-100 transition-opacity duration-500"
++                                            viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
++                                            <title>SBP Integral Solutions</title>
++                                            <!-- Chevrons (Left Side Icon) -->
++                                            <path d="M10 15 L35 40 L10 65 L25 65 L50 40 L25 15 Z" fill="currentColor"
++                                                class="text-white/40 group-hover:text-[#38bdf8] transition-colors" />
++                                            <path d="M40 15 L65 40 L40 65 L55 65 L80 40 L55 15 Z" fill="currentColor"
++                                                class="text-white/60 group-hover:text-[#0ea5e9] transition-colors" />
++
++                                            <!-- Text -->
++                                            <text x="95" y="55" font-family="Arial, sans-serif" font-weight="900"
++                                                font-size="52" fill="currentColor" class="text-white">SBP</text>
++                                            <text x="96" y="75" font-family="Arial, sans-serif" font-weight="700"
++                                                font-size="10" fill="currentColor"
++                                                class="text-gray-400 group-hover:text-[#38bdf8] uppercase tracking-[0.2em]">Integral
++                                                Solutions</text>
++                                        </svg>
++                                    </a>
++
++                                    <!-- SysGestión -->
++                                    <a href="https://www.sysgestion.cl/" target="_blank" rel="noopener noreferrer"
++                                        class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
++                                        <div
++                                            class="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
++                                        </div>
++                                        <svg class="h-12 w-auto opacity-70 group-hover:opacity-100 transition-opacity duration-500"
++                                            viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
++                                            <title>SysGestión Software</title>
++                                            <!-- Background Box -->
++                                            <rect x="2" y="5" width="256" height="50" rx="4" stroke="currentColor"
++                                                stroke-width="2"
++                                                class="text-white/20 group-hover:text-[#1e40af] fill-white/5 group-hover:fill-[#1e40af]/10 transition-all" />
++
++                                            <!-- Diamond Icon (Left) -->
++                                            <rect x="20" y="20" width="20" height="20" transform="rotate(45 30 30)"
++                                                fill="currentColor" class="text-white" />
++
++                                            <!-- Text -->
++                                            <text x="65" y="40" font-family="Arial, sans-serif" font-weight="700"
++                                                font-size="28" fill="currentColor" class="text-white">Sys</text>
++                                            <text x="115" y="40" font-family="Arial, sans-serif" font-weight="400"
++                                                font-size="28" fill="currentColor" class="text-gray-200">Gestión</text>
++                                            <text x="115" y="52" font-family="Arial, sans-serif" font-weight="700"
++                                                font-size="9" fill="currentColor"
++                                                class="text-gray-400 group-hover:text-[#1e40af] tracking-[0.3em]">SOFTWARE</text>
++                                        </svg>
++                                    </a>
++                                </div>
+                             </div>
+                         </div>
+-                    </div>
+-
+                 </section>
+                 <div id="servicios" class="flex flex-col items-center text-center pt-10 scroll-mt-32">
+                     <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2 pl-1">Soluciones
+                         Integrales</span>
+                     <h2 class="text-white text-3xl sm:text-4xl font-bold leading-tight">Soluciones Informáticas que
+                         Impulsan tu Negocio
+                 </div>
+-                <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+-                    <div
+-                        class="card-hover-effect group relative flex flex-col gap-4 rounded-3xl border border-white/5 bg-surface-dark p-6 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-card-glow neon-border">
+-                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+-                            <span class="material-symbols-outlined text-[100px] text-primary floating">devices</span>
++                <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
++                    <a href="servicios/software-empresarial.html"
++                        class="card-hover-effect group relative flex flex-col gap-6 rounded-[2rem] border border-white/5 bg-surface-dark p-8 overflow-hidden hover:border-secondary/50 transition-all duration-500 hover:shadow-[0_4px_30px_-2px_rgba(122,45,246,0.3)] neon-border">
++                        <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity">
++                            <span class="material-symbols-outlined text-[120px] text-secondary floating">diamond</span>
+                         </div>
+                         <div
+-                            class="z-10 size-12 rounded-xl bg-gradient-to-br from-surface-dark to-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 pulse-glow">
+-                            <span class="material-symbols-outlined text-primary" style="font-size: 28px;">devices</span>
++                            class="z-10 size-14 rounded-2xl bg-gradient-to-br from-secondary/20 to-transparent border border-secondary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 pulse-glow">
++                            <span class="material-symbols-outlined text-secondary text-3xl">diamond</span>
+                         </div>
+-                        <div class="z-10 flex flex-col gap-2">
++                        <div class="z-10 flex flex-col gap-3">
+                             <h3
+-                                class="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors neon-text">
+-                                Desarrollo de Apps</h3>
+-                            <p class="text-gray-400 text-sm leading-relaxed">
+-                                Creamos aplicaciones web y móviles de alto rendimiento, escalables y con las tecnologías
+-                                más modernas como React, Node.js y Cloud Native.
++                                class="text-white text-2xl font-bold leading-tight group-hover:text-secondary transition-colors">
++                                Software a Medida</h3>
++                            <p class="text-gray-400 text-base leading-relaxed">
++                                Sistemas robustos (ERP, CRM) diseñados para optimizar la operación crítica de tu
++                                empresa.
+                             </p>
++                            <span class="text-secondary text-sm font-bold flex items-center gap-1 mt-2">
++                                Explorar <span
++                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
++                            </span>
+                         </div>
+-                    </div>
+-                    <div
+-                        class="card-hover-effect group relative flex flex-col gap-4 rounded-3xl border border-white/5 bg-surface-dark p-6 overflow-hidden hover:border-secondary/30 transition-all duration-500 hover:shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5),0_0_0_1px_rgba(122,45,246,0.1)] neon-border">
+-                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+-                            <span class="material-symbols-outlined text-[100px] text-secondary floating">diamond</span>
++                    </a>
++                    <a href="servicios/sitios-web-ecommerce.html"
++                        class="card-hover-effect group relative flex flex-col gap-6 rounded-[2rem] border border-white/5 bg-surface-dark p-8 overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-card-glow neon-border">
++                        <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity">
++                            <span
++                                class="material-symbols-outlined text-[120px] text-primary floating">shopping_cart</span>
+                         </div>
+                         <div
+-                            class="z-10 size-12 rounded-xl bg-gradient-to-br from-surface-dark to-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 pulse-glow">
+-                            <span class="material-symbols-outlined text-secondary"
+-                                style="font-size: 28px;">diamond</span>
++                            class="z-10 size-14 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 pulse-glow">
++                            <span class="material-symbols-outlined text-primary text-3xl">shopping_cart</span>
+                         </div>
+-                        <div class="z-10 flex flex-col gap-2">
++                        <div class="z-10 flex flex-col gap-3">
+                             <h3
+-                                class="text-white text-xl font-bold leading-tight group-hover:text-secondary transition-colors">
+-                                Software a Medida</h3>
+-                            <p class="text-gray-400 text-sm leading-relaxed">
+-                                Soluciones informáticas personalizadas para optimizar tus procesos internos, desde CRMs
+-                                hasta ERPs diseñados a la medida de tus necesidades.
++                                class="text-white text-2xl font-bold leading-tight group-hover:text-primary transition-colors neon-text">
++                                Sitios Web & E-commerce</h3>
++                            <p class="text-gray-400 text-base leading-relaxed">
++                                Diseño de páginas corporativas de alto impacto y tiendas online (Shopify, Woo) que
++                                venden.
+                             </p>
++                            <span class="text-primary text-sm font-bold flex items-center gap-1 mt-2">
++                                Explorar <span
++                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
++                            </span>
+                         </div>
+-                    </div>
+-                    <div
+-                        class="card-hover-effect group relative flex flex-col gap-4 rounded-3xl border border-white/5 bg-surface-dark p-6 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-card-glow neon-border">
+-                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+-                            <span class="material-symbols-outlined text-[100px] text-primary floating">campaign</span>
++                    </a>
++                    <a href="servicios/automatizacion-ia.html"
++                        class="card-hover-effect group relative flex flex-col gap-6 rounded-[2rem] border border-white/5 bg-surface-dark p-8 overflow-hidden hover:border-secondary/50 transition-all duration-500 hover:shadow-[0_4px_30px_-2px_rgba(122,45,246,0.3)] neon-border">
++                        <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity">
++                            <span
++                                class="material-symbols-outlined text-[120px] text-secondary floating">auto_awesome</span>
+                         </div>
+                         <div
+-                            class="z-10 size-12 rounded-xl bg-gradient-to-br from-surface-dark to-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 pulse-glow">
+-                            <span class="material-symbols-outlined text-primary"
+-                                style="font-size: 28px;">campaign</span>
++                            class="z-10 size-14 rounded-2xl bg-gradient-to-br from-secondary/20 to-transparent border border-secondary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 pulse-glow">
++                            <span class="material-symbols-outlined text-secondary text-3xl">auto_awesome</span>
+                         </div>
+-                        <div class="z-10 flex flex-col gap-2">
++                        <div class="z-10 flex flex-col gap-3">
+                             <h3
+-                                class="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors neon-text">
+-                                Consultoría TI & DevOps</h3>
+-                            <p class="text-gray-400 text-sm leading-relaxed">
+-                                Optimizamos tu infraestructura tecnológica, implementamos flujos CI/CD y te asesoramos
+-                                en la transformación digital de tu empresa.
++                                class="text-white text-2xl font-bold leading-tight group-hover:text-secondary transition-colors">
++                                IA & Automatización</h3>
++                            <p class="text-gray-400 text-base leading-relaxed">
++                                Implementamos inteligencia artificial para automatizar procesos y tomar decisiones
++                                inteligentes.
+                             </p>
++                            <span class="text-secondary text-sm font-bold flex items-center gap-1 mt-2">
++                                Explorar <span
++                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
++                            </span>
+                         </div>
+-                    </div>
+-                    <div
+-                        class="card-hover-effect group relative flex flex-col gap-4 rounded-3xl border border-white/5 bg-surface-dark p-6 overflow-hidden hover:border-secondary/30 transition-all duration-500 hover:shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5),0_0_0_1px_rgba(122,45,246,0.1)] neon-border">
+-                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+-                            <span
+-                                class="material-symbols-outlined text-[100px] text-secondary floating">settings_suggest</span>
++                    </a>
++                    <a href="servicios/apps-moviles.html"
++                        class="card-hover-effect group relative flex flex-col gap-6 rounded-[2rem] border border-white/5 bg-surface-dark p-8 overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-card-glow neon-border">
++                        <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-opacity">
++                            <span class="material-symbols-outlined text-[120px] text-primary floating">devices</span>
+                         </div>
+                         <div
+-                            class="z-10 size-12 rounded-xl bg-gradient-to-br from-surface-dark to-black border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 pulse-glow">
+-                            <span class="material-symbols-outlined text-secondary"
+-                                style="font-size: 28px;">settings_suggest</span>
++                            class="z-10 size-14 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 pulse-glow">
++                            <span class="material-symbols-outlined text-primary text-3xl">devices</span>
+                         </div>
+-                        <div class="z-10 flex flex-col gap-2">
++                        <div class="z-10 flex flex-col gap-3">
+                             <h3
+-                                class="text-white text-xl font-bold leading-tight group-hover:text-secondary transition-colors">
+-                                Automatización</h3>
+-                            <p class="text-gray-400 text-sm leading-relaxed">
+-                                Maximizamos la eficiencia operativa mediante la automatización de procesos con IA, RPA y
+-                                flujos de trabajo inteligentes.
++                                class="text-white text-2xl font-bold leading-tight group-hover:text-primary transition-colors neon-text">
++                                Apps Móviles</h3>
++                            <p class="text-gray-400 text-base leading-relaxed">
++                                Desarrollo de aplicaciones iOS y Android de alto rendimiento con enfoque en experiencia
++                                de usuario.
+                             </p>
++                            <span class="text-primary text-sm font-bold flex items-center gap-1 mt-2">
++                                Explorar <span
++                                    class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
++                            </span>
+                         </div>
+-                    </div>
++                    </a>
+                 </section>
+-                <section id="proceso" class="flex flex-col gap-10 py-10 scroll-mt-32">
+-                    <div class="text-center max-w-2xl mx-auto">
+-                        <span
+-                            class="text-primary text-sm font-bold tracking-widest uppercase mb-2 block">Metodología</span>
+-                        <h2 class="text-white text-3xl sm:text-4xl font-bold leading-tight">Nuestro Proceso Creativo
++                <section id="proceso" class="flex flex-col gap-16 py-20 scroll-mt-32">
++                    <div class="text-center max-w-3xl mx-auto">
++                        <span class="text-primary text-sm font-bold tracking-widest uppercase mb-4 block">Metodología
++                            Ágil</span>
++                        <h2 class="text-white text-4xl sm:text-5xl font-black leading-tight">De la Idea al Éxito Digital
+                         </h2>
+                     </div>
+-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
++                    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 relative">
+                         <div
+-                            class="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent">
++                            class="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent">
+                         </div>
+-                        <div class="relative flex flex-col items-center text-center gap-4 group">
++                        <div class="relative flex flex-col items-center text-center gap-6 group">
+                             <div
+-                                class="z-10 size-16 rounded-full bg-surface-dark border-2 border-white/10 group-hover:border-primary group-hover:shadow-neon flex items-center justify-center text-white text-xl font-bold transition-all duration-300">
++                                class="z-10 size-20 rounded-2xl bg-surface-dark border border-white/10 group-hover:border-primary group-hover:shadow-neon flex items-center justify-center text-white text-2xl font-bold transition-all duration-500 transform group-hover:-translate-y-2">
+                                 <span
+-                                    class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">search</span>
++                                    class="material-symbols-outlined text-4xl text-gray-400 group-hover:text-primary transition-colors">search</span>
+                             </div>
+-                            <div class="flex flex-col gap-1 px-2">
+-                                <h3 class="text-white text-lg font-bold">1. Análisis</h3>
+-                                <p class="text-gray-400 text-sm">Estudiamos tu mercado y objetivos.</p>
++                            <div class="flex flex-col gap-2 px-4">
++                                <h3 class="text-white text-xl font-bold">1. Diagnóstico</h3>
++                                <p class="text-gray-400 text-sm leading-relaxed">Inmersión profunda en tus desafíos y
++                                    objetivos de negocio.</p>
+                             </div>
+                         </div>
+-                        <div class="relative flex flex-col items-center text-center gap-4 group">
++                        <div class="relative flex flex-col items-center text-center gap-6 group">
+                             <div
+-                                class="z-10 size-16 rounded-full bg-surface-dark border-2 border-white/10 group-hover:border-primary group-hover:shadow-neon flex items-center justify-center text-white text-xl font-bold transition-all duration-300">
++                                class="z-10 size-20 rounded-2xl bg-surface-dark border border-white/10 group-hover:border-primary group-hover:shadow-neon flex items-center justify-center text-white text-2xl font-bold transition-all duration-500 transform group-hover:-translate-y-2">
+                                 <span
+-                                    class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">lightbulb</span>
++                                    class="material-symbols-outlined text-4xl text-gray-400 group-hover:text-primary transition-colors">architecture</span>
+                             </div>
+-                            <div class="flex flex-col gap-1 px-2">
+-                                <h3 class="text-white text-lg font-bold">2. Estrategia</h3>
+-                                <p class="text-gray-400 text-sm">Planificamos la ruta al éxito.</p>
++                            <div class="flex flex-col gap-2 px-4">
++                                <h3 class="text-white text-xl font-bold">2. Arquitectura</h3>
++                                <p class="text-gray-400 text-sm leading-relaxed">Diseñamos la solución técnica óptima y
++                                    escalable.</p>
+                             </div>
+                         </div>
+-                        <div class="relative flex flex-col items-center text-center gap-4 group">
++                        <div class="relative flex flex-col items-center text-center gap-6 group">
+                             <div
+-                                class="z-10 size-16 rounded-full bg-surface-dark border-2 border-white/10 group-hover:border-primary group-hover:shadow-neon flex items-center justify-center text-white text-xl font-bold transition-all duration-300">
++                                class="z-10 size-20 rounded-2xl bg-surface-dark border border-white/10 group-hover:border-primary group-hover:shadow-neon flex items-center justify-center text-white text-2xl font-bold transition-all duration-500 transform group-hover:-translate-y-2">
+                                 <span
+-                                    class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-primary transition-colors">design_services</span>
++                                    class="material-symbols-outlined text-4xl text-gray-400 group-hover:text-primary transition-colors">code</span>
+                             </div>
+-                            <div class="flex flex-col gap-1 px-2">
+-                                <h3 class="text-white text-lg font-bold">3. Creación</h3>
+-                                <p class="text-gray-400 text-sm">Diseño y desarrollo de alto nivel.</p>
++                            <div class="flex flex-col gap-2 px-4">
++                                <h3 class="text-white text-xl font-bold">3. Desarrollo</h3>
++                                <p class="text-gray-400 text-sm leading-relaxed">Construcción iterativa con feedback
++                                    constante.</p>
+                             </div>
+                         </div>
+-                        <div class="relative flex flex-col items-center text-center gap-4 group">
++                        <div class="relative flex flex-col items-center text-center gap-6 group">
+                             <div
+-                                class="z-10 size-16 rounded-full bg-surface-dark border-2 border-white/10 group-hover:border-secondary group-hover:shadow-[0_0_15px_rgba(122,45,246,0.5)] flex items-center justify-center text-white text-xl font-bold transition-all duration-300">
++                                class="z-10 size-20 rounded-2xl bg-surface-dark border border-white/10 group-hover:border-secondary group-hover:shadow-[0_0_20px_rgba(122,45,246,0.4)] flex items-center justify-center text-white text-2xl font-bold transition-all duration-500 transform group-hover:-translate-y-2">
+                                 <span
+-                                    class="material-symbols-outlined text-3xl text-gray-400 group-hover:text-secondary transition-colors">rocket_launch</span>
++                                    class="material-symbols-outlined text-4xl text-gray-400 group-hover:text-secondary transition-colors">verified</span>
+                             </div>
+-                            <div class="flex flex-col gap-1 px-2">
+-                                <h3 class="text-white text-lg font-bold">4. Despliegue</h3>
+-                                <p class="text-gray-400 text-sm">Pruebas, puesta en producción y soporte continuo.</p>
++                            <div class="flex flex-col gap-2 px-4">
++                                <h3 class="text-white text-xl font-bold">4. Lanzamiento</h3>
++                                <p class="text-gray-400 text-sm leading-relaxed">Despliegue robusto y soporte proactivo
++                                    post-lanzamiento.</p>
+                             </div>
+                         </div>
+                     </div>
+                 </section>
+ 
+-                <section class="relative rounded-[2rem] bg-gradient-to-r from-secondary/20 to-primary/20 p-[1px]">
+-                    <div class="relative rounded-[2rem] bg-surface-dark overflow-hidden p-8 md:p-16 text-center">
++                <section
++                    class="relative rounded-[3rem] bg-gradient-to-r from-secondary/30 via-primary/20 to-secondary/30 p-[1px] my-20">
++                    <div class="relative rounded-[3rem] bg-surface-dark overflow-hidden p-12 md:p-24 text-center">
+                         <div
+-                            class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(13,166,242,0.15),transparent_70%)]">
++                            class="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(13,166,242,0.2),transparent_70%)]">
+                         </div>
+-                        <div class="relative z-10 flex flex-col items-center gap-6 max-w-2xl mx-auto">
+-                            <span class="material-symbols-outlined text-5xl text-white mb-2">rocket_launch</span>
+-                            <h2 class="text-white text-3xl md:text-5xl font-black tracking-tight leading-tight">
+-                                ¿Listo para despegar?
++                        <div class="relative z-10 flex flex-col items-center gap-8 max-w-3xl mx-auto">
++                            <div
++                                class="size-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center floating shadow-neon">
++                                <span class="material-symbols-outlined text-5xl text-primary">rocket_launch</span>
++                            </div>
++                            <h2 class="text-white text-4xl md:text-6xl font-black tracking-tight leading-none">
++                                ¿Tienes un proyecto <br /> en mente?
+                             </h2>
+-                            <p class="text-gray-400 text-lg">
+-                                Agenda una consulta estratégica gratuita y descubre cómo podemos iluminar el camino de
+-                                tu marca.
++                            <p class="text-gray-400 text-xl font-medium leading-relaxed">
++                                No solo escribimos código, impulsamos negocios. Agenda una asesoría técnica gratuita de
++                                30 minutos y transformemos tu visión en realidad.
+                             </p>
+-                            <div class="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
+-                                <a href="contacto.html"
+-                                    class="flex items-center justify-center rounded-full h-12 px-8 bg-white text-background-dark hover:bg-gray-100 text-base font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+-                                    Iniciar Proyecto
++                            <div class="flex flex-col sm:flex-row gap-6 mt-4 w-full justify-center">
++                                <a href="contacto/index.html"
++                                    class="flex items-center justify-center rounded-full h-14 px-10 bg-white text-background-dark hover:bg-primary hover:text-white text-lg font-black tracking-wide transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] group">
++                                    Iniciar Proyecto Hoy
++                                    <span
++                                        class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">bolt</span>
+                                 </a>
+-                                <a href="https://wa.me/56949574770?text=Quisiera%20información%20de%20sus%20servicios"
++                                <a href="https://wa.me/56949574770?text=Hola%20Tiidi,%20quiero%20cotizar%20un%20proyecto%20de%20software"
+                                     target="_blank"
+-                                    class="flex items-center justify-center rounded-full h-12 px-8 text-white border border-white/20 hover:bg-white/5 text-base font-bold tracking-wide transition-all">
+-                                    Hablemos por WhatsApp
++                                    class="flex items-center justify-center rounded-full h-14 px-10 text-white border border-white/20 hover:border-[#25D366]/50 hover:bg-[#25D366]/10 text-lg font-bold tracking-wide transition-all gap-3 group/wa">
++                                    <svg class="size-6 fill-[#25D366] group-hover:scale-110 transition-transform"
++                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
++                                        <path
++                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.03 0C5.439 0 .074 5.365.071 11.956c0 2.106.541 4.161 1.57 6.002L0 24l6.16-1.617a11.802 11.802 0 005.86 1.551h.004c6.591 0 11.956-5.366 11.959-11.957a11.821 11.821 0 00-3.518-8.452" />
++                                    </svg>
++                                    WhatsApp Directo
+                                 </a>
+                             </div>
+                         </div>
+                     </div>
+                 </section>
+             </div>
+         </main>
+-        <footer class="border-t border-white/10 bg-surface-dark py-12">
+-            <div class="flex flex-col items-center justify-center gap-8 px-10 text-center">
+-                <div class="flex items-center gap-3 text-white">
+-                    <div class="size-8 text-primary relative flex items-center justify-center">
+-                        <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
+-                            xmlns="http://www.w3.org/2000/svg">
+-                            <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round"
+-                                stroke-width="3" style="filter: drop-shadow(0 0 4px rgba(13,166,242,0.8));"></path>
+-                            <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
+-                                style="filter: drop-shadow(0 0 4px rgba(13,166,242,0.8));"></circle>
+-                            <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round"
+-                                stroke-width="3" style="filter: drop-shadow(0 0 4px rgba(122,45,246,0.6));"></path>
+-                            <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
+-                                style="filter: drop-shadow(0 0 4px rgba(122,45,246,0.6));"></circle>
+-                            <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
+-                                style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));"></path>
+-                            <circle cx="24" cy="38" fill="#fff" r="2"
+-                                style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));"></circle>
+-                            <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
+-                            <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+-                        </svg>
++        <footer class="border-t border-white/5 bg-[#0B1114] py-20">
++            <div class="max-w-[1400px] mx-auto px-8 lg:px-20">
++                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
++                    <div class="flex flex-col gap-6 md:col-span-1">
++                        <div class="flex items-center gap-3 text-white">
++                            <div class="size-10 text-primary relative flex items-center justify-center">
++                                <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
++                                    xmlns="http://www.w3.org/2000/svg">
++                                    <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round"
++                                        stroke-linejoin="round" stroke-width="3"></path>
++                                    <circle cx="10" cy="12" fill="#0da6f2" r="2.5"></circle>
++                                    <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round"
++                                        stroke-linejoin="round" stroke-width="3"></path>
++                                    <circle cx="38" cy="12" fill="#7a2df6" r="2.5"></circle>
++                                    <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"></path>
++                                    <circle cx="24" cy="38" fill="#fff" r="2"></circle>
++                                </svg>
++                            </div>
++                            <h3 class="text-white text-2xl font-black tracking-tighter">Tiidi</h3>
++                        </div>
++                        <p class="text-gray-500 text-sm leading-relaxed">
++                            Soluciones de software a medida que transforman empresas. Operando para todo Chile.
++                        </p>
++                        <div class="flex gap-4">
++                            <a href="https://www.linkedin.com/company/tiidi"
++                                class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
++                                <span class="material-symbols-outlined text-xl">share</span>
++                            </a>
++                            <a href="https://github.com/tiidi"
++                                class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
++                                <span class="material-symbols-outlined text-xl">code</span>
++                            </a>
++                        </div>
++                    </div>
++
++                    <div>
++                        <h4 class="text-white font-bold mb-6">Servicios</h4>
++                        <ul class="flex flex-col gap-4 text-sm text-gray-500">
++                            <li><a href="servicios/apps-moviles.html" class="hover:text-primary transition-colors">Apps
++                                    Móviles</a></li>
++                            <li><a href="servicios/software-empresarial.html"
++                                    class="hover:text-primary transition-colors">Software a Medida</a></li>
++                            <li><a href="servicios/devops-consultoria.html"
++                                    class="hover:text-primary transition-colors">DevOps & Cloud</a></li>
++                            <li><a href="servicios/automatizacion-ia.html"
++                                    class="hover:text-primary transition-colors">Automatización IA</a></li>
++                        </ul>
++                    </div>
++
++                    <div>
++                        <h4 class="text-white font-bold mb-6">Empresa</h4>
++                        <ul class="flex flex-col gap-4 text-sm text-gray-500">
++                            <li><a href="nosotros/index.html" class="hover:text-primary transition-colors">Sobre
++                                    Nosotros</a></li>
++                            <li><a href="casos/index.html" class="hover:text-primary transition-colors">Casos de
++                                    Éxito</a></li>
++                            <li><a href="blog/index.html" class="hover:text-primary transition-colors">Blog &
++                                    Noticias</a></li>
++                            <li><a href="recursos/index.html" class="hover:text-primary transition-colors">Recursos</a>
++                            </li>
++                        </ul>
++                    </div>
++
++                    <div>
++                        <h4 class="text-white font-bold mb-6">Contacto</h4>
++                        <ul class="flex flex-col gap-4 text-sm text-gray-500">
++                            <li class="flex gap-3">
++                                <span class="material-symbols-outlined text-primary text-lg">mail</span>
++                                <a href="mailto:contacto@tiidi.cl"
++                                    class="hover:text-primary transition-colors">contacto@tiidi.cl</a>
++                            </li>
++                            <li class="flex gap-3">
++                                <span class="material-symbols-outlined text-primary text-lg">call</span>
++                                <a href="tel:+56949574770" class="hover:text-primary transition-colors">+56 9 4957
++                                    4770</a>
++                            </li>
++                            <li class="flex gap-3">
++                                <span>Santiago, Chile</span>
++                            </li>
++                        </ul>
+                     </div>
+-                    <h3 class="text-white text-lg font-bold">Tiidi</h3>
+-                </div>
+-                <div class="flex flex-wrap justify-center gap-8 text-sm font-medium text-gray-400">
+-                    <a class="hover:text-primary hover:neon-text transition-all" href="index.html">Inicio</a>
+-                    <a class="hover:text-primary hover:neon-text transition-all" href="#servicios">Servicios</a>
+-                    <a class="hover:text-primary hover:neon-text transition-all" href="#proceso">Proceso</a>
+-                    <a class="hover:text-primary hover:neon-text transition-all" href="contacto.html">Contacto</a>
+                 </div>
+ 
+-                <p class="text-xs text-gray-600">© 2026 Tiidi. Soluciones Informáticas. Todos los derechos reservados.
+-                </p>
++                <div
++                    class="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
++                    <p class="text-xs text-gray-600">© 2026 Tiidi. Todos los derechos reservados.</p>
++                    <div class="flex gap-8 text-xs text-gray-600">
++                        <a href="privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
++                        <a href="terminos.html" class="hover:text-white transition-colors">Términos</a>
++                    </div>
++                </div>
+             </div>
+         </footer>
+     </div>
+ </body>
+ 
+ </html>
+\ No newline at end of file

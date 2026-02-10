@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1TTD3Z6R9B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-1TTD3Z6R9B');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Costos - Estima tu Proyecto | Tiidi</title>
+  <meta name="description"
+    content="Calcula el costo estimado de tu proyecto de software en 2 minutos. Obtén un rango de precios basado en funcionalidades, plataformas y complejidad.">
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0da6f2",
+            "secondary": "#7a2df6",
+            "background-dark": "#0B1114",
+            "surface-dark": "#162228",
+            "surface-glass": "rgba(22, 34, 40, 0.7)",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"],
+            "body": ["Noto Sans", "sans-serif"],
+          },
+          boxShadow: {
+            'neon': '0 0 10px rgba(13, 166, 242, 0.5), 0 0 20px rgba(13, 166, 242, 0.3)',
+            'neon-hover': '0 0 15px rgba(13, 166, 242, 0.8), 0 0 30px rgba(13, 166, 242, 0.5)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
+            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
+            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
+            .floating { animation: floating 3s ease-in-out infinite; }
+            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
+            .pulse-glow { animation: pulse-glow 2s infinite; }
+            @keyframes pulse-glow { 0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); } 50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); } }
+            .particle-bg { @apply absolute w-[2px] h-[2px] bg-primary rounded-full; box-shadow: 0 0 6px theme('colors.primary'); animation: particle-float 10s infinite linear; }
+            @keyframes particle-float { 0% { transform: translateY(100vh) translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) translateX(100px); opacity: 0; } }
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+    <div class="particle-bg" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle-bg" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="particle-bg" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="particle-bg" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="particle-bg" style="left: 90%; animation-delay: 8s;"></div>
+
+    <div
+      class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[150px] mix-blend-screen floating"
+      style="animation-delay: 1.5s;">
+    </div>
+    <div
+      class="absolute top-[50%] left-[60%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] mix-blend-screen floating"
+      style="animation-delay: 3s;">
+    </div>
+  </div>
+  <div class="relative z-10 min-h-screen flex flex-col items-center">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
+      <div
+        class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border">
+        <div class="flex items-center gap-3 text-white">
+          <a href="../index.html" class="flex items-center gap-3">
+            <div class="size-10 text-primary relative flex items-center justify-center">
+              <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                  style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
+                <circle cx="10" cy="12" fill="#0da6f2" r="2.5"
+                  style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
+                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                  style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
+                <circle cx="38" cy="12" fill="#7a2df6" r="2.5"
+                  style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
+                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3"
+                  style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
+                <circle cx="24" cy="38" fill="#fff" r="2" style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));">
+                </circle>
+                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
+                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+              </svg>
+            </div>
+            <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
+          </a>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../index.html">
+            Inicio
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../servicios/index.html">
+            Servicios
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../industrias/index.html">
+            Industrias
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../blog/index.html">
+            Blog
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a class="text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group"
+            href="../contacto/index.html">
+            Contacto
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          </a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="../contacto/index.html"
+            class="neon-button group flex items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+            <span class="truncate relative z-10">Iniciar Proyecto</span>
+            <span
+              class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 w-full max-w-[1400px] pt-32 px-6 lg:px-20 pb-20">
+      <section class="max-w-4xl mb-16">
+        <h2 class="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4">Recursos Gratuitos</h2>
+        <h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
+          Calculadora de <br /> <span class="neon-gradient-text">Costos</span> de Software
+        </h1>
+        <p class="text-gray-300 text-xl font-medium max-w-2xl leading-relaxed">
+          Obtén un estimado técnico y económico para tu proyecto en menos de 2 minutos. Basado en estándares de la
+          industria chilena.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <!-- Form Column -->
+        <div class="lg:col-span-2 flex flex-col gap-12">
+          <!-- Q1: Project Type -->
+          <div class="p-10 rounded-[3rem] bg-surface-dark border border-white/5 relative overflow-hidden">
+            <h3 class="text-white text-2xl font-black mb-8">1. ¿Qué tipo de proyecto necesitas?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label
+                class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="project_type" value="app_movil" data-cost="4500000"
+                  class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <span class="text-3xl mb-2">📱</span>
+                  <h4 class="text-white font-bold">App Móvil</h4>
+                  <span class="text-xs text-primary font-bold">Desde $4.5M CLP</span>
+                </div>
+              </label>
+              <label
+                class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="project_type" value="web_app" data-cost="3500000" class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <span class="text-3xl mb-2">💻</span>
+                  <h4 class="text-white font-bold">App Web / SaaS</h4>
+                  <span class="text-xs text-primary font-bold">Desde $3.5M CLP</span>
+                </div>
+              </label>
+              <label
+                class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="project_type" value="erp_crm" data-cost="8000000" class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <span class="text-3xl mb-2">💼</span>
+                  <h4 class="text-white font-bold">ERP / CRM / Gestión</h4>
+                  <span class="text-xs text-primary font-bold">Desde $8M CLP</span>
+                </div>
+              </label>
+              <label
+                class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="project_type" value="otro" data-cost="2000000" class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <span class="text-3xl mb-2">💡</span>
+                  <h4 class="text-white font-bold">Otro / Consultoría</h4>
+                  <span class="text-xs text-primary font-bold">Presupuesto a medida</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q2: Platforms (Conditional for App Movil) -->
+          <div id="platforms-box"
+            class="p-10 rounded-[3rem] bg-surface-dark border border-white/5 hidden transition-all">
+            <h3 class="text-white text-2xl font-black mb-8">2. ¿En qué plataformas?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <label
+                class="group relative p-6 rounded-2xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="checkbox" name="platforms" value="ios" data-cost="500000" class="absolute opacity-0">
+                <div class="flex flex-col items-center">
+                  <h4 class="text-white font-bold">iOS Only</h4>
+                </div>
+              </label>
+              <label
+                class="group relative p-6 rounded-2xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="checkbox" name="platforms" value="android" data-cost="500000" class="absolute opacity-0">
+                <div class="flex flex-col items-center">
+                  <h4 class="text-white font-bold">Android Only</h4>
+                </div>
+              </label>
+              <label
+                class="group relative p-6 rounded-2xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="checkbox" name="platforms" value="cross" data-cost="1500000" class="absolute opacity-0">
+                <div class="flex flex-col items-center">
+                  <h4 class="text-white font-bold">Cross-Platform</h4>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q3: Features -->
+          <div class="p-10 rounded-[3rem] bg-surface-dark border border-white/5">
+            <h3 class="text-white text-2xl font-black mb-8">3. ¿Qué funcionalidades necesitas?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label
+                class="flex items-center gap-4 p-5 rounded-2xl bg-background-dark/50 border border-white/5 hover:bg-white/5 transition-all cursor-pointer group">
+                <input type="checkbox" name="features" data-cost="1200000"
+                  class="size-6 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
+                <div class="flex flex-col">
+                  <span class="text-white font-bold text-sm">Pasarelas de Pago</span>
+                  <span class="text-[10px] text-gray-500 uppercase tracking-widest font-black">+$1.2M CLP</span>
+                </div>
+              </label>
+              <label
+                class="flex items-center gap-4 p-5 rounded-2xl bg-background-dark/50 border border-white/5 hover:bg-white/5 transition-all cursor-pointer group">
+                <input type="checkbox" name="features" data-cost="800000"
+                  class="size-6 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
+                <div class="flex flex-col">
+                  <span class="text-white font-bold text-sm">Geolocalización / Mapas</span>
+                  <span class="text-[10px] text-gray-500 uppercase tracking-widest font-black">+$800K CLP</span>
+                </div>
+              </label>
+              <label
+                class="flex items-center gap-4 p-5 rounded-2xl bg-background-dark/50 border border-white/5 hover:bg-white/5 transition-all cursor-pointer group">
+                <input type="checkbox" name="features" data-cost="1500000"
+                  class="size-6 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
+                <div class="flex flex-col">
+                  <span class="text-white font-bold text-sm">Chat en Tiempo Real</span>
+                  <span class="text-[10px] text-gray-500 uppercase tracking-widest font-black">+$1.5M CLP</span>
+                </div>
+              </label>
+              <label
+                class="flex items-center gap-4 p-5 rounded-2xl bg-background-dark/50 border border-white/5 hover:bg-white/5 transition-all cursor-pointer group">
+                <input type="checkbox" name="features" data-cost="2000000"
+                  class="size-6 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
+                <div class="flex flex-col">
+                  <span class="text-white font-bold text-sm">Dashboard Administrativo</span>
+                  <span class="text-[10px] text-gray-500 uppercase tracking-widest font-black">+$2M CLP</span>
+                </div>
+              </label>
+              <label
+                class="flex items-center gap-4 p-5 rounded-2xl bg-background-dark/50 border border-white/5 hover:bg-white/5 transition-all cursor-pointer group">
+                <input type="checkbox" name="features" data-cost="1500000"
+                  class="size-6 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
+                <div class="flex flex-col">
+                  <span class="text-white font-bold text-sm">Integración API Externa</span>
+                  <span class="text-[10px] text-gray-500 uppercase tracking-widest font-black">+$1.5M CLP</span>
+                </div>
+              </label>
+              <label
+                class="flex items-center gap-4 p-5 rounded-2xl bg-background-dark/50 border border-white/5 hover:bg-white/5 transition-all cursor-pointer group">
+                <input type="checkbox" name="features" data-cost="3000000"
+                  class="size-6 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
+                <div class="flex flex-col">
+                  <span class="text-white font-bold text-sm">Machine Learning / IA</span>
+                  <span class="text-[10px] text-gray-500 uppercase tracking-widest font-black">+$3M CLP</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q4: Design Level -->
+          <div class="p-10 rounded-[3rem] bg-surface-dark border border-white/5">
+            <h3 class="text-white text-2xl font-black mb-8">4. ¿Nivel de Diseño y UX?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <label
+                class="group relative p-6 rounded-2xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="design" value="basico" data-cost="0" class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <h4 class="text-white font-bold">Standard</h4>
+                  <p class="text-[10px] text-gray-500">Limpio y funcional.</p>
+                </div>
+              </label>
+              <label
+                class="group relative p-6 rounded-2xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="design" value="premium" data-cost="2000000" class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <h4 class="text-white font-bold">Premium</h4>
+                  <p class="text-[10px] text-gray-500">Animaciones y UX avanzada.</p>
+                </div>
+              </label>
+              <label
+                class="group relative p-6 rounded-2xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer">
+                <input type="radio" name="design" value="custom" data-cost="4000000" class="absolute opacity-0">
+                <div class="flex flex-col gap-2">
+                  <h4 class="text-white font-bold">Custom</h4>
+                  <p class="text-[10px] text-gray-500">Ilustraciones y Branding.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Results Sidebar -->
+        <div class="lg:sticky lg:top-32 flex flex-col gap-8">
+          <div
+            class="p-10 rounded-[3rem] bg-surface-dark border border-primary/20 shadow-neon relative overflow-hidden">
+            <div class="relative z-10">
+              <h3 class="text-white font-bold text-xl mb-6">Inversión Estimada</h3>
+
+              <div class="flex flex-col gap-4 mb-8">
+                <div class="flex justify-between items-baseline">
+                  <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Desde:</span>
+                  <span id="cost-min" class="text-white text-4xl font-black">$0</span>
+                </div>
+                <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
+                  <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Hasta:</span>
+                  <span id="cost-max" class="text-gray-400 text-2xl font-black">$0</span>
+                </div>
+                <p class="text-[10px] text-gray-600 mt-2 italic text-right">* Valores referenciales en CLP (+IVA)</p>
+              </div>
+
+              <div class="flex flex-col gap-6 mb-10">
+                <div class="flex items-center gap-4">
+                  <div class="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-black uppercase text-gray-500">Tiempo de Entrega</span>
+                    <p id="timeline" class="text-white font-bold">8-12 semanas</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="size-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-secondary text-xl">rocket_launch</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-black uppercase text-gray-500">Frecuencia de Entregas</span>
+                    <p class="text-white font-bold">Demos cada 2 semanas</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="../contacto/index.html"
+                class="w-full bg-primary text-white py-5 rounded-full font-black text-center block hover:scale-105 transition-all shadow-neon mb-4">Solicitar
+                Presupuesto Exacto</a>
+              <a href="https://wa.me/56949574770"
+                class="w-full border border-white/10 text-white py-4 rounded-full font-bold text-center block hover:bg-white/5 transition-all text-sm">Consultoría
+                Directa</a>
+            </div>
+          </div>
+
+          <div class="p-8 rounded-[2rem] bg-background-dark border border-white/5">
+            <p class="text-xs text-gray-500 leading-relaxed italic">
+              * Esta calculadora entrega un valor base de mercado. La propuesta técnica final puede variar según
+              integraciones específicas, volumen de datos y requerimientos de seguridad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="w-full border-t border-white/5 py-10 text-center text-xs text-gray-600">
+      <p>© 2026 Tiidi - Transformando Ideas en Software Real.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const projectTypes = document.querySelectorAll('input[name="project_type"]');
+      const features = document.querySelectorAll('input[name="features"]');
+      const designs = document.querySelectorAll('input[name="design"]');
+      const platforms = document.querySelectorAll('input[name="platforms"]');
+      const platformsBox = document.getElementById('platforms-box');
+
+      const minEl = document.getElementById('cost-min');
+      const maxEl = document.getElementById('cost-max');
+      const timelineEl = document.getElementById('timeline');
+
+      const format = (val) => new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(val);
+
+      const calculate = () => {
+        let base = 0;
+        let add = 0;
+
+        // Project Type
+        const selectedType = document.querySelector('input[name="project_type"]:checked');
+        if (selectedType) {
+          base = parseInt(selectedType.dataset.cost);
+          if (selectedType.value === 'app_movil') platformsBox.classList.remove('hidden');
+          else platformsBox.classList.add('hidden');
+        }
+
+        // Platforms
+        platforms.forEach(p => {
+          if (p.checked) add += parseInt(p.dataset.cost);
+        });
+
+        // Features
+        features.forEach(f => {
+          if (f.checked) add += parseInt(f.dataset.cost);
+        });
+
+        // Design
+        const selectedDesign = document.querySelector('input[name="design"]:checked');
+        if (selectedDesign) add += parseInt(selectedDesign.dataset.cost);
+
+        const totalMin = base + add;
+        const totalMax = Math.round(totalMin * 1.4); // 40% margin for complexity
+
+        minEl.textContent = format(totalMin);
+        maxEl.textContent = format(totalMax);
+
+        // Timeline logic
+        if (totalMin < 5000000) timelineEl.textContent = '6-10 semanas';
+        else if (totalMin < 10000000) timelineEl.textContent = '10-14 semanas';
+        else if (totalMin < 20000000) timelineEl.textContent = '16-24 semanas';
+        else timelineEl.textContent = '24+ semanas';
+      };
+
+      [...projectTypes, ...features, ...designs, ...platforms].forEach(input => {
+        input.addEventListener('change', () => {
+          // Selection Visuals
+          if (input.type === 'radio') {
+            const siblings = document.querySelectorAll(`input[name="${input.name}"]`);
+            siblings.forEach(s => s.closest('label').classList.remove('border-primary', 'bg-primary/10', 'ring-2', 'ring-primary/20'));
+          }
+          if (input.checked) input.closest('label').classList.add('border-primary', 'bg-primary/10', 'ring-2', 'ring-primary/20');
+          else input.closest('label').classList.remove('border-primary', 'bg-primary/10', 'ring-2', 'ring-primary/20');
+
+          calculate();
+        });
+      });
+
+      calculate();
+    });
+  </script>
+</body>
+
+</html>
