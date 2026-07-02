@@ -51,14 +51,14 @@ class TiidiHeader extends HTMLElement {
                         Blog
                         <span class="absolute bottom-0 left-0 ${activePage === 'blog' ? 'w-full' : 'w-0'} h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
                     </a>
-                    <a class="${activePage === 'contacto' ? 'text-primary neon-text' : 'text-gray-300 hover:text-primary hover:neon-text'} text-sm font-medium transition-all relative group" href="${root}contacto/index.html">
+                    <a class="${activePage === 'contacto' ? 'text-primary neon-text' : 'text-gray-300 hover:text-primary hover:neon-text'} text-sm font-medium transition-all relative group" href="/contacto/">
                         Contacto
                         <span class="absolute bottom-0 left-0 ${activePage === 'contacto' ? 'w-full' : 'w-0'} h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
                     </a>
                 </nav>
 
                 <div class="flex items-center gap-2 lg:gap-4">
-                    <a href="${root}contacto/index.html" class="hidden sm:flex neon-button group items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+                    <a href="/contacto/" class="hidden sm:flex neon-button group items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
                         <span class="truncate relative z-10">Iniciar Proyecto</span>
                         <span class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
                     </a>
@@ -75,9 +75,9 @@ class TiidiHeader extends HTMLElement {
                     <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html">Servicios</a>
                     <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html">Industrias</a>
                     <a class="${activePage === 'blog' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}blog/index.html">Blog</a>
-                    <a class="${activePage === 'contacto' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}contacto/index.html">Contacto</a>
+                    <a class="${activePage === 'contacto' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="/contacto/">Contacto</a>
                     <div class="h-[1px] bg-white/10 my-2"></div>
-                    <a href="${root}contacto/index.html" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">
+                    <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">
                         Iniciar Proyecto
                     </a>
                 </div>
@@ -167,7 +167,7 @@ class TiidiFooter extends HTMLElement {
                         <ul class="flex flex-col gap-4 text-sm text-gray-500">
                             <li><a href="${root}nosotros/index.html" class="hover:text-primary transition-colors">Sobre Nosotros</a></li>
                             <li><a href="${root}blog/index.html" class="hover:text-primary transition-colors">Blog & Noticias</a></li>
-                            <li><a href="${root}contacto/index.html" class="hover:text-primary transition-colors">Contacto</a></li>
+                            <li><a href="/contacto/" class="hover:text-primary transition-colors">Contacto</a></li>
                         </ul>
                     </div>
 

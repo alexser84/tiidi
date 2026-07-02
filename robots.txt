@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /diff.txt
+Disallow: /diff_context.txt
+
+Sitemap: https://tiidi.cl/sitemap.xml
