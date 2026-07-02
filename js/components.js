@@ -204,3 +204,47 @@ class TiidiFooter extends HTMLElement {
 
 customElements.define('tiidi-header', TiidiHeader);
 customElements.define('tiidi-footer', TiidiFooter);
+
+function trackTiidiConversion(eventName, params = {}) {
+    if (!window.gtag) return;
+    gtag('event', eventName, {
+        page_path: window.location.pathname,
+        ...params
+    });
+}
+
+document.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+
+    if (href === '/contacto/' || href.endsWith('/contacto/')) {
+        trackTiidiConversion('cta_click', {
+            cta_text: label || 'contacto',
+            cta_destination: '/contacto/'
+        });
+        return;
+    }
+
+    if (href.startsWith('https://wa.me/')) {
+        trackTiidiConversion('whatsapp_click', {
+            cta_text: label || 'WhatsApp'
+        });
+        return;
+    }
+
+    if (href.startsWith('mailto:')) {
+        trackTiidiConversion('email_click', {
+            cta_text: label || 'email'
+        });
+        return;
+    }
+
+    if (href.startsWith('tel:')) {
+        trackTiidiConversion('phone_click', {
+            cta_text: label || 'telefono'
+        });
+    }
+});

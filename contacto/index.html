@@ -416,7 +416,7 @@
                   <label class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" required
                       class="size-5 rounded border-white/10 bg-background-dark text-primary focus:ring-primary focus:ring-offset-background-dark">
-                    <span class="text-xs text-gray-500">Acepto la <a href="#"
+                    <span class="text-xs text-gray-500">Acepto la <a href="../privacidad.html"
                         class="text-primary hover:underline">política de privacidad</a>.</span>
                   </label>
                 </div>
@@ -511,6 +511,15 @@
       const successView = document.getElementById('form-success');
 
       let currentStep = 1;
+      let formStarted = false;
+
+      const trackEvent = (eventName, params = {}) => {
+        if (!window.gtag) return;
+        gtag('event', eventName, {
+          page_path: window.location.pathname,
+          ...params
+        });
+      };
 
       const updateUI = () => {
         steps.forEach(step => {
@@ -537,6 +546,10 @@
           }
         });
         if (valid) {
+          trackEvent('form_step_complete', {
+            form_name: 'contact_project',
+            step_number: currentStep
+          });
           currentStep++;
           updateUI();
         }
@@ -546,6 +559,14 @@
         currentStep--;
         updateUI();
       }));
+
+      form.addEventListener('change', () => {
+        if (formStarted) return;
+        formStarted = true;
+        trackEvent('form_start', {
+          form_name: 'contact_project'
+        });
+      }, { once: true });
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -558,6 +579,12 @@
 
         try {
           const formData = new FormData(form);
+          trackEvent('form_submit_attempt', {
+            form_name: 'contact_project',
+            project_type: formData.get('project_type') || 'unknown',
+            budget_range: formData.get('budget') || 'unknown',
+            timeline: formData.get('timeline') || 'unknown'
+          });
           const response = await fetch('https://usebasin.com/f/464b7bb38efe', {
             method: 'POST',
             body: formData,
@@ -573,16 +600,28 @@
             // Track GA event if exists
             if (window.gtag) {
               gtag('event', 'generate_lead', {
-                'event_category': 'Contact',
-                'event_label': formData.get('project_type'),
-                'value': 100
+                event_category: 'Contact',
+                event_label: formData.get('project_type'),
+                form_name: 'contact_project',
+                project_type: formData.get('project_type') || 'unknown',
+                budget_range: formData.get('budget') || 'unknown',
+                timeline: formData.get('timeline') || 'unknown',
+                value: 100
               });
             }
           } else {
+            trackEvent('form_error', {
+              form_name: 'contact_project',
+              error_type: 'submission_response'
+            });
             alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente o contáctanos por WhatsApp.');
           }
         } catch (error) {
           console.error('Error submitting form:', error);
+          trackEvent('form_error', {
+            form_name: 'contact_project',
+            error_type: 'network'
+          });
           alert('Hubo un error de conexión. Por favor, intenta nuevamente o contáctanos por WhatsApp.');
         } finally {
           submitBtn.disabled = false;
