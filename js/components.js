@@ -140,7 +140,7 @@ class TiidiFooter extends HTMLElement {
                             <h3 class="text-white text-2xl font-black tracking-tighter">Tiidi</h3>
                         </div>
                         <p class="text-gray-500 text-sm leading-relaxed">
-                            Soluciones de software a medida que transforman empresas. Operando para todo Chile.
+                            Soluciones de software a medida para empresas chilenas. Operamos desde Santiago para todo Chile.
                         </p>
                         <div class="flex gap-4">
                             <a href="https://www.linkedin.com/company/tiidi" class="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all">
