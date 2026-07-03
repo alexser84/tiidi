@@ -184,10 +184,11 @@
     <main class="flex-1 w-full max-w-[1400px] pt-32 px-6 lg:px-20 pb-20">
       <section class="max-w-4xl mb-12">
         <h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
-          ¿Listo para <br /> <span class="neon-gradient-text">Transformar</span> tu Idea?
+          Agenda un <br /> <span class="neon-gradient-text">Diagnóstico</span> Gratis
         </h1>
         <p class="text-gray-300 text-xl font-medium leading-relaxed">
-          Responde 4 preguntas rápidas sobre tu proyecto en Chile y recibe orientación técnica en 24-48 horas.
+          Responde 4 preguntas rápidas y recibe orientación técnica para decidir alcance, inversión y próximos pasos de
+          tu proyecto digital en Chile.
         </p>
         <div class="flex flex-wrap gap-4 mt-8">
           <span
@@ -195,7 +196,7 @@
             Respuesta en &lt;2h</span>
           <span
             class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-gray-400 uppercase tracking-widest">✓
-            Presupuesto en 24-48h</span>
+            Próximos pasos en 24-48h</span>
           <span
             class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-gray-400 uppercase tracking-widest">✓
             Sin compromiso</span>
@@ -289,7 +290,8 @@
 
               <!-- Step 2: Budget -->
               <div class="form-step hidden" data-step="2">
-                <h2 class="text-white text-3xl font-black mb-10">¿Cuál es el rango de inversión estimado?</h2>
+                <h2 class="text-white text-3xl font-black mb-4">¿Cuál es el rango de inversión estimado?</h2>
+                <p class="text-gray-500 mb-8">Si aún no lo tienes claro, igual puedes avanzar. Te ayudamos a estimarlo.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label
                     class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer overflow-hidden">
@@ -329,6 +331,15 @@
                       <p class="text-sm text-gray-400">Desarrollos enterprise a gran escala.</p>
                     </div>
                   </label>
+                  <label
+                    class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer overflow-hidden md:col-span-2">
+                    <input type="radio" name="budget" value="por_definir" class="absolute opacity-0">
+                    <div class="flex flex-col gap-3">
+                      <span class="text-4xl mb-2">🧭</span>
+                      <h3 class="text-white text-xl font-bold">Aún necesito definirlo</h3>
+                      <p class="text-sm text-gray-400">Tengo el problema u oportunidad, pero necesito ayuda para dimensionar inversión y alcance.</p>
+                    </div>
+                  </label>
                 </div>
                 <div class="mt-12 flex justify-between items-center">
                   <button type="button"
@@ -362,6 +373,15 @@
                       <p class="text-sm text-gray-400">Timeline óptimo para alta ingeniería.</p>
                     </div>
                   </label>
+                  <label
+                    class="group relative p-8 rounded-3xl bg-background-dark border border-white/5 hover:border-primary/50 transition-all cursor-pointer overflow-hidden md:col-span-2">
+                    <input type="radio" name="timeline" value="por_definir" class="absolute opacity-0">
+                    <div class="flex flex-col gap-3">
+                      <span class="text-4xl mb-2">🗺️</span>
+                      <h3 class="text-white text-xl font-bold">Necesito definir roadmap</h3>
+                      <p class="text-sm text-gray-400">Quiero ordenar prioridades antes de comprometer fechas.</p>
+                    </div>
+                  </label>
                 </div>
                 <div class="flex flex-col gap-3">
                   <label class="text-xs font-black uppercase tracking-[0.2em] text-gray-600">Cuéntanos un poco más sobre
@@ -383,7 +403,7 @@
               <!-- Step 4: Final Info -->
               <div class="form-step hidden" data-step="4">
                 <h2 class="text-white text-3xl font-black mb-4">¿Cómo te contactamos?</h2>
-                <p class="text-gray-400 mb-10">Recibirás un presupuesto detallado en las próximas 24-48 horas.</p>
+                <p class="text-gray-400 mb-10">Te contactaremos para coordinar el diagnóstico y enviarte próximos pasos en 24-48 horas.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="flex flex-col gap-3">
                     <label class="text-xs font-black uppercase tracking-widest text-gray-600">Nombre Completo *</label>
@@ -426,7 +446,7 @@
                     Atrás</button>
                   <button type="submit"
                     class="bg-white text-background-dark px-12 py-5 rounded-full font-black hover:bg-primary hover:text-white transition-all shadow-neon flex items-center gap-3">
-                    🚀 Enviar y Recibir Propuesta
+                    🚀 Solicitar Diagnóstico
                   </button>
                 </div>
               </div>
