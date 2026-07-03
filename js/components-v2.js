@@ -13,6 +13,37 @@ class TiidiHeader extends HTMLElement {
         const activePage = this.getAttribute('active-page') || '';
 
         this.innerHTML = `
+        <style>
+            tiidi-header .tiidi-desktop-nav,
+            tiidi-header .tiidi-project-cta {
+                display: none;
+            }
+
+            tiidi-header .tiidi-mobile-toggle {
+                display: flex;
+            }
+
+            tiidi-header #mobile-menu.hidden {
+                display: none;
+            }
+
+            @media (min-width: 640px) {
+                tiidi-header .tiidi-project-cta {
+                    display: flex;
+                }
+            }
+
+            @media (min-width: 768px) {
+                tiidi-header .tiidi-desktop-nav {
+                    display: flex;
+                }
+
+                tiidi-header .tiidi-mobile-toggle,
+                tiidi-header #mobile-menu {
+                    display: none !important;
+                }
+            }
+        </style>
         <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
             <div class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border relative">
                 <div class="flex items-center gap-3 text-white">
@@ -34,7 +65,7 @@ class TiidiHeader extends HTMLElement {
                 </div>
 
                 <!-- Desktop Nav -->
-                <nav class="hidden md:flex items-center gap-8">
+                <nav class="tiidi-desktop-nav items-center gap-8">
                     <a class="${activePage === 'inicio' ? 'text-primary neon-text' : 'text-gray-300 hover:text-primary hover:neon-text'} text-sm font-medium transition-all relative group" href="${root}index.html">
                         Inicio
                         <span class="absolute bottom-0 left-0 ${activePage === 'inicio' ? 'w-full' : 'w-0'} h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
@@ -58,13 +89,13 @@ class TiidiHeader extends HTMLElement {
                 </nav>
 
                 <div class="flex items-center gap-2 lg:gap-4">
-                    <a href="/contacto/" class="hidden sm:flex neon-button group items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+                    <a href="/contacto/" class="tiidi-project-cta neon-button group items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
                         <span class="truncate relative z-10">Iniciar Proyecto</span>
                         <span class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
                     </a>
                     
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="md:hidden size-10 flex items-center justify-center text-white bg-white/5 rounded-full hover:bg-white/10 transition-colors">
+                    <button id="mobile-menu-btn" class="tiidi-mobile-toggle size-10 items-center justify-center text-white bg-white/5 rounded-full hover:bg-white/10 transition-colors">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
@@ -122,9 +153,30 @@ class TiidiFooter extends HTMLElement {
         const root = this.getAttribute('root') || './';
 
         this.innerHTML = `
+        <style>
+            tiidi-footer .tiidi-footer-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            tiidi-footer .tiidi-footer-bottom {
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media (min-width: 768px) {
+                tiidi-footer .tiidi-footer-grid {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                }
+
+                tiidi-footer .tiidi-footer-bottom {
+                    flex-direction: row;
+                }
+            }
+        </style>
         <footer class="border-t border-white/5 bg-[#0B1114] py-20 w-full flex justify-center">
             <div class="max-w-[1400px] w-full mx-auto px-8 lg:px-20">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                <div class="tiidi-footer-grid grid gap-12 text-left">
                     <div class="flex flex-col gap-6 md:col-span-1">
                         <div class="flex items-center gap-3 text-white">
                             <div class="size-10 text-primary relative flex items-center justify-center">
@@ -189,7 +241,7 @@ class TiidiFooter extends HTMLElement {
                     </div>
                 </div>
 
-                <div class="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="tiidi-footer-bottom mt-20 pt-8 border-t border-white/5 justify-between items-center gap-6">
                     <p class="text-xs text-gray-600">© 2026 Tiidi. Todos los derechos reservados.</p>
                     <div class="flex gap-8 text-xs text-gray-600">
                         <a href="${root}privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
