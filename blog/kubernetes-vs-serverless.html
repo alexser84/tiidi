@@ -43,9 +43,9 @@
     <meta name="ICBM" content="-33.4489, -70.6693">
 
     <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
 
@@ -260,6 +260,25 @@
                 </a>
             </div>
         </main>
+
+            <!-- Artículos Relacionados -->
+            <section class="mt-20 pt-10 border-t border-white/10">
+                <h3 class="text-white text-xl font-bold mb-8">Artículos Relacionados</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="ia-llm-privacidad.html"
+                        class="p-6 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all group">
+                        <div class="text-xs font-black uppercase text-primary tracking-widest mb-2">Inteligencia Artificial</div>
+                        <h4 class="text-white font-bold group-hover:text-primary transition-colors">LLMs y Privacidad Empresarial</h4>
+                        <p class="text-sm text-gray-500 mt-2">Implementar IA sin comprometer datos sensibles.</p>
+                    </a>
+                    <a href="diseno-premium-b2b.html"
+                        class="p-6 rounded-2xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all group">
+                        <div class="text-xs font-black uppercase text-primary tracking-widest mb-2">Product Design</div>
+                        <h4 class="text-white font-bold group-hover:text-primary transition-colors">Diseño Premium y Conversión B2B</h4>
+                        <p class="text-sm text-gray-500 mt-2">Cómo el refinamiento visual genera confianza instantánea.</p>
+                    </a>
+                </div>
+            </section>
 
         <tiidi-footer root="../"></tiidi-footer>
     </div>
