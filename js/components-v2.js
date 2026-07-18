@@ -110,13 +110,13 @@ class TiidiHeader extends HTMLElement {
                     </a>
                     
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="tiidi-mobile-toggle size-10 items-center justify-center text-white bg-white/5 rounded-full hover:bg-white/10 transition-colors">
-                        <span class="material-symbols-outlined">menu</span>
+                    <button id="mobile-menu-btn" class="tiidi-mobile-toggle items-center justify-center text-white bg-white/5 rounded-full" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer;" aria-label="Abrir menú" aria-expanded="false">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
                     </button>
                 </div>
 
                 <!-- Mobile Menu Overlay -->
-                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 bg-background-dark/95 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
+                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 bg-background-dark/95 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100;">
                     <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html">Inicio</a>
                     <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html">Servicios</a>
                     <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html">Industrias</a>
@@ -150,23 +150,55 @@ class TiidiHeader extends HTMLElement {
         const menu = this.querySelector('#mobile-menu');
         const icon = btn?.querySelector('.material-symbols-outlined');
 
+        function closeMenu() {
+            menu.classList.add('hidden');
+            if (icon) icon.textContent = 'menu';
+            btn.setAttribute('aria-expanded', 'false');
+        }
+
+        function openMenu() {
+            menu.classList.remove('hidden');
+            if (icon) icon.textContent = 'close';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+
         if (btn && menu) {
-            btn.addEventListener('click', () => {
-                const isHidden = menu.classList.contains('hidden');
-                if (isHidden) {
-                    menu.classList.remove('hidden');
-                    if (icon) icon.textContent = 'close';
+            // Toggle on click
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                if (menu.classList.contains('hidden')) {
+                    openMenu();
                 } else {
-                    menu.classList.add('hidden');
-                    if (icon) icon.textContent = 'menu';
+                    closeMenu();
+                }
+            });
+
+            // Cerrar al hacer click fuera del menu
+            document.addEventListener('click', (e) => {
+                if (!menu.classList.contains('hidden')) {
+                    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                        closeMenu();
+                    }
+                }
+            });
+
+            // Cerrar al hacer click en un link del menu
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => closeMenu());
+            });
+
+            // Cerrar con Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+                    closeMenu();
                 }
             });
 
             // Close menu on resize
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 768) {
-                    menu.classList.add('hidden');
-                    if (icon) icon.textContent = 'menu';
+                    closeMenu();
                 }
             });
         }
