@@ -31,7 +31,7 @@
     <meta property="og:title" content="Tiidi - Transformación Digital y Software a Medida en Chile">
     <meta property="og:description"
         content="Desarrollamos soluciones tecnológicas que impulsan tu negocio: Apps, Software Empresarial y E-commerce.">
-    <meta property="og:image" content="https://tiidi.cl/images/og-image-1200x630.png">
+    <meta property="og:image" content="https://tiidi.cl/images/og-image-1200x630.jpg">
     <meta property="og:url" content="https://tiidi.cl/">
     <meta property="og:site_name" content="Tiidi">
 
@@ -40,7 +40,7 @@
     <meta name="twitter:title" content="Tiidi - Desarrollo de Software y Apps en Chile">
     <meta name="twitter:description"
         content="Soluciones de software a medida para empresas chilenas que buscan innovación, eficiencia y escalabilidad.">
-    <meta name="twitter:image" content="https://tiidi.cl/images/twitter-card.png">
+    <meta name="twitter:image" content="https://tiidi.cl/images/twitter-card.jpg">
 
     <!-- Geo Tags -->
     <meta name="geo.region" content="CL-RM">
@@ -56,13 +56,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&amp;display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
     <link rel="stylesheet" href="/css/styles.css">
-    
-
     <!-- Schema Markup JSON-LD -->
     <script type="application/ld+json">
     {
@@ -157,132 +159,7 @@
     </script>
 
     <script src="js/components-v2.js"></script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .neon-border {
-                @apply border border-white/5 hover:border-primary/50 transition-colors duration-500;
-            }
-            .neon-gradient-text {
-                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
-            }
-            .enhanced-glass {
-                @apply bg-surface-glass backdrop-blur-xl border border-white/10;
-            }
-            .floating {
-                animation: floating 3s ease-in-out infinite;
-            }
-            @keyframes floating {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-10px); }
-            }
-            .neon-text {
-                text-shadow: 0 0 10px rgba(13, 166, 242, 0.5);
-            }
-            .pulse-glow {
-                animation: pulse-glow 2s infinite;
-            }
-            @keyframes pulse-glow {
-                0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); }
-                50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); }
-            }
-            .particle-bg {
-                @apply absolute w-[2px] h-[2px] bg-primary rounded-full;
-                box-shadow: 0 0 6px theme('colors.primary');
-                animation: particle-float 10s infinite linear;
-            }
-            @keyframes particle-float {
-                0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-                10% { opacity: 1; }
-                90% { opacity: 1; }
-                100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-            }
-            .typing-effect {
-                @apply overflow-hidden border-right-[3px] border-primary whitespace-nowrap;
-                animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-            }
-            @keyframes typing { from { width: 0; } to { width: 100%; } }
-            @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: theme('colors.primary'); } }
-            
-            .card-hover-effect {
-                @apply relative overflow-hidden transition-all duration-300;
-            }
-            .card-hover-effect::before {
-                content: '';
-                @apply absolute top-0 -left-full w-full h-full;
-                background: linear-gradient(90deg, transparent, rgba(13, 166, 242, 0.1), transparent);
-                transition: left 0.5s ease;
-            }
-            .card-hover-effect:hover::before {
-                @apply left-full;
-            }
-
-            /* Dynamic Word Rotation - Smoother */
-            .word-rotate-container {
-                display: inline-block;
-                position: relative;
-                vertical-align: bottom;
-                height: 1.25em;
-                overflow: hidden;
-            }
-            .word-rotate-text {
-                display: block;
-                height: 1.25em;
-                line-height: 1.25em;
-                animation: rotate-text 10s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
-            }
-            @keyframes rotate-text {
-                0%, 18% { transform: translateY(0); }
-                20%, 38% { transform: translateY(-1.25em); }
-                40%, 58% { transform: translateY(-2.5em); }
-                60%, 78% { transform: translateY(-3.75em); }
-                80%, 98% { transform: translateY(-5em); }
-                100% { transform: translateY(0); }
-            }
-
-            /* Subtle Hover Effect */
-            .hero-card-hover {
-                transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
-            }
-            .hero-card-hover:hover {
-                transform: translateY(-5px) scale(1.01);
-                box-shadow: 0 25px 50px -12px rgba(13, 166, 242, 0.2);
-            }
-
-            /* Scroll Reveal Animations */
-            .reveal {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            }
-            .reveal.active {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            .reveal-delay-1 { transition-delay: 0.1s; }
-            .reveal-delay-2 { transition-delay: 0.2s; }
-            .reveal-delay-3 { transition-delay: 0.3s; }
-            .reveal-delay-4 { transition-delay: 0.4s; }
-
-            /* Professional Card Enhancements */
-            .service-card {
-                @apply relative bg-surface-dark border border-white/5 transition-all duration-500 rounded-[2rem] overflow-hidden;
-            }
-            .service-card::after {
-                content: '';
-                @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none;
-                background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(13, 166, 242, 0.08), transparent 40%);
-            }
-            .service-card:hover::after {
-                @apply opacity-100;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .particle-bg { display: none; }
-            h1 { font-size: 2.5rem !important; }
-        }
-    </style>
-</head>
+    </head>
 
 <body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
