@@ -110,12 +110,15 @@ class TiidiHeader extends HTMLElement {
                     </a>
                     
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="tiidi-mobile-toggle items-center justify-center text-white bg-white/5 rounded-full" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer;" aria-label="Abrir menú" aria-expanded="false">
-                        <span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+                    <button id="mobile-menu-btn" type="button" class="tiidi-mobile-toggle items-center justify-center text-white bg-white/5 rounded-full" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer; position: relative; z-index: 110;" aria-label="Abrir menú" aria-expanded="false">
+                        <span class="material-symbols-outlined" style="font-size: 24px; pointer-events: none;">menu</span>
                     </button>
                 </div>
 
-                <!-- Mobile Menu Overlay -->
+                <!-- Overlay para cerrar menu al click fuera -->
+                <div id="mobile-menu-overlay" style="display: none; position: fixed; inset: 0; z-index: 90; background: transparent;"></div>
+
+                <!-- Mobile Menu -->
                 <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 bg-background-dark/95 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100;">
                     <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html">Inicio</a>
                     <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html">Servicios</a>
@@ -148,28 +151,32 @@ class TiidiHeader extends HTMLElement {
         // Mobile Menu Logic
         const btn = this.querySelector('#mobile-menu-btn');
         const menu = this.querySelector('#mobile-menu');
+        const overlay = this.querySelector('#mobile-menu-overlay');
         const icon = btn?.querySelector('.material-symbols-outlined');
 
         if (btn && menu) {
             function setMenu(open) {
                 if (open) {
                     menu.classList.remove('hidden');
+                    if (overlay) overlay.style.display = 'block';
                     if (icon) icon.textContent = 'close';
                     btn.setAttribute('aria-expanded', 'true');
                 } else {
                     menu.classList.add('hidden');
+                    if (overlay) overlay.style.display = 'none';
                     if (icon) icon.textContent = 'menu';
                     btn.setAttribute('aria-expanded', 'false');
                 }
             }
 
-            // Toggle: click simple en el boton
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                const isOpen = !menu.classList.contains('hidden');
-                setMenu(!isOpen);
+            btn.addEventListener('click', () => {
+                setMenu(menu.classList.contains('hidden'));
             });
+
+            // Click en overlay cierra
+            if (overlay) {
+                overlay.addEventListener('click', () => setMenu(false));
+            }
 
             // Links del menu cierran
             menu.querySelectorAll('a').forEach(link => {
