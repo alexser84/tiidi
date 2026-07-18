@@ -344,10 +344,10 @@ function initHeroSlider() {
     function showSlide(index) {
         slides.forEach((slide, i) => {
             if (i === index) {
-                slide.classList.remove('opacity-0', 'pointer-events-none');
+                slide.classList.remove('opacity-0');
                 slide.classList.add('opacity-100');
             } else {
-                slide.classList.add('opacity-0', 'pointer-events-none');
+                slide.classList.add('opacity-0');
                 slide.classList.remove('opacity-100');
             }
         });
