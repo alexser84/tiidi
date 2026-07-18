@@ -145,77 +145,57 @@ class TiidiHeader extends HTMLElement {
             window.addEventListener('scroll', updateScroll, { passive: true });
         }
 
-        // Mobile Menu Logic
+        // Mobile Menu Logic - un solo evento click, nada mas
         const btn = this.querySelector('#mobile-menu-btn');
         const menu = this.querySelector('#mobile-menu');
         const icon = btn?.querySelector('.material-symbols-outlined');
 
         if (btn && menu) {
             let menuOpen = false;
-            let justToggled = false;
+            let suppressClick = false;
 
-            function closeMenu() {
-                if (!menuOpen) return;
-                menuOpen = false;
-                menu.classList.add('hidden');
-                if (icon) icon.textContent = 'menu';
-                btn.setAttribute('aria-expanded', 'false');
-            }
-
-            function openMenu() {
-                if (menuOpen) return;
-                menuOpen = true;
-                menu.classList.remove('hidden');
-                if (icon) icon.textContent = 'close';
-                btn.setAttribute('aria-expanded', 'true');
-            }
-
-            // Toggle: usar pointerdown en vez de click para respuesta instantánea en mobile
-            btn.addEventListener('pointerdown', (e) => {
-                e.preventDefault();
-                justToggled = true;
-                if (menuOpen) {
-                    closeMenu();
+            function setMenu(open) {
+                menuOpen = open;
+                if (open) {
+                    menu.classList.remove('hidden');
+                    if (icon) icon.textContent = 'close';
+                    btn.setAttribute('aria-expanded', 'true');
                 } else {
-                    openMenu();
+                    menu.classList.add('hidden');
+                    if (icon) icon.textContent = 'menu';
+                    btn.setAttribute('aria-expanded', 'false');
                 }
-                // Reset flag despues de un tick para que el document click no cierre inmediatamente
-                setTimeout(() => { justToggled = false; }, 300);
+            }
+
+            // UN SOLO listener en el boton: click
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                suppressClick = true;
+                setMenu(!menuOpen);
+                setTimeout(() => { suppressClick = false; }, 200);
             });
 
-            // Cerrar al hacer click/touch fuera del menu
+            // Click fuera del menu cierra
             document.addEventListener('click', (e) => {
-                if (justToggled) return;
+                if (suppressClick) return;
                 if (menuOpen && !menu.contains(e.target) && !btn.contains(e.target)) {
-                    closeMenu();
+                    setMenu(false);
                 }
             });
 
-            // Cerrar al hacer touch fuera (mobile)
-            document.addEventListener('touchstart', (e) => {
-                if (justToggled) return;
-                if (menuOpen && !menu.contains(e.target) && !btn.contains(e.target)) {
-                    closeMenu();
-                }
-            }, { passive: true });
-
-            // Cerrar al hacer click en un link del menu
+            // Links del menu cierran
             menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => closeMenu());
+                link.addEventListener('click', () => setMenu(false));
             });
 
-            // Cerrar con Escape
+            // Escape cierra
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && menuOpen) {
-                    closeMenu();
-                }
+                if (e.key === 'Escape' && menuOpen) setMenu(false);
             });
 
-            // Close menu on resize
+            // Resize cierra
             window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) {
-                    closeMenu();
-                }
+                if (window.innerWidth >= 768) setMenu(false);
             });
         }
     }
