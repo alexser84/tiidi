@@ -175,33 +175,25 @@
 
         </div>
         <tiidi-header root="./" active-page="inicio"></tiidi-header>
-        <main class="flex-1 flex flex-col items-center pt-20 px-4 sm:px-6 lg:px-20 w-full">
-            <div class="max-w-[1400px] w-full flex flex-col gap-12 lg:gap-20 pb-20">
-                <section class="relative w-full min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center text-center px-6 py-20 overflow-hidden">
-                    <!-- Fondo: circuit board con glow sutil -->
+        <main class="flex-1 flex flex-col items-center w-full">
+                <section class="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+                    <!-- Fondo: circuit board pattern -->
                     <div class="absolute inset-0 z-0">
-                        <div class="w-full h-full bg-cover bg-center opacity-20"
+                        <div class="w-full h-full bg-cover bg-center opacity-25"
                             style='background-image: url("images/hero-bg.png");'></div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/95 to-background-dark"></div>
-                        <!-- Glow sutil arriba -->
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
-                        <!-- Glow sutil abajo -->
-                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-[30%] bg-secondary/8 rounded-full blur-[100px]"></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark/70 via-background-dark/80 to-background-dark"></div>
+                        <!-- Glow sutil -->
+                        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[50%] h-[30%] bg-primary/8 rounded-full blur-[120px]"></div>
+                        <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[40%] h-[25%] bg-secondary/6 rounded-full blur-[100px]"></div>
                     </div>
                     <!-- Contenido -->
-                    <div class="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto">
+                    <div class="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto -mt-20">
                         <h1 class="text-white text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
-                            Transformamos tu Empresa <br />
-                            <span class="word-rotate-container">
-                                <span class="neon-gradient-text word-rotate-text">con Páginas Web que Venden</span>
-                                <span class="neon-gradient-text word-rotate-text">con Tiendas WooCommerce</span>
-                                <span class="neon-gradient-text word-rotate-text">con Software a Medida</span>
-                                <span class="neon-gradient-text word-rotate-text">con Apps Móviles</span>
-                                <span class="neon-gradient-text word-rotate-text">con Páginas Web que Venden</span>
-                            </span>
+                            Transformamos tu Empresa<br />
+                            <span class="neon-gradient-text">con Tecnología de Vanguardia</span>
                         </h1>
-                        <p class="text-gray-400 text-lg sm:text-2xl font-medium leading-relaxed max-w-2xl">
-                            Tecnología de punta para empresas chilenas que quieren crecer.
+                        <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
+                            Páginas web, tiendas WooCommerce, software a medida, apps y automatización con IA.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
                             <a href="/contacto/"
@@ -217,7 +209,8 @@
                     </div>
                 </section>
 
-                <section class="flex flex-col items-center gap-8 py-12 px-6 reveal">
+                <div class="max-w-[1400px] w-full flex flex-col gap-12 lg:gap-20 pb-20 mx-auto px-4 sm:px-6 lg:px-20">
+                <section class="flex flex-col items-center gap-8 py-16 reveal">
                     <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Confían en nosotros</p>
                     <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50">
                         <a href="https://www.bevfoodcenter.cl/" target="_blank" rel="noopener noreferrer"
@@ -289,13 +282,15 @@
                     </div>
                 </section>
 
-                <div id="servicios" class="flex flex-col items-center text-center pt-10 scroll-mt-32 reveal">
+                <div id="servicios" class="flex flex-col items-center text-center pt-16 scroll-mt-32 reveal">
                     <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2 pl-1">Soluciones
                         Integrales</span>
-                    <h2 class="text-white text-3xl sm:text-4xl font-bold leading-tight">Soluciones Informáticas que
-                        Impulsan tu Negocio</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black leading-tight text-slate-900">Soluciones que Impulsan tu Negocio</h2>
                 </div>
 
+                </div>
+                <div class="w-full bg-white py-20 px-4 sm:px-6 lg:px-20">
+                <div class="max-w-[1400px] mx-auto">
                 <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <a href="servicios/software-empresarial.html"
                         class="service-card group flex flex-col gap-6 p-8 hover:border-secondary/50 hover:shadow-[0_4px_30px_-2px_rgba(122,45,246,0.2)] reveal reveal-delay-1">
@@ -393,7 +388,10 @@
                         </div>
                     </a>
                 </section>
+                </div>
+                </div>
 
+                <div class="max-w-[1400px] w-full flex flex-col gap-12 lg:gap-20 pb-20 mx-auto px-4 sm:px-6 lg:px-20">
                 <section id="proceso" class="flex flex-col gap-16 py-20 scroll-mt-32 reveal">
                     <div class="text-center max-w-3xl mx-auto">
                         <span class="text-primary text-sm font-bold tracking-widest uppercase mb-4 block">Metodología

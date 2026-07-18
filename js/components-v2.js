@@ -44,8 +44,8 @@ class TiidiHeader extends HTMLElement {
                 }
             }
         </style>
-        <header class="fixed top-0 left-0 w-full z-50 px-4 py-4 lg:px-10 flex justify-center">
-            <div class="w-full max-w-[1400px] enhanced-glass rounded-full px-6 py-3 flex items-center justify-between neon-border relative">
+        <header class="fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center transition-all duration-300">
+            <div class="w-full max-w-[1400px] px-2 py-2 flex items-center justify-between relative">
                 <div class="flex items-center gap-3 text-white">
                     <a href="${root}index.html" class="flex items-center gap-3">
                         <div class="size-10 text-primary relative flex items-center justify-center">
@@ -101,7 +101,7 @@ class TiidiHeader extends HTMLElement {
                 </div>
 
                 <!-- Mobile Menu Overlay -->
-                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 enhanced-glass rounded-3xl p-6 border border-white/10 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
+                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 bg-background-dark/95 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
                     <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html">Inicio</a>
                     <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html">Servicios</a>
                     <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html">Industrias</a>
