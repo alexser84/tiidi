@@ -306,18 +306,16 @@ function trackTiidiConversion(eventName, params = {}) {
     });
 }
 
-// Tracking - capture phase + rAF, no bloquea clicks del menu
+// Tracking - capture phase, sincrono, no bloquea clicks
 document.addEventListener('click', (event) => {
-    requestAnimationFrame(() => {
-        const link = event.target.closest('a');
-        if (!link) return;
-        const href = link.getAttribute('href') || '';
-        const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-        if (href === '/contacto/' || href.endsWith('/contacto/')) trackTiidiConversion('cta_click', { cta_text: label || 'contacto', cta_destination: '/contacto/' });
-        else if (href.startsWith('https://wa.me/')) trackTiidiConversion('whatsapp_click', { cta_text: label || 'WhatsApp' });
-        else if (href.startsWith('mailto:')) trackTiidiConversion('email_click', { cta_text: label || 'email' });
-        else if (href.startsWith('tel:')) trackTiidiConversion('phone_click', { cta_text: label || 'telefono' });
-    });
+    const link = event.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+    if (href === '/contacto/' || href.endsWith('/contacto/')) trackTiidiConversion('cta_click', { cta_text: label || 'contacto', cta_destination: '/contacto/' });
+    else if (href.startsWith('https://wa.me/')) trackTiidiConversion('whatsapp_click', { cta_text: label || 'WhatsApp' });
+    else if (href.startsWith('mailto:')) trackTiidiConversion('email_click', { cta_text: label || 'email' });
+    else if (href.startsWith('tel:')) trackTiidiConversion('phone_click', { cta_text: label || 'telefono' });
 }, true);
 
 // === Hero Slider ===
