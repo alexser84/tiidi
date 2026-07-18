@@ -331,7 +331,7 @@ document.addEventListener('click', (event) => {
 });
 
 // === Hero Slider ===
-(function() {
+function initHeroSlider() {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
     if (slides.length === 0 || dots.length === 0) return;
@@ -342,12 +342,10 @@ document.addEventListener('click', (event) => {
     function showSlide(index) {
         slides.forEach((slide, i) => {
             if (i === index) {
-                slide.classList.remove('hidden');
-                slide.classList.add('flex');
+                slide.style.display = 'flex';
                 slide.style.opacity = '1';
             } else {
-                slide.classList.add('hidden');
-                slide.classList.remove('flex');
+                slide.style.display = 'none';
                 slide.style.opacity = '0';
             }
         });
@@ -383,14 +381,18 @@ document.addEventListener('click', (event) => {
         });
     });
 
-    // Start auto-rotate after page load
     showSlide(0);
     startAutoRotate();
 
-    // Pause on hover
     const slider = document.getElementById('hero-slider');
     if (slider) {
         slider.addEventListener('mouseenter', stopAutoRotate);
         slider.addEventListener('mouseleave', startAutoRotate);
     }
-})();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlider);
+} else {
+    initHeroSlider();
+}
