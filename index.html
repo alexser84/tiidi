@@ -177,80 +177,49 @@
         <tiidi-header root="./" active-page="inicio"></tiidi-header>
         <main class="flex-1 flex flex-col items-center pt-20 px-4 sm:px-6 lg:px-20 w-full">
             <div class="max-w-[1400px] w-full flex flex-col gap-12 lg:gap-20 pb-20">
-                <section class="@container relative mt-4 lg:mt-6">
-                    <div
-                        class="relative overflow-hidden rounded-[2.5rem] bg-background-dark border border-white/10 shadow-2xl neon-border hero-card-hover">
-                        <div class="absolute inset-0 z-0">
-                            <div class="w-full h-full bg-cover bg-center opacity-15 blur-[2px] transition-transform duration-1000 group-hover/design-root:scale-110"
-                                style='background-image: url("images/hero-bg.png");'>
-                            </div>
-                            <!-- Structural overlay for maximum legibility -->
-                            <div
-                                class="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/60 to-background-dark/90">
-                            </div>
-                            <div class="absolute inset-0 bg-background-dark/20"></div>
-                        </div>
-                        <div
-                            class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-16 lg:py-24 gap-6">
-
-                            <h1
-                                class="text-white text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
-                                Creamos Tecnología <br />
-                                <span class="word-rotate-container">
-                                    <span class="neon-gradient-text word-rotate-text">Páginas Web que Convierten</span>
-                                    <span class="neon-gradient-text word-rotate-text">Tiendas WooCommerce que Venden</span>
-                                    <span class="neon-gradient-text word-rotate-text">Software que Opera Mejor</span>
-                                    <span class="neon-gradient-text word-rotate-text">Apps que Escalan tu Empresa</span>
-                                    <span class="neon-gradient-text word-rotate-text">Páginas Web que Convierten</span>
-                                </span>
-                            </h1>
-                            <p
-                                class="text-gray-400 text-base sm:text-xl font-medium leading-relaxed max-w-[700px]">
-                                Páginas web, tiendas WooCommerce, software a medida y apps móviles. Tecnología que vende y opera.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-6 mt-6 w-full justify-center items-center">
-                                <a href="/contacto/"
-                                    class="flex min-h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-base leading-tight bg-white text-background-dark hover:bg-primary hover:text-white sm:h-14 sm:w-auto sm:max-w-none sm:px-10 sm:py-0 sm:text-base font-bold tracking-wide transition-all group">
-                                    Agendar Diagnóstico Gratis
-                                    <span
-                                        class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">bolt</span>
-                                </a>
-                                <a href="servicios/index.html"
-                                    class="flex items-center justify-center rounded-full h-14 px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
-                                    Ver Servicios
-                                </a>
-                            </div>
-
-                            <div class="mt-8 flex flex-wrap justify-center gap-3 sm:gap-4">
-                                <a href="servicios/sitios-web-ecommerce.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300">
-                                    <span class="material-symbols-outlined text-primary text-lg">language</span>
-                                    <span class="text-white text-sm font-bold tracking-wide">Páginas Web</span>
-                                </a>
-                                <a href="servicios/sitios-web-ecommerce.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-secondary/10 hover:border-secondary/40 px-5 py-2.5 transition-all duration-300">
-                                    <span class="material-symbols-outlined text-secondary text-lg">shopping_bag</span>
-                                    <span class="text-white text-sm font-bold tracking-wide">Tiendas WooCommerce</span>
-                                </a>
-                                <a href="servicios/software-empresarial.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300">
-                                    <span class="material-symbols-outlined text-primary text-lg">dashboard</span>
-                                    <span class="text-white text-sm font-bold tracking-wide">Software a Medida</span>
-                                </a>
-                                <a href="servicios/apps-moviles.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-secondary/10 hover:border-secondary/40 px-5 py-2.5 transition-all duration-300">
-                                    <span class="material-symbols-outlined text-secondary text-lg">devices</span>
-                                    <span class="text-white text-sm font-bold tracking-wide">Apps Móviles</span>
-                                </a>
-                                <a href="servicios/automatizacion-ia.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300">
-                                    <span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
-                                    <span class="text-white text-sm font-bold tracking-wide">Automatización IA</span>
-                                </a>
-                            </div>
+                <section class="relative w-full min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center text-center px-6 py-20 overflow-hidden">
+                    <!-- Fondo: circuit board con glow sutil -->
+                    <div class="absolute inset-0 z-0">
+                        <div class="w-full h-full bg-cover bg-center opacity-20"
+                            style='background-image: url("images/hero-bg.png");'></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark via-background-dark/95 to-background-dark"></div>
+                        <!-- Glow sutil arriba -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+                        <!-- Glow sutil abajo -->
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-[30%] bg-secondary/8 rounded-full blur-[100px]"></div>
+                    </div>
+                    <!-- Contenido -->
+                    <div class="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto">
+                        <h1 class="text-white text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
+                            Transformamos tu Empresa <br />
+                            <span class="word-rotate-container">
+                                <span class="neon-gradient-text word-rotate-text">con Páginas Web que Venden</span>
+                                <span class="neon-gradient-text word-rotate-text">con Tiendas WooCommerce</span>
+                                <span class="neon-gradient-text word-rotate-text">con Software a Medida</span>
+                                <span class="neon-gradient-text word-rotate-text">con Apps Móviles</span>
+                                <span class="neon-gradient-text word-rotate-text">con Páginas Web que Venden</span>
+                            </span>
+                        </h1>
+                        <p class="text-gray-400 text-lg sm:text-2xl font-medium leading-relaxed max-w-2xl">
+                            Tecnología de punta para empresas chilenas que quieren crecer.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
+                            <a href="/contacto/"
+                                class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-white text-background-dark hover:bg-primary hover:text-white sm:w-auto sm:px-10 font-bold tracking-wide transition-all group">
+                                Agendar Diagnóstico
+                                <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">bolt</span>
+                            </a>
+                            <a href="servicios/index.html"
+                                class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
+                                Ver Servicios
+                            </a>
                         </div>
                     </div>
                 </section>
 
-                
-                <section class="flex flex-col items-center gap-8 py-12 reveal">
+                <section class="flex flex-col items-center gap-8 py-12 px-6 reveal">
                     <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Confían en nosotros</p>
-                    <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60">
+                    <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50">
                         <a href="https://www.bevfoodcenter.cl/" target="_blank" rel="noopener noreferrer"
                                         class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
                                         <div
