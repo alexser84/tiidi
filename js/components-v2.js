@@ -53,13 +53,11 @@ class TiidiHeader extends HTMLElement {
             }
 
             tiidi-header .tiidi-header-bar.scrolled {
-                background: rgba(11, 17, 20, 0.85);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
+                background: rgba(11, 17, 20, 0.98);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             }
         </style>
-        <header class="tiidi-header-bar fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center transition-all duration-300">
+        <header class="tiidi-header-bar fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center">
             <div class="w-full max-w-[1400px] px-2 py-2 flex items-center justify-between relative">
                 <div class="flex items-center gap-3 text-white">
                     <a href="${root}index.html" class="flex items-center gap-3">
@@ -119,7 +117,7 @@ class TiidiHeader extends HTMLElement {
                 <div id="mobile-menu-overlay" onclick="window.__tiidiMenuClose()" style="display: none; position: fixed; inset: 0; z-index: 45; background: transparent; cursor: default;"></div>
 
                 <!-- Mobile Menu -->
-                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 bg-background-dark/95 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100;">
+                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100; background: rgba(11,17,20,0.98);">
                     <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html" onclick="window.__tiidiMenuClose()">Inicio</a>
                     <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html" onclick="window.__tiidiMenuClose()">Servicios</a>
                     <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html" onclick="window.__tiidiMenuClose()">Industrias</a>
