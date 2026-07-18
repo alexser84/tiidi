@@ -51,44 +51,9 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="js/components-v2.js"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#0da6f2",
-                        secondary: "#7a2df6",
-                        "background-dark": "#0B1114",
-                        "surface-dark": "#162228",
-                        "surface-glass": "rgba(22, 34, 40, 0.7)",
-                    },
-                    fontFamily: {
-                        display: ["Space Grotesk", "sans-serif"],
-                        body: ["Noto Sans", "sans-serif"],
-                    },
-                    boxShadow: {
-                        neon: "0 0 20px rgba(13, 166, 242, 0.4)",
-                        "neon-hover": "0 0 30px rgba(13, 166, 242, 0.6)",
-                    },
-                },
-            },
-        };
-    </script>
-
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
-            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
-            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
-            .floating { animation: floating 3s ease-in-out infinite; }
-            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
-        }
-    </style>
-</head>
+    </head>
 
 <body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
     <!-- Background Elements -->

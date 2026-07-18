@@ -50,44 +50,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="js/components-v2.js"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0da6f2", // Cyan neon
-                        "primary-glow": "#0da6f2",
-                        "secondary": "#7a2df6", // Purple accent for gradients
-                        "background-light": "#f5f7f8",
-                        "background-dark": "#0B1114", // Deep dark background
-                        "surface-dark": "#162228",
-                        "surface-glass": "rgba(22, 34, 40, 0.7)",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"],
-                        "body": ["Noto Sans", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "1rem",
-                        "lg": "1.5rem",
-                        "xl": "2.5rem",
-                        "full": "9999px"
-                    },
-                    boxShadow: {
-                        'neon': '0 0 10px rgba(13, 166, 242, 0.5), 0 0 20px rgba(13, 166, 242, 0.3)',
-                        'neon-hover': '0 0 15px rgba(13, 166, 242, 0.8), 0 0 30px rgba(13, 166, 242, 0.5)',
-                        'card-glow': '0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(13, 166, 242, 0.1)',
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
-                },
-            },
-        }
-    </script>
     <style>
         body {
             font-family: 'Space Grotesk', sans-serif;
@@ -107,22 +71,6 @@
         }
     </style>
 </head>
-<style type="text/tailwindcss">
-    @layer utilities {
-            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
-            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
-            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
-            .floating { animation: floating 3s ease-in-out infinite; }
-            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
-            .pulse-glow { animation: pulse-glow 2s infinite; }
-            @keyframes pulse-glow { 0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); } 50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); } }
-            .particle-bg { @apply absolute w-[2px] h-[2px] bg-primary rounded-full; box-shadow: 0 0 6px theme('colors.primary'); animation: particle-float 10s infinite linear; }
-            @keyframes particle-float { 0% { transform: translateY(100vh) translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) translateX(100px); opacity: 0; } }
-        }
-        @media (max-width: 768px) { .particle-bg { display: none; } h1 { font-size: 2.5rem !important; } }
-    </style>
-
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">

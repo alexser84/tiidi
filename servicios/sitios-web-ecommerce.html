@@ -58,44 +58,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="../js/components-v2.js"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0da6f2",
-                        "secondary": "#7a2df6",
-                        "background-dark": "#0B1114",
-                        "surface-dark": "#162228",
-                        "surface-glass": "rgba(22, 34, 40, 0.7)",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"],
-                        "body": ["Noto Sans", "sans-serif"],
-                    },
-                },
-            },
-        };
-    </script>
-
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .neon-border { @apply border border-white/5 hover:border-primary/50 transition-colors duration-500; }
-            .neon-gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
-            .enhanced-glass { @apply bg-surface-glass backdrop-blur-xl border border-white/10; }
-            .floating { animation: floating 3s ease-in-out infinite; }
-            @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-            .neon-text { text-shadow: 0 0 10px rgba(13, 166, 242, 0.5); }
-            .pulse-glow { animation: pulse-glow 2s infinite; }
-            @keyframes pulse-glow { 0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(13, 166, 242, 0.5)); } 50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(13, 166, 242, 0.8)); } }
-            .particle-bg { @apply absolute w-[2px] h-[2px] bg-primary rounded-full; box-shadow: 0 0 6px theme('colors.primary'); animation: particle-float 10s infinite linear; }
-            @keyframes particle-float { 0% { transform: translateY(100vh) translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) translateX(100px); opacity: 0; } }
-        }
-    </style>
-
     <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
     {
