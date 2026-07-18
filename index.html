@@ -166,17 +166,13 @@
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
             <div class="particle-bg" style="left: 10%; animation-delay: 0s;"></div>
             <div class="particle-bg" style="left: 30%; animation-delay: 2s;"></div>
-            <div class="particle-bg" style="left: 50%; animation-delay: 4s;"></div>
-            <div class="particle-bg" style="left: 70%; animation-delay: 6s;"></div>
-            <div class="particle-bg" style="left: 90%; animation-delay: 8s;"></div>
-
+                        <div class="particle-bg" style="left: 70%; animation-delay: 6s;"></div>
+            
             <!-- Blue blob removed -->
             <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[150px] mix-blend-screen floating"
                 style="animation-delay: 1.5s;">
             </div>
-            <div class="absolute top-[50%] left-[60%] w-[30%] h-[30%] bg-primary/10 rounded-full blur-[100px] mix-blend-screen floating"
-                style="animation-delay: 3s;">
-            </div>
+
         </div>
         <tiidi-header root="./" active-page="inicio"></tiidi-header>
         <main class="flex-1 flex flex-col items-center pt-20 px-4 sm:px-6 lg:px-20 w-full">
@@ -185,7 +181,7 @@
                     <div
                         class="relative overflow-hidden rounded-[2.5rem] bg-background-dark border border-white/10 shadow-2xl neon-border hero-card-hover">
                         <div class="absolute inset-0 z-0">
-                            <div class="w-full h-full bg-cover bg-center opacity-30 blur-[2px] transition-transform duration-1000 group-hover/design-root:scale-110"
+                            <div class="w-full h-full bg-cover bg-center opacity-15 blur-[2px] transition-transform duration-1000 group-hover/design-root:scale-110"
                                 style='background-image: url("images/hero-bg.png");'>
                             </div>
                             <!-- Structural overlay for maximum legibility -->
@@ -196,17 +192,9 @@
                         </div>
                         <div
                             class="relative z-10 flex flex-col items-center justify-center text-center px-6 py-16 lg:py-24 gap-6">
-                            <div
-                                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold tracking-wide shadow-sm">
-                                <span class="relative flex h-2 w-2">
-                                    <span
-                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                                </span>
-                                Desarrollo de software en Chile
-                            </div>
+
                             <h1
-                                class="text-white text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight drop-shadow-2xl">
+                                class="text-white text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
                                 Creamos Tecnología <br />
                                 <span class="word-rotate-container">
                                     <span class="neon-gradient-text word-rotate-text">Páginas Web que Convierten</span>
@@ -217,74 +205,53 @@
                                 </span>
                             </h1>
                             <p
-                                class="text-gray-300 text-lg sm:text-2xl font-medium leading-relaxed max-w-[900px] drop-shadow-md">
-                                Páginas web corporativas, tiendas online con WordPress + WooCommerce, software a medida, apps móviles
-                                y automatización con IA. Convertimos tus ideas en plataformas que venden y operan, diseñadas
-                                para empresas chilenas que quieren crecer.
+                                class="text-gray-400 text-base sm:text-xl font-medium leading-relaxed max-w-[700px]">
+                                Páginas web, tiendas WooCommerce, software a medida y apps móviles. Tecnología que vende y opera.
                             </p>
                             <div class="flex flex-col sm:flex-row gap-6 mt-6 w-full justify-center items-center">
                                 <a href="/contacto/"
-                                    class="flex min-h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-base leading-tight bg-white text-background-dark hover:bg-primary hover:text-white sm:h-14 sm:w-auto sm:max-w-none sm:px-10 sm:py-0 sm:text-lg font-black tracking-wide transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] group">
+                                    class="flex min-h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-base leading-tight bg-white text-background-dark hover:bg-primary hover:text-white sm:h-14 sm:w-auto sm:max-w-none sm:px-10 sm:py-0 sm:text-base font-bold tracking-wide transition-all group">
                                     Agendar Diagnóstico Gratis
                                     <span
                                         class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">bolt</span>
                                 </a>
                                 <a href="servicios/index.html"
-                                    class="flex items-center justify-center rounded-full h-14 px-10 border border-white/20 hover:bg-white/5 text-white text-lg font-bold tracking-wide transition-all">
+                                    class="flex items-center justify-center rounded-full h-14 px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
                                     Ver Servicios
                                 </a>
                             </div>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-4xl mt-2 text-left">
-                                <div class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-                                    <p class="text-white font-black text-lg">30 min</p>
-                                    <p class="text-gray-400 text-sm">diagnóstico inicial sin costo</p>
-                                </div>
-                                <div class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-                                    <p class="text-white font-black text-lg">24-48h</p>
-                                    <p class="text-gray-400 text-sm">orientación y próximos pasos</p>
-                                </div>
-                                <div class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-                                    <p class="text-white font-black text-lg">Chile</p>
-                                    <p class="text-gray-400 text-sm">atención local desde Santiago</p>
-                                </div>
+
+                            <div class="mt-8 flex flex-wrap justify-center gap-3 sm:gap-4">
+                                <a href="servicios/sitios-web-ecommerce.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary text-lg">language</span>
+                                    <span class="text-white text-sm font-bold tracking-wide">Páginas Web</span>
+                                </a>
+                                <a href="servicios/sitios-web-ecommerce.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-secondary/10 hover:border-secondary/40 px-5 py-2.5 transition-all duration-300">
+                                    <span class="material-symbols-outlined text-secondary text-lg">shopping_bag</span>
+                                    <span class="text-white text-sm font-bold tracking-wide">Tiendas WooCommerce</span>
+                                </a>
+                                <a href="servicios/software-empresarial.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary text-lg">dashboard</span>
+                                    <span class="text-white text-sm font-bold tracking-wide">Software a Medida</span>
+                                </a>
+                                <a href="servicios/apps-moviles.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-secondary/10 hover:border-secondary/40 px-5 py-2.5 transition-all duration-300">
+                                    <span class="material-symbols-outlined text-secondary text-lg">devices</span>
+                                    <span class="text-white text-sm font-bold tracking-wide">Apps Móviles</span>
+                                </a>
+                                <a href="servicios/automatizacion-ia.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary text-lg">auto_awesome</span>
+                                    <span class="text-white text-sm font-bold tracking-wide">Automatización IA</span>
+                                </a>
                             </div>
-                            <div class="mt-10 flex flex-col items-center gap-5 w-full max-w-4xl">
-                                <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Soluciones destacadas</p>
-                                <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
-                                    <a href="servicios/sitios-web-ecommerce.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300 hover:scale-105">
-                                        <span class="material-symbols-outlined text-primary text-xl">language</span>
-                                        <span class="text-white text-sm font-bold tracking-wide">Páginas Web</span>
-                                        <span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_forward</span>
-                                    </a>
-                                    <a href="servicios/sitios-web-ecommerce.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-secondary/10 hover:border-secondary/40 px-5 py-2.5 transition-all duration-300 hover:scale-105">
-                                        <span class="material-symbols-outlined text-secondary text-xl">shopping_bag</span>
-                                        <span class="text-white text-sm font-bold tracking-wide">Tiendas WooCommerce</span>
-                                        <span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-secondary group-hover:translate-x-0.5 transition-all">arrow_forward</span>
-                                    </a>
-                                    <a href="servicios/software-empresarial.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300 hover:scale-105">
-                                        <span class="material-symbols-outlined text-primary text-xl">dashboard</span>
-                                        <span class="text-white text-sm font-bold tracking-wide">Software a Medida</span>
-                                        <span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_forward</span>
-                                    </a>
-                                    <a href="servicios/apps-moviles.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-secondary/10 hover:border-secondary/40 px-5 py-2.5 transition-all duration-300 hover:scale-105">
-                                        <span class="material-symbols-outlined text-secondary text-xl">devices</span>
-                                        <span class="text-white text-sm font-bold tracking-wide">Apps Móviles</span>
-                                        <span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-secondary group-hover:translate-x-0.5 transition-all">arrow_forward</span>
-                                    </a>
-                                    <a href="servicios/automatizacion-ia.html" class="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 hover:bg-primary/10 hover:border-primary/40 px-5 py-2.5 transition-all duration-300 hover:scale-105">
-                                        <span class="material-symbols-outlined text-primary text-xl">auto_awesome</span>
-                                        <span class="text-white text-sm font-bold tracking-wide">Automatización con IA</span>
-                                        <span class="material-symbols-outlined text-gray-500 text-sm group-hover:text-primary group-hover:translate-x-0.5 transition-all">arrow_forward</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="mt-12 flex flex-col items-center gap-4">
-                                <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Confían en nosotros
-                                </p>
-                                <!-- Client Logos Grid -->
-                                <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-80">
-                                    <!-- BevFood Center -->
-                                    <a href="https://www.bevfoodcenter.cl/" target="_blank" rel="noopener noreferrer"
+                        </div>
+                    </div>
+                </section>
+
+                
+                <section class="flex flex-col items-center gap-8 py-12 reveal">
+                    <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Confían en nosotros</p>
+                    <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60">
+                        <a href="https://www.bevfoodcenter.cl/" target="_blank" rel="noopener noreferrer"
                                         class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
                                         <div
                                             class="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -300,9 +267,7 @@
                                                 class="text-[#Eab308] group-hover:text-[#Eab308] transition-colors" />
                                         </svg>
                                     </a>
-
-                                    <!-- SBP -->
-                                    <a href="https://www.sbp.cl/" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.sbp.cl/" target="_blank" rel="noopener noreferrer"
                                         class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
                                         <div
                                             class="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -325,9 +290,7 @@
                                                 Solutions</text>
                                         </svg>
                                     </a>
-
-                                    <!-- SysGestión -->
-                                    <a href="https://www.sysgestion.cl/" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.sysgestion.cl/" target="_blank" rel="noopener noreferrer"
                                         class="group relative h-20 w-60 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
                                         <div
                                             class="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -354,9 +317,6 @@
                                                 class="text-gray-400 group-hover:text-[#1e40af] tracking-[0.3em]">SOFTWARE</text>
                                         </svg>
                                     </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -543,7 +503,7 @@
                             </p>
                             <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-2 sm:mt-4 w-full justify-center">
                                 <a href="/contacto/"
-                                    class="flex min-h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-base leading-tight bg-white text-background-dark hover:bg-primary hover:text-white sm:h-14 sm:w-auto sm:max-w-none sm:px-10 sm:py-0 sm:text-lg font-black tracking-wide transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] group">
+                                    class="flex min-h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-base leading-tight bg-white text-background-dark hover:bg-primary hover:text-white sm:h-14 sm:w-auto sm:max-w-none sm:px-10 sm:py-0 sm:text-base font-bold tracking-wide transition-all group">
                                     Agendar Diagnóstico Gratis
                                     <span
                                         class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">bolt</span>
