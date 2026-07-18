@@ -145,17 +145,13 @@ class TiidiHeader extends HTMLElement {
             window.addEventListener('scroll', updateScroll, { passive: true });
         }
 
-        // Mobile Menu Logic - un solo evento click, nada mas
+        // Mobile Menu Logic
         const btn = this.querySelector('#mobile-menu-btn');
         const menu = this.querySelector('#mobile-menu');
         const icon = btn?.querySelector('.material-symbols-outlined');
 
         if (btn && menu) {
-            let menuOpen = false;
-            let suppressClick = false;
-
             function setMenu(open) {
-                menuOpen = open;
                 if (open) {
                     menu.classList.remove('hidden');
                     if (icon) icon.textContent = 'close';
@@ -167,20 +163,12 @@ class TiidiHeader extends HTMLElement {
                 }
             }
 
-            // UN SOLO listener en el boton: click
+            // Toggle: click simple en el boton
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                suppressClick = true;
-                setMenu(!menuOpen);
-                setTimeout(() => { suppressClick = false; }, 200);
-            });
-
-            // Click fuera del menu cierra
-            document.addEventListener('click', (e) => {
-                if (suppressClick) return;
-                if (menuOpen && !menu.contains(e.target) && !btn.contains(e.target)) {
-                    setMenu(false);
-                }
+                e.preventDefault();
+                const isOpen = !menu.classList.contains('hidden');
+                setMenu(!isOpen);
             });
 
             // Links del menu cierran
@@ -190,7 +178,7 @@ class TiidiHeader extends HTMLElement {
 
             // Escape cierra
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && menuOpen) setMenu(false);
+                if (e.key === 'Escape' && !menu.classList.contains('hidden')) setMenu(false);
             });
 
             // Resize cierra
