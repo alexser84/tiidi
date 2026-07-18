@@ -272,9 +272,30 @@
                     btn.setAttribute('aria-expanded', 'false');
                 }
 
-                btn.onclick = function() {
+                function toggle() {
                     if (menu.classList.contains('hidden')) open(); else close();
-                };
+                }
+
+                // Respond on pointerdown (earliest touch signal) instead of waiting for
+                // the synthesized click. On mobile the click event only fires after
+                // touchend plus the browser's gesture-disambiguation window, which is the
+                // ~2s latency users were feeling between the tap and the menu reacting.
+                var pointerHandledAt = 0;
+                if (window.PointerEvent) {
+                    btn.addEventListener('pointerdown', function(e) {
+                        if (e.isPrimary === false) return;      // ignore secondary touches
+                        if (e.button && e.button !== 0) return; // primary button only
+                        pointerHandledAt = Date.now();
+                        toggle();
+                    });
+                }
+                btn.addEventListener('click', function() {
+                    // Swallow the ghost/synthetic click that follows a handled pointerdown.
+                    if (Date.now() - pointerHandledAt < 700) return;
+                    // Keyboard activation (Enter/Space) or browsers without Pointer Events.
+                    toggle();
+                });
+
                 if (overlay) overlay.onclick = function() { close(); };
                 menu.querySelectorAll('a').forEach(function(link) {
                     link.onclick = function() { close(); };
