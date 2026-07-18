@@ -340,22 +340,24 @@ function initHeroSlider() {
     let autoRotate;
 
     function showSlide(index) {
+        // Fade out current, fade in new — all slides stay in DOM (absolute positioned)
         slides.forEach((slide, i) => {
             if (i === index) {
-                slide.style.display = 'flex';
-                slide.style.opacity = '1';
+                slide.classList.remove('opacity-0', 'pointer-events-none');
+                slide.classList.add('opacity-100');
             } else {
-                slide.style.display = 'none';
-                slide.style.opacity = '0';
+                slide.classList.add('opacity-0', 'pointer-events-none');
+                slide.classList.remove('opacity-100');
             }
         });
         dots.forEach((dot, i) => {
             if (i === index) {
-                dot.classList.remove('bg-white/20', 'hover:bg-white/40');
-                dot.classList.add('bg-primary', 'shadow-neon');
+                dot.classList.remove('bg-white/30', 'hover:bg-white/60');
+                dot.classList.add('bg-primary', 'shadow-neon', 'size-5');
+                dot.classList.remove('size-4');
             } else {
-                dot.classList.add('bg-white/20', 'hover:bg-white/40');
-                dot.classList.remove('bg-primary', 'shadow-neon');
+                dot.classList.add('bg-white/30', 'hover:bg-white/60', 'size-4');
+                dot.classList.remove('bg-primary', 'shadow-neon', 'size-5');
             }
         });
         currentSlide = index;
