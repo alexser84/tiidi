@@ -158,6 +158,22 @@
     }
     </script>
 
+    <!-- Performance mobile: los glows de fondo con blur enorme + mix-blend-screen
+         animados de forma infinita saturan el compositor del GPU en teléfonos y
+         provocan lag en toda la página (incluida la respuesta al toque del menú).
+         En móvil dejamos esos efectos estáticos y sin blend: se rasterizan una
+         sola vez en lugar de recomponerse en cada frame. -->
+    <style>
+        @media (max-width: 767px) {
+            .floating { animation: none !important; }
+            .mix-blend-screen { mix-blend-mode: normal !important; }
+            .particle-bg { display: none !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .floating,
+            .particle-bg { animation: none !important; }
+        }
+    </style>
     </head>
 
 <body class="bg-background-dark text-gray-400 font-body selection:bg-primary/30 selection:text-white overflow-x-hidden">
