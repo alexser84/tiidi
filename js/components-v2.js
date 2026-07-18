@@ -150,38 +150,54 @@ class TiidiHeader extends HTMLElement {
         const menu = this.querySelector('#mobile-menu');
         const icon = btn?.querySelector('.material-symbols-outlined');
 
-        function closeMenu() {
-            menu.classList.add('hidden');
-            if (icon) icon.textContent = 'menu';
-            btn.setAttribute('aria-expanded', 'false');
-        }
-
-        function openMenu() {
-            menu.classList.remove('hidden');
-            if (icon) icon.textContent = 'close';
-            btn.setAttribute('aria-expanded', 'true');
-        }
-
         if (btn && menu) {
-            // Toggle on click
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
+            let menuOpen = false;
+            let justToggled = false;
+
+            function closeMenu() {
+                if (!menuOpen) return;
+                menuOpen = false;
+                menu.classList.add('hidden');
+                if (icon) icon.textContent = 'menu';
+                btn.setAttribute('aria-expanded', 'false');
+            }
+
+            function openMenu() {
+                if (menuOpen) return;
+                menuOpen = true;
+                menu.classList.remove('hidden');
+                if (icon) icon.textContent = 'close';
+                btn.setAttribute('aria-expanded', 'true');
+            }
+
+            // Toggle: usar pointerdown en vez de click para respuesta instantánea en mobile
+            btn.addEventListener('pointerdown', (e) => {
                 e.preventDefault();
-                if (menu.classList.contains('hidden')) {
-                    openMenu();
+                justToggled = true;
+                if (menuOpen) {
+                    closeMenu();
                 } else {
+                    openMenu();
+                }
+                // Reset flag despues de un tick para que el document click no cierre inmediatamente
+                setTimeout(() => { justToggled = false; }, 300);
+            });
+
+            // Cerrar al hacer click/touch fuera del menu
+            document.addEventListener('click', (e) => {
+                if (justToggled) return;
+                if (menuOpen && !menu.contains(e.target) && !btn.contains(e.target)) {
                     closeMenu();
                 }
             });
 
-            // Cerrar al hacer click fuera del menu
-            document.addEventListener('click', (e) => {
-                if (!menu.classList.contains('hidden')) {
-                    if (!menu.contains(e.target) && !btn.contains(e.target)) {
-                        closeMenu();
-                    }
+            // Cerrar al hacer touch fuera (mobile)
+            document.addEventListener('touchstart', (e) => {
+                if (justToggled) return;
+                if (menuOpen && !menu.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
                 }
-            });
+            }, { passive: true });
 
             // Cerrar al hacer click en un link del menu
             menu.querySelectorAll('a').forEach(link => {
@@ -190,7 +206,7 @@ class TiidiHeader extends HTMLElement {
 
             // Cerrar con Escape
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+                if (e.key === 'Escape' && menuOpen) {
                     closeMenu();
                 }
             });
