@@ -334,13 +334,14 @@ document.addEventListener('click', (event) => {
 function initHeroSlider() {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
-    if (slides.length === 0 || dots.length === 0) return;
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    if (slides.length === 0) return;
 
     let currentSlide = 0;
     let autoRotate;
 
     function showSlide(index) {
-        // Fade out current, fade in new — all slides stay in DOM (absolute positioned)
         slides.forEach((slide, i) => {
             if (i === index) {
                 slide.classList.remove('opacity-0', 'pointer-events-none');
@@ -352,12 +353,11 @@ function initHeroSlider() {
         });
         dots.forEach((dot, i) => {
             if (i === index) {
-                dot.classList.remove('bg-white/30', 'hover:bg-white/60');
-                dot.classList.add('bg-primary', 'shadow-neon', 'size-5');
-                dot.classList.remove('size-4');
+                dot.classList.remove('bg-white/40', 'hover:bg-white/70');
+                dot.classList.add('bg-primary', 'shadow-[0_0_10px_rgba(13,166,242,0.8)]');
             } else {
-                dot.classList.add('bg-white/30', 'hover:bg-white/60', 'size-4');
-                dot.classList.remove('bg-primary', 'shadow-neon', 'size-5');
+                dot.classList.add('bg-white/40', 'hover:bg-white/70');
+                dot.classList.remove('bg-primary', 'shadow-[0_0_10px_rgba(13,166,242,0.8)]');
             }
         });
         currentSlide = index;
@@ -365,6 +365,10 @@ function initHeroSlider() {
 
     function nextSlide() {
         showSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+        showSlide((currentSlide - 1 + slides.length) % slides.length);
     }
 
     function startAutoRotate() {
@@ -375,6 +379,7 @@ function initHeroSlider() {
         clearInterval(autoRotate);
     }
 
+    // Dot navigation
     dots.forEach((dot, i) => {
         dot.addEventListener('click', () => {
             stopAutoRotate();
@@ -383,9 +388,21 @@ function initHeroSlider() {
         });
     });
 
+    // Arrow navigation
+    if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoRotate(); prevSlide(); startAutoRotate(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoRotate(); nextSlide(); startAutoRotate(); });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { stopAutoRotate(); prevSlide(); startAutoRotate(); }
+        if (e.key === 'ArrowRight') { stopAutoRotate(); nextSlide(); startAutoRotate(); }
+    });
+
+    // Start
     showSlide(0);
     startAutoRotate();
 
+    // Pause on hover
     const slider = document.getElementById('hero-slider');
     if (slider) {
         slider.addEventListener('mouseenter', stopAutoRotate);
