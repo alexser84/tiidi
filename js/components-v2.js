@@ -43,8 +43,23 @@ class TiidiHeader extends HTMLElement {
                     display: none !important;
                 }
             }
+
+            /* Header scrolled state */
+            tiidi-header .tiidi-header-bar {
+                background: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border-bottom: 1px solid transparent;
+            }
+
+            tiidi-header .tiidi-header-bar.scrolled {
+                background: rgba(11, 17, 20, 0.85);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
         </style>
-        <header class="fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center transition-all duration-300">
+        <header class="tiidi-header-bar fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center transition-all duration-300">
             <div class="w-full max-w-[1400px] px-2 py-2 flex items-center justify-between relative">
                 <div class="flex items-center gap-3 text-white">
                     <a href="${root}index.html" class="flex items-center gap-3">
@@ -115,6 +130,20 @@ class TiidiHeader extends HTMLElement {
             </div>
         </header>
         `;
+
+        // Scroll Logic - add scrolled class when page is scrolled
+        const headerEl = this.querySelector('.tiidi-header-bar');
+        if (headerEl) {
+            const updateScroll = () => {
+                if (window.scrollY > 40) {
+                    headerEl.classList.add('scrolled');
+                } else {
+                    headerEl.classList.remove('scrolled');
+                }
+            };
+            updateScroll();
+            window.addEventListener('scroll', updateScroll, { passive: true });
+        }
 
         // Mobile Menu Logic
         const btn = this.querySelector('#mobile-menu-btn');
