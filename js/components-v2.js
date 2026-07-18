@@ -110,23 +110,23 @@ class TiidiHeader extends HTMLElement {
                     </a>
                     
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" type="button" class="tiidi-mobile-toggle items-center justify-center text-white bg-white/5 rounded-full" style="width: 44px; height: 44px; min-width: 44px; min-height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer; position: relative; z-index: 110;" aria-label="Abrir menú" aria-expanded="false">
+                    <button id="mobile-menu-btn" type="button" onclick="window.__tiidiMenuToggle()" class="tiidi-mobile-toggle items-center justify-center text-white bg-white/5 rounded-full" style="width: 44px; height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer; position: relative; z-index: 110;" aria-label="Abrir menú" aria-expanded="false">
                         <span class="material-symbols-outlined" style="font-size: 24px; pointer-events: none;">menu</span>
                     </button>
                 </div>
 
-                <!-- Overlay para cerrar menu al click fuera -->
-                <div id="mobile-menu-overlay" style="display: none; position: fixed; inset: 0; z-index: 90; background: transparent;"></div>
+                <!-- Overlay: click fuera cierra menu -->
+                <div id="mobile-menu-overlay" onclick="window.__tiidiMenuClose()" style="display: none; position: fixed; inset: 0; z-index: 45; background: transparent; cursor: default;"></div>
 
                 <!-- Mobile Menu -->
                 <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 bg-background-dark/95 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100;">
-                    <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html">Inicio</a>
-                    <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html">Servicios</a>
-                    <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html">Industrias</a>
-                    <a class="${activePage === 'blog' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}blog/index.html">Blog</a>
-                    <a class="${activePage === 'contacto' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="/contacto/">Contacto</a>
+                    <a class="${activePage === 'inicio' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}index.html" onclick="window.__tiidiMenuClose()">Inicio</a>
+                    <a class="${activePage === 'servicios' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}servicios/index.html" onclick="window.__tiidiMenuClose()">Servicios</a>
+                    <a class="${activePage === 'industrias' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}industrias/index.html" onclick="window.__tiidiMenuClose()">Industrias</a>
+                    <a class="${activePage === 'blog' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="${root}blog/index.html" onclick="window.__tiidiMenuClose()">Blog</a>
+                    <a class="${activePage === 'contacto' ? 'text-primary' : 'text-gray-300'} py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="/contacto/" onclick="window.__tiidiMenuClose()">Contacto</a>
                     <div class="h-[1px] bg-white/10 my-2"></div>
-                    <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">
+                    <a href="/contacto/" onclick="window.__tiidiMenuClose()" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">
                         Iniciar Proyecto
                     </a>
                 </div>
@@ -148,49 +148,38 @@ class TiidiHeader extends HTMLElement {
             window.addEventListener('scroll', updateScroll, { passive: true });
         }
 
-        // Mobile Menu Logic
-        const btn = this.querySelector('#mobile-menu-btn');
+        // Mobile Menu Logic - funciones globales, onclick inline, cero addEventListener
         const menu = this.querySelector('#mobile-menu');
         const overlay = this.querySelector('#mobile-menu-overlay');
-        const icon = btn?.querySelector('.material-symbols-outlined');
+        const btn = this.querySelector('#mobile-menu-btn');
+        const icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
 
-        if (btn && menu) {
-            function setMenu(open) {
-                if (open) {
+        if (menu && btn) {
+            window.__tiidiMenuClose = function() {
+                menu.classList.add('hidden');
+                if (overlay) overlay.style.display = 'none';
+                if (icon) icon.textContent = 'menu';
+                btn.setAttribute('aria-expanded', 'false');
+            };
+
+            window.__tiidiMenuToggle = function() {
+                const isHidden = menu.classList.contains('hidden');
+                if (isHidden) {
                     menu.classList.remove('hidden');
                     if (overlay) overlay.style.display = 'block';
                     if (icon) icon.textContent = 'close';
                     btn.setAttribute('aria-expanded', 'true');
                 } else {
-                    menu.classList.add('hidden');
-                    if (overlay) overlay.style.display = 'none';
-                    if (icon) icon.textContent = 'menu';
-                    btn.setAttribute('aria-expanded', 'false');
+                    window.__tiidiMenuClose();
                 }
-            }
+            };
 
-            btn.addEventListener('click', () => {
-                setMenu(menu.classList.contains('hidden'));
-            });
-
-            // Click en overlay cierra
-            if (overlay) {
-                overlay.addEventListener('click', () => setMenu(false));
-            }
-
-            // Links del menu cierran
-            menu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => setMenu(false));
-            });
-
-            // Escape cierra
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !menu.classList.contains('hidden')) setMenu(false);
+                if (e.key === 'Escape') window.__tiidiMenuClose();
             });
 
-            // Resize cierra
             window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) setMenu(false);
+                if (window.innerWidth >= 768) window.__tiidiMenuClose();
             });
         }
     }
@@ -317,41 +306,19 @@ function trackTiidiConversion(eventName, params = {}) {
     });
 }
 
+// Tracking - capture phase + rAF, no bloquea clicks del menu
 document.addEventListener('click', (event) => {
-    const link = event.target.closest('a');
-    if (!link) return;
-
-    const href = link.getAttribute('href') || '';
-    const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
-
-    if (href === '/contacto/' || href.endsWith('/contacto/')) {
-        trackTiidiConversion('cta_click', {
-            cta_text: label || 'contacto',
-            cta_destination: '/contacto/'
-        });
-        return;
-    }
-
-    if (href.startsWith('https://wa.me/')) {
-        trackTiidiConversion('whatsapp_click', {
-            cta_text: label || 'WhatsApp'
-        });
-        return;
-    }
-
-    if (href.startsWith('mailto:')) {
-        trackTiidiConversion('email_click', {
-            cta_text: label || 'email'
-        });
-        return;
-    }
-
-    if (href.startsWith('tel:')) {
-        trackTiidiConversion('phone_click', {
-            cta_text: label || 'telefono'
-        });
-    }
-});
+    requestAnimationFrame(() => {
+        const link = event.target.closest('a');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
+        if (href === '/contacto/' || href.endsWith('/contacto/')) trackTiidiConversion('cta_click', { cta_text: label || 'contacto', cta_destination: '/contacto/' });
+        else if (href.startsWith('https://wa.me/')) trackTiidiConversion('whatsapp_click', { cta_text: label || 'WhatsApp' });
+        else if (href.startsWith('mailto:')) trackTiidiConversion('email_click', { cta_text: label || 'email' });
+        else if (href.startsWith('tel:')) trackTiidiConversion('phone_click', { cta_text: label || 'telefono' });
+    });
+}, true);
 
 // === Hero Slider ===
 function initHeroSlider() {
