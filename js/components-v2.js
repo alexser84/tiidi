@@ -5,6 +5,163 @@
 
 
 
+class TiidiHeader extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        const root = this.getAttribute('root') || './';
+        const active = (this.getAttribute('active-page') || '').toLowerCase();
+
+        const items = [
+            { key: 'inicio', label: 'Inicio', href: `${root}index.html` },
+            { key: 'servicios', label: 'Servicios', href: `${root}servicios/index.html` },
+            { key: 'industrias', label: 'Industrias', href: `${root}industrias/index.html` },
+            { key: 'blog', label: 'Blog', href: `${root}blog/index.html` },
+            { key: 'contacto', label: 'Contacto', href: '/contacto/' },
+        ];
+
+        const desktopLink = (it) => {
+            const isActive = it.key === active;
+            const a = isActive
+                ? 'text-primary neon-text text-sm font-medium transition-all relative group'
+                : 'text-gray-300 hover:text-primary hover:neon-text text-sm font-medium transition-all relative group';
+            const u = isActive
+                ? 'absolute bottom-0 left-0 w-full h-0.5 bg-primary group-hover:w-full transition-all duration-300'
+                : 'absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300';
+            return `<a class="${a}" href="${it.href}">${it.label}<span class="${u}"></span></a>`;
+        };
+
+        const mobileLink = (it) => {
+            const c = it.key === active
+                ? 'text-primary py-2 px-4 hover:bg-white/5 rounded-xl transition-all'
+                : 'text-gray-300 py-2 px-4 hover:bg-white/5 rounded-xl transition-all';
+            return `<a class="${c}" href="${it.href}">${it.label}</a>`;
+        };
+
+        this.innerHTML = `
+        <style>
+            tiidi-header .tiidi-desktop-nav, tiidi-header .tiidi-project-cta { display: none; }
+            tiidi-header .tiidi-mobile-toggle { display: flex; }
+            tiidi-header .tiidi-mobile-menu.hidden { display: none; }
+            @media (min-width: 640px) { tiidi-header .tiidi-project-cta { display: flex; } }
+            @media (min-width: 768px) {
+                tiidi-header .tiidi-desktop-nav { display: flex; }
+                tiidi-header .tiidi-mobile-toggle, tiidi-header .tiidi-mobile-menu { display: none !important; }
+            }
+            tiidi-header .tiidi-header-bar { background: transparent; border-bottom: 1px solid transparent; }
+            tiidi-header .tiidi-header-bar.scrolled { background: rgba(11,17,20,0.98); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        </style>
+        <header class="tiidi-header-bar fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center">
+            <div class="w-full max-w-[1400px] px-2 py-2 flex items-center justify-between relative">
+                <div class="flex items-center gap-3 text-white">
+                    <a href="${root}index.html" class="flex items-center gap-3">
+                        <div class="size-10 text-primary relative flex items-center justify-center">
+                            <svg aria-label="Logo Tiidi" class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
+                                <circle cx="10" cy="12" fill="#0da6f2" r="2.5" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
+                                <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
+                                <circle cx="38" cy="12" fill="#7a2df6" r="2.5" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
+                                <path d="M22 24H26" stroke="#fff" stroke-linecap="round" stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));"></path>
+                                <circle cx="24" cy="38" fill="#fff" r="2" style="filter: drop-shadow(0 0 10px rgba(255,255,255,1));"></circle>
+                                <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
+                                <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+                            </svg>
+                        </div>
+                        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Tiidi</h2>
+                    </a>
+                </div>
+
+                <nav class="tiidi-desktop-nav items-center gap-8">
+                    ${items.map(desktopLink).join('\n                    ')}
+                </nav>
+
+                <div class="flex items-center gap-2 lg:gap-4">
+                    <a href="/contacto/" class="tiidi-project-cta neon-button group items-center justify-center rounded-full h-10 px-6 bg-primary hover:bg-white text-white hover:text-primary text-sm font-bold shadow-neon hover:shadow-neon-hover transition-all duration-300 relative overflow-hidden">
+                        <span class="truncate relative z-10">Iniciar Proyecto</span>
+                        <span class="material-symbols-outlined ml-1 text-base group-hover:translate-x-1 transition-transform relative z-10">arrow_forward</span>
+                    </a>
+                    <button type="button" class="tiidi-mobile-toggle items-center justify-center text-white bg-white/5 rounded-full" style="width: 44px; height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer; position: relative; z-index: 110;" aria-label="Abrir menu" aria-expanded="false">
+                        <span class="material-symbols-outlined" style="font-size: 24px; pointer-events: none;">menu</span>
+                    </button>
+                </div>
+
+                <div class="tiidi-mobile-menu hidden absolute top-full left-0 w-full mt-4 rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100; background: rgba(11,17,20,0.98);">
+                    ${items.map(mobileLink).join('\n                    ')}
+                    <div class="h-[1px] bg-white/10 my-2"></div>
+                    <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">Iniciar Proyecto</a>
+                </div>
+            </div>
+        </header>
+        <div class="tiidi-mobile-overlay" style="display: none; position: fixed; inset: 0; z-index: 45; background: transparent; cursor: default;"></div>
+        `;
+
+        const btn = this.querySelector('.tiidi-mobile-toggle');
+        const menu = this.querySelector('.tiidi-mobile-menu');
+        const overlay = this.querySelector('.tiidi-mobile-overlay');
+        const icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
+        if (!btn || !menu) return;
+
+        function open() {
+            menu.classList.remove('hidden');
+            if (overlay) overlay.style.display = 'block';
+            if (icon) icon.textContent = 'close';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+        function close() {
+            menu.classList.add('hidden');
+            if (overlay) overlay.style.display = 'none';
+            if (icon) icon.textContent = 'menu';
+            btn.setAttribute('aria-expanded', 'false');
+        }
+        function toggle() {
+            if (menu.classList.contains('hidden')) open(); else close();
+        }
+
+        // Respond on pointerdown (earliest touch signal) instead of waiting for the
+        // synthesized click, to avoid the tap latency on mobile. Same fix used in
+        // the direct header of index.html.
+        let pointerHandledAt = 0;
+        if (window.PointerEvent) {
+            btn.addEventListener('pointerdown', function(e) {
+                if (e.isPrimary === false) return;
+                if (e.button && e.button !== 0) return;
+                pointerHandledAt = Date.now();
+                toggle();
+            });
+        }
+        btn.addEventListener('click', function() {
+            if (Date.now() - pointerHandledAt < 700) return; // swallow ghost click
+            toggle(); // keyboard / no Pointer Events
+        });
+
+        if (overlay) overlay.onclick = function() { close(); };
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.onclick = function() { close(); };
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') close();
+        });
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) close();
+        });
+
+        // Scroll state
+        const headerEl = this.querySelector('.tiidi-header-bar');
+        if (headerEl) {
+            const updateScroll = function() {
+                if (window.scrollY > 40) headerEl.classList.add('scrolled');
+                else headerEl.classList.remove('scrolled');
+            };
+            updateScroll();
+            window.addEventListener('scroll', updateScroll, { passive: true });
+        }
+    }
+}
+
+customElements.define('tiidi-header', TiidiHeader);
+
 class TiidiFooter extends HTMLElement {
     constructor() {
         super();
