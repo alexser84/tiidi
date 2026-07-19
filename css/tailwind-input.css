@@ -120,4 +120,18 @@
 @media (max-width: 768px) {
     .particle-bg { display: none; }
     h1 { font-size: 2.5rem !important; }
+
+    /* Performance móvil: los glows de fondo con blur grande + mix-blend-screen
+       animados de forma infinita saturan el compositor del GPU en teléfonos y
+       generan lag en toda la página (incluida la respuesta al toque del menú).
+       En móvil los dejamos estáticos y sin blend: se rasterizan una sola vez. */
+    .floating { animation: none; }
+    .mix-blend-screen { mix-blend-mode: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floating,
+    .particle-bg,
+    .pulse-glow,
+    .word-rotate-text { animation: none; }
 }
