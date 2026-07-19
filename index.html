@@ -757,6 +757,54 @@
         });
     </script>
     <script src="js/components-v2.js"></script>
+    <!-- Perf HUD: solo se activa con ?perf en la URL. Mide en el dispositivo real
+         FPS, latencia input->frame y long tasks para diagnosticar la lentitud. -->
+    <script>
+    (function() {
+        if (!/[?&]perf\b/.test(location.search)) return;
+        var box = document.createElement('div');
+        box.style.cssText = 'position:fixed;top:8px;left:8px;z-index:99999;background:rgba(0,0,0,.85);color:#0da6f2;font:12px/1.4 monospace;padding:8px 10px;border-radius:8px;border:1px solid #0da6f2;pointer-events:none;white-space:pre;min-width:150px';
+        document.body.appendChild(box);
+
+        var fps = 0, frames = 0, lastFpsT = performance.now();
+        var lastTap = 0, tapLatency = '-', worstTap = 0;
+        var longTasks = 0, longMax = 0;
+
+        try {
+            new PerformanceObserver(function(list) {
+                list.getEntries().forEach(function(e) {
+                    longTasks++; if (e.duration > longMax) longMax = Math.round(e.duration);
+                });
+            }).observe({ entryTypes: ['longtask'] });
+        } catch (e) {}
+
+        // Latencia real input->frame pintado para CUALQUIER toque
+        function onDown() {
+            var t = performance.now();
+            requestAnimationFrame(function() { requestAnimationFrame(function() {
+                var ms = Math.round(performance.now() - t);
+                tapLatency = ms + 'ms';
+                if (ms > worstTap) worstTap = ms;
+            }); });
+        }
+        window.addEventListener('pointerdown', onDown, { passive: true, capture: true });
+
+        function loop(now) {
+            frames++;
+            if (now - lastFpsT >= 500) {
+                fps = Math.round(frames * 1000 / (now - lastFpsT));
+                frames = 0; lastFpsT = now;
+            }
+            box.textContent =
+                'FPS: ' + fps +
+                '\ntap->frame: ' + tapLatency +
+                '\npeor tap: ' + worstTap + 'ms' +
+                '\nlong tasks: ' + longTasks + (longMax ? ' (max ' + longMax + 'ms)' : '');
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+    })();
+    </script>
 </body>
 
 </html>

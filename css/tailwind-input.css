@@ -127,6 +127,15 @@
        En móvil los dejamos estáticos y sin blend: se rasterizan una sola vez. */
     .floating { animation: none; }
     .mix-blend-screen { mix-blend-mode: normal; }
+
+    /* Los blobs decorativos con blur enorme (100-150px) son lo más caro que
+       queda para el GPU móvil: el costo de un blur escala ~con el radio al
+       cuadrado y el navegador los re-rasteriza en cada repaint. A opacidades
+       de 6-20% casi no se ven en móvil, así que los ocultamos: elimina el
+       cuello de botella sin cambiar el diseño de desktop. */
+    .blur-\[150px\],
+    .blur-\[120px\],
+    .blur-\[100px\] { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
