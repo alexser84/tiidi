@@ -105,7 +105,7 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     .service-card {
-        @apply relative bg-surface-dark border border-white/5 transition-all duration-500 rounded-[2rem] overflow-hidden;
+        @apply relative bg-white border border-black/[0.08] shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all duration-500 rounded-[2rem] overflow-hidden;
     }
     .service-card::after {
         content: '';
