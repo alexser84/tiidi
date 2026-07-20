@@ -1,8 +1,9 @@
 <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 12H22V38" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></path>
-    <circle cx="10" cy="12" fill="#0da6f2" r="2.5" style="filter: drop-shadow(0 0 8px rgba(13,166,242,0.9));"></circle>
-    <path d="M38 12H26V38" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></path>
-    <circle cx="38" cy="12" fill="#7a2df6" r="2.5" style="filter: drop-shadow(0 0 8px rgba(122,45,246,0.8));"></circle>
-    <circle cx="22" cy="18" fill="#0da6f2" r="1.5"></circle>
-    <circle cx="26" cy="30" fill="#7a2df6" r="1.5"></circle>
+    <rect width="48" height="48" rx="11" fill="#0B1114"></rect>
+    <path d="M11 13H23V37" stroke="#0da6f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+    <circle cx="11" cy="13" fill="#0da6f2" r="2.6"></circle>
+    <path d="M37 13H25V37" stroke="#7a2df6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+    <circle cx="37" cy="13" fill="#7a2df6" r="2.6"></circle>
+    <circle cx="23" cy="19" fill="#0da6f2" r="1.6"></circle>
+    <circle cx="25" cy="31" fill="#7a2df6" r="1.6"></circle>
 </svg>
