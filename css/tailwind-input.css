@@ -144,3 +144,19 @@
     .pulse-glow,
     .word-rotate-text { animation: none; }
 }
+
+/* Botones principales: degradado de marca azul (primary) -> morado (secondary).
+   Se aplica solo a <a>/<button> con la clase base bg-primary (los CTA rellenos),
+   así los usos decorativos de bg-primary (subrayados, blobs, íconos, tags en
+   div/span) quedan intactos. El degradado es background-image, que cubre el
+   background-color solido de bg-primary y su hover; el texto se fuerza a blanco. */
+a.bg-primary,
+button.bg-primary {
+    background-image: linear-gradient(135deg, #0da6f2 0%, #7a2df6 100%);
+    color: #fff;
+}
+a.bg-primary:hover,
+button.bg-primary:hover {
+    background-image: linear-gradient(135deg, #7a2df6 0%, #0da6f2 100%);
+    color: #fff;
+}
