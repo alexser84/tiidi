@@ -177,14 +177,21 @@
         <style>
             .tiidi-desktop-nav, .tiidi-project-cta { display: none; }
             .tiidi-mobile-toggle { display: flex; }
-            #mobile-menu.hidden { display: none; }
             @media (min-width: 640px) { .tiidi-project-cta { display: flex; } }
             @media (min-width: 768px) {
                 .tiidi-desktop-nav { display: flex; }
-                .tiidi-mobile-toggle, #mobile-menu { display: none !important; }
+                .tiidi-mobile-toggle, .tiidi-drawer, .tiidi-overlay { display: none !important; }
             }
             .tiidi-header-bar { background: transparent; border-bottom: 1px solid transparent; }
             .tiidi-header-bar.scrolled { background: rgba(11,17,20,0.98); border-bottom: 1px solid rgba(255,255,255,0.08); }
+            /* Menú lateral (drawer) móvil */
+            .tiidi-drawer { transform: translateX(100%); visibility: hidden; transition: transform .3s ease, visibility 0s linear .3s; }
+            .tiidi-drawer.is-open { transform: translateX(0); visibility: visible; transition: transform .3s ease, visibility 0s linear 0s; }
+            .tiidi-overlay { opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s; }
+            .tiidi-overlay.is-open { opacity: 1; visibility: visible; transition: opacity .3s ease, visibility 0s linear 0s; }
+            @media (prefers-reduced-motion: reduce) {
+                .tiidi-drawer, .tiidi-overlay { transition: none; }
+            }
         </style>
         <header class="tiidi-header-bar fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center">
             <div class="w-full max-w-[1400px] px-2 py-2 flex items-center justify-between relative">
@@ -237,72 +244,77 @@
                     </button>
                 </div>
 
-                <div id="mobile-menu" class="hidden absolute top-full left-0 w-full mt-4 rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100; background: rgba(11,17,20,0.98);">
-                    <a class="text-primary py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="./index.html">Inicio</a>
-                    <a class="text-gray-300 py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="./servicios/index.html">Servicios</a>
-                    <a class="text-gray-300 py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="./industrias/index.html">Industrias</a>
-                    <a class="text-gray-300 py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="./blog/index.html">Blog</a>
-                    <a class="text-gray-300 py-2 px-4 hover:bg-white/5 rounded-xl transition-all" href="/contacto/">Contacto</a>
-                    <div class="h-[1px] bg-white/10 my-2"></div>
-                    <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">Iniciar Proyecto</a>
-                </div>
             </div>
         </header>
-        <div id="mobile-menu-overlay" style="display: none; position: fixed; inset: 0; z-index: 45; background: transparent; cursor: default;"></div>
+        <div id="mobile-menu-overlay" class="tiidi-overlay fixed inset-0" style="z-index: 110; background: rgba(0,0,0,0.55);"></div>
+        <div id="mobile-menu" class="tiidi-drawer fixed top-0 right-0 h-full flex flex-col p-6 gap-1" style="width: 82%; max-width: 20rem; z-index: 120; background: rgba(11,17,20,0.99); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -12px 0 40px rgba(0,0,0,0.55);" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-white text-base font-bold tracking-tight">Menú</span>
+                <button id="mobile-menu-close" type="button" aria-label="Cerrar menú" class="flex items-center justify-center rounded-full bg-white/5 text-white" style="width: 44px; height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer;">
+                    <span class="material-symbols-outlined" style="pointer-events: none;">close</span>
+                </button>
+            </div>
+            <a class="text-primary py-3 px-4 hover:bg-white/5 rounded-xl transition-all" href="./index.html">Inicio</a>
+            <a class="text-gray-300 py-3 px-4 hover:bg-white/5 rounded-xl transition-all" href="./servicios/index.html">Servicios</a>
+            <a class="text-gray-300 py-3 px-4 hover:bg-white/5 rounded-xl transition-all" href="./industrias/index.html">Industrias</a>
+            <a class="text-gray-300 py-3 px-4 hover:bg-white/5 rounded-xl transition-all" href="./blog/index.html">Blog</a>
+            <a class="text-gray-300 py-3 px-4 hover:bg-white/5 rounded-xl transition-all" href="/contacto/">Contacto</a>
+            <div class="h-[1px] bg-white/10 my-3"></div>
+            <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">Iniciar Proyecto</a>
+        </div>
         <script>
             (function() {
                 var btn = document.getElementById('mobile-menu-btn');
                 var menu = document.getElementById('mobile-menu');
                 var overlay = document.getElementById('mobile-menu-overlay');
-                var icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
+                var closeBtn = document.getElementById('mobile-menu-close');
                 if (!btn || !menu) return;
 
                 function open() {
-                    menu.classList.remove('hidden');
-                    if (overlay) overlay.style.display = 'block';
-                    if (icon) icon.textContent = 'close';
+                    menu.classList.add('is-open');
+                    if (overlay) overlay.classList.add('is-open');
+                    menu.setAttribute('aria-hidden', 'false');
                     btn.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                    if (closeBtn) closeBtn.focus();
                 }
-                function close() {
-                    menu.classList.add('hidden');
-                    if (overlay) overlay.style.display = 'none';
-                    if (icon) icon.textContent = 'menu';
+                function close(returnFocus) {
+                    menu.classList.remove('is-open');
+                    if (overlay) overlay.classList.remove('is-open');
+                    menu.setAttribute('aria-hidden', 'true');
                     btn.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                    if (returnFocus) btn.focus();
                 }
-
                 function toggle() {
-                    if (menu.classList.contains('hidden')) open(); else close();
+                    if (menu.classList.contains('is-open')) close(true); else open();
                 }
 
-                // Respond on pointerdown (earliest touch signal) instead of waiting for
-                // the synthesized click. On mobile the click event only fires after
-                // touchend plus the browser's gesture-disambiguation window, which is the
-                // ~2s latency users were feeling between the tap and the menu reacting.
+                // Respond on pointerdown (earliest touch signal) para respuesta inmediata al toque.
                 var pointerHandledAt = 0;
                 if (window.PointerEvent) {
                     btn.addEventListener('pointerdown', function(e) {
-                        if (e.isPrimary === false) return;      // ignore secondary touches
-                        if (e.button && e.button !== 0) return; // primary button only
+                        if (e.isPrimary === false) return;
+                        if (e.button && e.button !== 0) return;
                         pointerHandledAt = Date.now();
                         toggle();
                     });
                 }
                 btn.addEventListener('click', function() {
-                    // Swallow the ghost/synthetic click that follows a handled pointerdown.
-                    if (Date.now() - pointerHandledAt < 700) return;
-                    // Keyboard activation (Enter/Space) or browsers without Pointer Events.
+                    if (Date.now() - pointerHandledAt < 700) return; // descarta el ghost click
                     toggle();
                 });
 
-                if (overlay) overlay.onclick = function() { close(); };
+                if (closeBtn) closeBtn.addEventListener('click', function() { close(true); });
+                if (overlay) overlay.addEventListener('click', function() { close(true); });
                 menu.querySelectorAll('a').forEach(function(link) {
-                    link.onclick = function() { close(); };
+                    link.addEventListener('click', function() { close(false); });
                 });
                 document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') close();
+                    if (e.key === 'Escape' && menu.classList.contains('is-open')) close(true);
                 });
                 window.addEventListener('resize', function() {
-                    if (window.innerWidth >= 768) close();
+                    if (window.innerWidth >= 768) close(false);
                 });
 
                 // Scroll state
