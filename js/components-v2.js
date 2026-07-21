@@ -367,6 +367,26 @@ function initHeroSlider() {
     if (slider) {
         slider.addEventListener('mouseenter', stopAutoRotate);
         slider.addEventListener('mouseleave', startAutoRotate);
+
+        // Swipe en móvil: navegar entre slides con gesto horizontal
+        let touchStartX = 0, touchStartY = 0, touching = false;
+        slider.addEventListener('touchstart', (e) => {
+            const t = e.changedTouches[0];
+            touchStartX = t.clientX; touchStartY = t.clientY; touching = true;
+        }, { passive: true });
+        slider.addEventListener('touchend', (e) => {
+            if (!touching) return;
+            touching = false;
+            const t = e.changedTouches[0];
+            const dx = t.clientX - touchStartX;
+            const dy = t.clientY - touchStartY;
+            // Umbral de 45px y que sea claramente horizontal (para no chocar con el scroll)
+            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+                stopAutoRotate();
+                if (dx < 0) nextSlide(); else prevSlide();
+                startAutoRotate();
+            }
+        }, { passive: true });
     }
 }
 
