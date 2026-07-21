@@ -290,108 +290,109 @@ document.addEventListener('click', (event) => {
     else if (href.startsWith('tel:')) trackTiidiConversion('phone_click', { cta_text: label || 'telefono' });
 }, true);
 
-// === Hero Slider ===
-function initHeroSlider() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-dot');
-    const prevBtn = document.getElementById('hero-prev');
-    const nextBtn = document.getElementById('hero-next');
-    if (slides.length === 0) return;
+// === Hero Tabs (propuestas comerciales) ===
+function initHeroTabs() {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+    const tablist = hero.querySelector('[role="tablist"]');
+    const tabs = Array.from(hero.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(hero.querySelectorAll('[role="tabpanel"]'));
+    if (!tablist || tabs.length === 0 || panels.length !== tabs.length) return;
 
-    let currentSlide = 0;
-    let autoRotate;
+    // Activa el comportamiento de pestañas (CSS). Sin JS, los paneles quedan apilados.
+    hero.setAttribute('data-enhanced', '');
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            if (i === index) {
-                slide.classList.remove('opacity-0');
-                slide.classList.add('opacity-100');
-            } else {
-                slide.classList.add('opacity-0');
-                slide.classList.remove('opacity-100');
-            }
+    let current = 0;
+    let autoTimer = null;
+    let autoStopped = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setFocusable(panel, on) {
+        panel.querySelectorAll('a, button').forEach(el => {
+            if (on) el.removeAttribute('tabindex');
+            else el.setAttribute('tabindex', '-1');
         });
-        dots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.remove('bg-white/40', 'hover:bg-white/70');
-                dot.classList.add('bg-primary', 'shadow-[0_0_10px_rgba(13,166,242,0.8)]');
-            } else {
-                dot.classList.add('bg-white/40', 'hover:bg-white/70');
-                dot.classList.remove('bg-primary', 'shadow-[0_0_10px_rgba(13,166,242,0.8)]');
-            }
+    }
+
+    function activate(i, opts) {
+        opts = opts || {};
+        i = (i + tabs.length) % tabs.length;
+        const changed = i !== current;
+        tabs.forEach((tab, j) => {
+            const on = j === i;
+            tab.setAttribute('aria-selected', on ? 'true' : 'false');
+            tab.tabIndex = on ? 0 : -1;
         });
-        currentSlide = index;
-    }
-
-    function nextSlide() {
-        showSlide((currentSlide + 1) % slides.length);
-    }
-
-    function prevSlide() {
-        showSlide((currentSlide - 1 + slides.length) % slides.length);
-    }
-
-    function startAutoRotate() {
-        autoRotate = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoRotate() {
-        clearInterval(autoRotate);
-    }
-
-    // Dot navigation
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            stopAutoRotate();
-            showSlide(i);
-            startAutoRotate();
+        if (opts.focusTab) tabs[i].focus();
+        panels.forEach((panel, j) => {
+            const on = j === i;
+            panel.classList.toggle('is-active', on);
+            panel.setAttribute('aria-hidden', on ? 'false' : 'true');
+            setFocusable(panel, on);
         });
+        if (opts.user && changed) {
+            trackTiidiConversion('hero_tab_change', { hero_tab: tabs[i].textContent.trim() });
+        }
+        current = i;
+    }
+
+    // Autoplay 8s (no arranca con reduce-motion)
+    function nextAuto() { activate(current + 1); }
+    function startAuto() { if (reduceMotion || autoStopped) return; stopAuto(); autoTimer = setInterval(nextAuto, 8000); }
+    function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+    function stopAutoPermanent() { autoStopped = true; stopAuto(); }
+
+    // Interacción con pestañas (click) -> detiene autoplay y cambia
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => { stopAutoPermanent(); activate(i, { user: true }); });
     });
 
-    // Arrow navigation
-    if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoRotate(); prevSlide(); startAutoRotate(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoRotate(); nextSlide(); startAutoRotate(); });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') { stopAutoRotate(); prevSlide(); startAutoRotate(); }
-        if (e.key === 'ArrowRight') { stopAutoRotate(); nextSlide(); startAutoRotate(); }
+    // Teclado (patrón WAI-ARIA tabs, activación automática)
+    tablist.addEventListener('keydown', (e) => {
+        let n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = current + 1;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = current - 1;
+        else if (e.key === 'Home') n = 0;
+        else if (e.key === 'End') n = tabs.length - 1;
+        if (n !== null) { e.preventDefault(); stopAutoPermanent(); activate(n, { focusTab: true, user: true }); }
     });
 
-    // Start
-    showSlide(0);
-    startAutoRotate();
+    // Analítica de CTAs del hero
+    hero.addEventListener('click', (e) => {
+        const link = e.target.closest('[data-hero-event]');
+        if (!link) return;
+        const label = (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+        trackTiidiConversion(link.getAttribute('data-hero-event'), { cta_text: label });
+        if (link.hasAttribute('data-hero-wa') || (link.getAttribute('href') || '').startsWith('https://wa.me/')) {
+            trackTiidiConversion('hero_whatsapp_click', { cta_text: label });
+        }
+    });
 
-    // Pause on hover
-    const slider = document.getElementById('hero-slider');
-    if (slider) {
-        slider.addEventListener('mouseenter', stopAutoRotate);
-        slider.addEventListener('mouseleave', startAutoRotate);
+    // Pausar autoplay en hover / foco; reanudar al salir (si no se detuvo)
+    hero.addEventListener('mouseenter', stopAuto);
+    hero.addEventListener('mouseleave', startAuto);
+    hero.addEventListener('focusin', stopAuto);
+    hero.addEventListener('focusout', (e) => { if (!hero.contains(e.relatedTarget)) startAuto(); });
 
-        // Swipe en móvil: navegar entre slides con gesto horizontal
-        let touchStartX = 0, touchStartY = 0, touching = false;
-        slider.addEventListener('touchstart', (e) => {
-            const t = e.changedTouches[0];
-            touchStartX = t.clientX; touchStartY = t.clientY; touching = true;
-        }, { passive: true });
-        slider.addEventListener('touchend', (e) => {
-            if (!touching) return;
-            touching = false;
-            const t = e.changedTouches[0];
-            const dx = t.clientX - touchStartX;
-            const dy = t.clientY - touchStartY;
-            // Umbral de 45px y que sea claramente horizontal (para no chocar con el scroll)
-            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-                stopAutoRotate();
-                if (dx < 0) nextSlide(); else prevSlide();
-                startAutoRotate();
-            }
+    // Swipe táctil entre paneles
+    const panelsWrap = hero.querySelector('.hero-panels');
+    if (panelsWrap) {
+        let sx = 0, sy = 0, tracking = false;
+        panelsWrap.addEventListener('touchstart', (e) => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; tracking = true; }, { passive: true });
+        panelsWrap.addEventListener('touchend', (e) => {
+            if (!tracking) return; tracking = false;
+            const t = e.changedTouches[0]; const dx = t.clientX - sx, dy = t.clientY - sy;
+            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) { stopAutoPermanent(); activate(current + (dx < 0 ? 1 : -1), { user: true }); }
         }, { passive: true });
     }
+
+    // Estado inicial
+    activate(0);
+    startAuto();
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeroSlider);
+    document.addEventListener('DOMContentLoaded', initHeroTabs);
 } else {
-    initHeroSlider();
+    initHeroTabs();
 }
