@@ -160,3 +160,32 @@ button.bg-primary:hover {
     background-image: linear-gradient(135deg, #7a2df6 0%, #0da6f2 100%);
     color: #fff;
 }
+
+/* ===== Hero de pestañas ===== */
+/* Ocultar scrollbar de las pestañas (scroll horizontal en móvil) */
+.hero-tabs { -ms-overflow-style: none; scrollbar-width: none; }
+.hero-tabs::-webkit-scrollbar { display: none; }
+
+/* Estado de las pestañas: el activo se distingue por fondo + borde + barra
+   inferior (no solo color), para accesibilidad. */
+.hero-tab { color: #9ca3af; border-color: transparent; background: transparent; }
+.hero-tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.hero-tab[aria-selected="true"] {
+    color: #fff;
+    background: rgba(13,166,242,0.12);
+    border-color: rgba(13,166,242,0.45);
+    box-shadow: inset 0 -2px 0 0 #0da6f2;
+}
+
+/* Progressive enhancement: SIN JS los paneles se apilan y se ven todos
+   (legible y rastreable). Las pestañas se ocultan sin JS. */
+.hero-tabs { display: none; }
+[data-enhanced] .hero-tabs { display: flex; }
+.hero-panels { display: flex; flex-direction: column; gap: 4rem; }
+[data-enhanced] .hero-panels { display: grid; gap: 0; }
+/* CON JS: paneles apilados en la misma celda -> altura estable, sin saltos */
+[data-enhanced] .hero-panel { grid-area: 1 / 1; opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+[data-enhanced] .hero-panel.is-active { opacity: 1; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) {
+    [data-enhanced] .hero-panel { transition: none; }
+}

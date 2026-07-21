@@ -318,109 +318,181 @@
             })();
         </script>
         <main class="flex-1 flex flex-col items-center w-full">
-                <section id="hero-slider" class="relative w-full min-h-screen flex flex-col [justify-content:safe_center] overflow-hidden pt-32 pb-20">
-                    <!-- Fondo: imagen protagonista -->
-                    <div class="absolute inset-0 z-0">
-                        <div class="w-full h-full bg-cover bg-center opacity-40"
-                            style='background-image: url("images/hero-bg.png");'></div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/70 to-background-dark"></div>
-                        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[50%] h-[30%] bg-primary/8 rounded-full blur-[120px]"></div>
-                        <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[40%] h-[25%] bg-secondary/6 rounded-full blur-[100px]"></div>
+                <section id="hero" class="relative w-full overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-20" role="region" aria-roledescription="carrusel" aria-label="Propuestas de servicios de Tiidi">
+                    <!-- Fondo sutil -->
+                    <div class="absolute inset-0 z-0" aria-hidden="true">
+                        <div class="w-full h-full bg-cover bg-center opacity-[0.18]" style='background-image: url("images/hero-bg.png");'></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark/85 via-background-dark/80 to-background-dark"></div>
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
                     </div>
 
-                    <!-- Contenido: texto centrado (slider con swipe en movil) -->
-                    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center">
-                    <div id="hero-slides-wrap" class="relative w-full min-h-[520px] sm:min-h-[440px]" style="pointer-events: none;">
-                        <!-- Slide 1 -->
-                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center gap-6 transition-opacity duration-500 opacity-100" style="pointer-events: none;" data-slide="0">
-                            <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">Software a Medida en Chile</span>
-                            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
-                                Transformamos tu Empresa
-                                <span class="neon-gradient-text">con Tecnología de Vanguardia</span>
-                            </h1>
-                            <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-                                Páginas web, tiendas WooCommerce, software a medida, apps y automatización con IA.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
-                                <a href="/contacto/" style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-primary hover:bg-white text-white hover:text-primary sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-neon hover:shadow-neon-hover">
-                                    Agendar Diagnóstico Gratis
-                                    <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">bolt</span>
-                                </a>
-                                <a href="servicios/index.html" style="pointer-events: auto;" class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
-                                    Ver Servicios
-                                </a>
-                            </div>
+                    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12">
+                        <!-- Pestañas -->
+                        <div class="hero-tabs flex gap-2 overflow-x-auto snap-x pb-1 mb-8 lg:mb-10" role="tablist" aria-label="Propuestas de Tiidi">
+                        <button type="button" role="tab" id="hero-tab-0" aria-controls="hero-panel-0" aria-selected="true" tabindex="0" data-index="0" class="hero-tab shrink-0 whitespace-nowrap snap-start rounded-full px-4 py-2.5 text-sm font-semibold border transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Soluciones</button>
+                        <button type="button" role="tab" id="hero-tab-1" aria-controls="hero-panel-1" aria-selected="false" tabindex="-1" data-index="1" class="hero-tab shrink-0 whitespace-nowrap snap-start rounded-full px-4 py-2.5 text-sm font-semibold border transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Landing Page</button>
+                        <button type="button" role="tab" id="hero-tab-2" aria-controls="hero-panel-2" aria-selected="false" tabindex="-1" data-index="2" class="hero-tab shrink-0 whitespace-nowrap snap-start rounded-full px-4 py-2.5 text-sm font-semibold border transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Web y Tiendas</button>
+                        <button type="button" role="tab" id="hero-tab-3" aria-controls="hero-panel-3" aria-selected="false" tabindex="-1" data-index="3" class="hero-tab shrink-0 whitespace-nowrap snap-start rounded-full px-4 py-2.5 text-sm font-semibold border transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Automatización</button>
                         </div>
-                        <!-- Slide 2 -->
-                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center gap-6 transition-opacity duration-500 opacity-0 pointer-events-none" data-slide="1">
-                            <span class="text-secondary text-sm font-bold tracking-widest uppercase mb-2">Oferta</span>
-                            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
-                                Sitios Web Desde
-                                <span class="neon-gradient-text">$50.000 + IVA</span>
-                            </h1>
-                            <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-                                Páginas web profesionales, tiendas WooCommerce y landing pages de alto rendimiento. Diseño moderno, optimizadas para Google y listas para convertir.
-                            </p>
-                            <div class="flex flex-wrap justify-center gap-3 text-center text-sm text-gray-400">
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> Diseño responsivo
-                                </span>
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> Optimizado SEO
-                                </span>
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> En 1 semana
-                                </span>
+
+                        <!-- Paneles -->
+                        <div class="hero-panels">
+
+                    <div class="hero-panel is-active" role="tabpanel" id="hero-panel-0" aria-labelledby="hero-tab-0" aria-hidden="false" tabindex="0">
+                        <div class="grid gap-8 lg:gap-12 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
+                            <div class="flex flex-col items-start text-left gap-5 order-1">
+                                <span class="inline-flex items-center text-xs sm:text-sm font-bold tracking-widest uppercase text-primary">Soluciones digitales para empresas</span>
+                                <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.12] tracking-tight max-w-2xl">Creamos tecnología que ayuda a tu negocio a <span class="text-primary">vender, operar y crecer</span></h1>
+                                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl">Desarrollamos sitios web, tiendas online, automatizaciones y software a medida para transformar ideas y procesos en soluciones digitales concretas.</p>
+                                <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-gray-400">Asesoría inicial sin costo · Desarrollo personalizado · Atención en Chile</p>
+                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-1">
+                                    <a href="/contacto/" data-hero-event="hero_general_contact_click"  class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 sm:px-7 bg-primary text-white text-sm sm:text-base font-bold shadow-neon transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Conversemos sobre tu proyecto<span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span></a>
+                                    <a href="servicios/index.html" class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 border border-white/20 hover:bg-white/5 text-white text-sm sm:text-base font-semibold transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Ver servicios</a>
+                                </div>
                             </div>
-                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
-                                <a href="/contacto/" style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-secondary hover:bg-white text-white hover:text-secondary sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-[0_0_8px_#7a2df6] hover:shadow-[0_0_30px_rgba(122,45,246,0.3)]">
-                                    Quiero la Mía
-                                    <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">trending_up</span>
-                                </a>
-                                <a href="servicios/index.html" style="pointer-events: auto;" class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
-                                    Ver Servicios
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center gap-6 transition-opacity duration-500 opacity-0 pointer-events-none" data-slide="2">
-                            <span class="text-[#Eab308] text-sm font-bold tracking-widest uppercase mb-2">Diagnóstico Gratuito</span>
-                            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
-                                Descubre Cómo
-                                <span class="neon-gradient-text">Ahorrar Tiempo y Dinero</span>
-                            </h1>
-                            <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-                                Agenda una sesión gratuita de 30 min. Analizamos tu negocio y te entregamos un plan de acción inmediato — sin compromiso.
-                            </p>
-                            <div class="flex flex-wrap justify-center gap-3 text-center text-sm text-gray-400">
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> Sin compromiso
-                                </span>
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> Respuesta en 24h
-                                </span>
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                                    <span class="material-symbols-outlined text-primary text-base">check_circle</span> Plan de acción gratis
-                                </span>
-                            </div>
-                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
-                                <a href="/contacto/" style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-[#Eab308] hover:bg-white text-background-dark hover:text-background-dark sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-[0_0_10px_#Eab308] hover:shadow-[0_0_30px_rgba(234,179,8,0.3)]">
-                                    Reservar Mi Diagnóstico
-                                    <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">calendar_today</span>
-                                </a>
-                                <a href="https://wa.me/56949574770?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" style="pointer-events: auto;" class="flex h-14 items-center justify-center gap-2 rounded-full px-10 bg-[#25D366] hover:bg-white text-white hover:text-[#25D366] text-base font-bold tracking-wide transition-all group">
-                                    <span class="material-symbols-outlined text-lg">chat</span>
-                                    WhatsApp Directo
-                                </a>
+                            <div class="order-2 w-full flex justify-center lg:justify-end" aria-hidden="true">
+                                <div class="hero-mock relative w-full max-w-[440px]">
+                                    <div class="rounded-2xl border border-white/10 bg-surface-dark/80 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.8)] overflow-hidden">
+                                        <div class="flex items-center gap-1.5 px-3 py-2 border-b border-white/10"><span class="size-2 rounded-full bg-white/20"></span><span class="size-2 rounded-full bg-white/20"></span><span class="size-2 rounded-full bg-white/20"></span><div class="ml-2 flex-1 h-4 rounded bg-white/5 border border-white/10 flex items-center px-2"><span class="text-[9px] text-gray-500 truncate">tiidi.cl/panel</span></div></div>
+                                        <div class="p-4 flex flex-col gap-3">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex flex-col gap-1"><span class="text-[10px] uppercase tracking-wider text-gray-500">Panel</span><span class="text-white text-lg font-black">Tiidi Suite</span></div>
+                                                <span class="text-[10px] text-primary bg-primary/10 rounded-full px-2 py-1 border border-primary/20">En línea</span>
+                                            </div>
+                                            <div class="grid grid-cols-3 gap-2">
+                                                <div class="rounded-lg border border-white/10 bg-white/[0.03] p-2 flex flex-col gap-1"><span class="material-symbols-outlined text-primary text-[18px]">language</span><span class="text-[10px] text-gray-400">Web</span></div>
+                                                <div class="rounded-lg border border-white/10 bg-white/[0.03] p-2 flex flex-col gap-1"><span class="material-symbols-outlined text-secondary text-[18px]">smartphone</span><span class="text-[10px] text-gray-400">App</span></div>
+                                                <div class="rounded-lg border border-white/10 bg-white/[0.03] p-2 flex flex-col gap-1"><span class="material-symbols-outlined text-primary text-[18px]">bolt</span><span class="text-[10px] text-gray-400">Automatización</span></div>
+                                            </div>
+                                            <div class="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+                                                <div class="flex items-end gap-1.5 h-16">
+                                                    <div class="flex-1 rounded-t bg-primary/70" style="height:45%"></div>
+                                                    <div class="flex-1 rounded-t bg-primary/50" style="height:70%"></div>
+                                                    <div class="flex-1 rounded-t bg-secondary/60" style="height:55%"></div>
+                                                    <div class="flex-1 rounded-t bg-primary/70" style="height:85%"></div>
+                                                    <div class="flex-1 rounded-t bg-secondary/50" style="height:65%"></div>
+                                                    <div class="flex-1 rounded-t bg-primary/80" style="height:95%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute -bottom-4 -left-3 rounded-2xl border border-white/10 bg-surface-dark/80 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.8)] px-3 py-2 flex items-center gap-2 bg-surface-dark">
+                                        <span class="material-symbols-outlined text-primary text-[18px]">trending_up</span>
+                                        <div><div class="text-white text-xs font-bold leading-tight">Ventas</div><div class="text-[10px] text-gray-500">creciendo</div></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Dots de navegacion -->
-                    <div class="flex items-center justify-center gap-3 mt-10" style="pointer-events: auto;">
-                        <button class="hero-dot size-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 cursor-pointer" data-slide="0" aria-label="Slide 1"></button>
-                        <button class="hero-dot size-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 cursor-pointer" data-slide="1" aria-label="Slide 2"></button>
-                        <button class="hero-dot size-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 cursor-pointer" data-slide="2" aria-label="Slide 3"></button>
+                    <div class="hero-panel " role="tabpanel" id="hero-panel-1" aria-labelledby="hero-tab-1" aria-hidden="true" tabindex="0">
+                        <div class="grid gap-8 lg:gap-12 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
+                            <div class="flex flex-col items-start text-left gap-5 order-1">
+                                <span class="inline-flex items-center text-xs sm:text-sm font-bold tracking-widest uppercase text-secondary">Pack para emprendedores</span>
+                                <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.12] tracking-tight max-w-2xl">Tu landing page profesional <span class="whitespace-nowrap">desde <span class="text-primary">$89.990</span></span></h2>
+                                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl">Presenta tu negocio, recibe consultas por WhatsApp y comienza a captar clientes con una página rápida, moderna y adaptable a celulares.</p>
+                                <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-gray-400">Hasta 5 secciones · Diseño responsive · Formulario o WhatsApp · Una ronda de ajustes</p>
+                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-1">
+                                    <a href="https://wa.me/56949574770?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Landing%20Page%20Profesional%20desde%20%2489.990." data-hero-event="hero_landing_click" target="_blank" rel="noopener" data-hero-wa="1" class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 sm:px-7 bg-primary text-white text-sm sm:text-base font-bold shadow-neon transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Quiero mi landing page<span class="material-symbols-outlined text-[20px]" aria-hidden="true">chat</span></a>
+                                    <a href="servicios/sitios-web-ecommerce.html" class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 border border-white/20 hover:bg-white/5 text-white text-sm sm:text-base font-semibold transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Ver qué incluye</a>
+                                </div>
+                            </div>
+                            <div class="order-2 w-full flex justify-center lg:justify-end" aria-hidden="true">
+                                <div class="hero-mock relative w-full max-w-[440px]">
+                                    <div class="rounded-2xl border border-white/10 bg-surface-dark/80 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.8)] overflow-hidden">
+                                        <div class="flex items-center gap-1.5 px-3 py-2 border-b border-white/10"><span class="size-2 rounded-full bg-white/20"></span><span class="size-2 rounded-full bg-white/20"></span><span class="size-2 rounded-full bg-white/20"></span><div class="ml-2 flex-1 h-4 rounded bg-white/5 border border-white/10 flex items-center px-2"><span class="text-[9px] text-gray-500 truncate">tu-negocio.cl</span></div></div>
+                                        <div class="p-4 flex flex-col gap-3">
+                                            <div class="h-2.5 w-24 rounded bg-white/20"></div>
+                                            <div class="h-5 w-3/4 rounded bg-white/30"></div>
+                                            <div class="h-2 w-full rounded bg-white/10"></div>
+                                            <div class="h-2 w-5/6 rounded bg-white/10"></div>
+                                            <div class="h-8 w-40 rounded-full bg-primary/80 flex items-center justify-center"><span class="text-[10px] text-white font-bold">Contáctanos</span></div>
+                                            <div class="grid grid-cols-3 gap-2 pt-1">
+                                                <div class="h-10 rounded-lg bg-white/[0.04] border border-white/10"></div>
+                                                <div class="h-10 rounded-lg bg-white/[0.04] border border-white/10"></div>
+                                                <div class="h-10 rounded-lg bg-white/[0.04] border border-white/10"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute -bottom-6 -right-2 w-24 rounded-2xl border border-white/10 bg-surface-dark shadow-xl overflow-hidden">
+                                        <div class="h-4 bg-white/5 border-b border-white/10 flex items-center justify-center"><span class="size-1.5 rounded-full bg-white/20"></span></div>
+                                        <div class="p-2 flex flex-col gap-1.5">
+                                            <div class="h-3 w-full rounded bg-white/20"></div>
+                                            <div class="h-1.5 w-full rounded bg-white/10"></div>
+                                            <div class="h-1.5 w-3/4 rounded bg-white/10"></div>
+                                            <div class="h-4 w-full rounded-full bg-[#25D366]/80 flex items-center justify-center"><span class="material-symbols-outlined text-white text-[10px]">chat</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="hero-panel " role="tabpanel" id="hero-panel-2" aria-labelledby="hero-tab-2" aria-hidden="true" tabindex="0">
+                        <div class="grid gap-8 lg:gap-12 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
+                            <div class="flex flex-col items-start text-left gap-5 order-1">
+                                <span class="inline-flex items-center text-xs sm:text-sm font-bold tracking-widest uppercase text-primary">Sitios web y comercio electrónico</span>
+                                <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.12] tracking-tight max-w-2xl">Convierte tu presencia digital en una <span class="text-primary">herramienta de ventas</span></h2>
+                                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl">Creamos sitios corporativos y tiendas online profesionales, rápidas y preparadas para atraer clientes, recibir pagos y fortalecer tu marca.</p>
+                                <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base font-semibold text-white/90"><span class="material-symbols-outlined text-primary text-[20px] align-middle" aria-hidden="true">sell</span>Sitios corporativos desde $249.990 · Tiendas online desde $299.990</p>
+                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-1">
+                                    <a href="https://wa.me/56949574770?text=Hola%2C%20quiero%20cotizar%20un%20sitio%20web%20para%20mi%20negocio." data-hero-event="hero_website_quote_click" target="_blank" rel="noopener" data-hero-wa="1" class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 sm:px-7 bg-primary text-white text-sm sm:text-base font-bold shadow-neon transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Cotizar mi sitio web<span class="material-symbols-outlined text-[20px]" aria-hidden="true">chat</span></a>
+                                    <a href="servicios/sitios-web-ecommerce.html" class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 border border-white/20 hover:bg-white/5 text-white text-sm sm:text-base font-semibold transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Ver soluciones web</a>
+                                </div>
+                            </div>
+                            <div class="order-2 w-full flex justify-center lg:justify-end" aria-hidden="true">
+                                <div class="hero-mock relative w-full max-w-[440px]">
+                                    <div class="rounded-2xl border border-white/10 bg-surface-dark/80 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.8)] overflow-hidden">
+                                        <div class="flex items-center gap-1.5 px-3 py-2 border-b border-white/10"><span class="size-2 rounded-full bg-white/20"></span><span class="size-2 rounded-full bg-white/20"></span><span class="size-2 rounded-full bg-white/20"></span><div class="ml-2 flex-1 h-4 rounded bg-white/5 border border-white/10 flex items-center px-2"><span class="text-[9px] text-gray-500 truncate">tu-tienda.cl</span></div></div>
+                                        <div class="p-4 flex flex-col gap-3">
+                                            <div class="flex items-center justify-between"><div class="h-2.5 w-16 rounded bg-white/25"></div><div class="flex gap-2"><div class="h-2 w-8 rounded bg-white/10"></div><div class="h-2 w-8 rounded bg-white/10"></div><div class="h-2 w-8 rounded bg-white/10"></div></div></div>
+                                            <div class="h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/10 border border-white/10 flex items-center px-3"><div class="flex flex-col gap-1.5"><div class="h-2.5 w-28 rounded bg-white/40"></div><div class="h-1.5 w-20 rounded bg-white/20"></div></div></div>
+                                            <div class="grid grid-cols-3 gap-2"><div class="h-12 rounded-lg bg-white/[0.04] border border-white/10"></div><div class="h-12 rounded-lg bg-white/[0.04] border border-white/10"></div><div class="h-12 rounded-lg bg-white/[0.04] border border-white/10"></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute -bottom-6 -right-2 w-28 rounded-2xl border border-white/10 bg-surface-dark shadow-xl overflow-hidden">
+                                        <div class="h-4 bg-white/5 border-b border-white/10 flex items-center justify-between px-2"><span class="size-1.5 rounded-full bg-white/20"></span><span class="material-symbols-outlined text-primary text-[11px] relative">shopping_cart<span class="absolute -top-1 -right-1 size-1.5 rounded-full bg-secondary"></span></span></div>
+                                        <div class="p-2 flex flex-col gap-1.5">
+                                            <div class="grid grid-cols-2 gap-1.5"><div class="h-8 rounded bg-white/[0.05] border border-white/10"></div><div class="h-8 rounded bg-white/[0.05] border border-white/10"></div></div>
+                                            <div class="h-4 w-full rounded-full bg-primary/80 flex items-center justify-center"><span class="text-white text-[8px] font-bold">Pagar</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-panel " role="tabpanel" id="hero-panel-3" aria-labelledby="hero-tab-3" aria-hidden="true" tabindex="0">
+                        <div class="grid gap-8 lg:gap-12 items-center lg:grid-cols-[minmax(0,55fr)_minmax(0,45fr)]">
+                            <div class="flex flex-col items-start text-left gap-5 order-1">
+                                <span class="inline-flex items-center text-xs sm:text-sm font-bold tracking-widest uppercase text-secondary">Software · Automatización · Inteligencia artificial</span>
+                                <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.12] tracking-tight max-w-2xl">Reduce tareas manuales y recupera el <span class="text-primary">control de tus procesos</span></h2>
+                                <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl">Desarrollamos software, integraciones y automatizaciones que conectan tus herramientas, reducen errores y permiten que tu equipo trabaje de forma más eficiente.</p>
+                                <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-gray-400">Software a medida · Integraciones · Automatización de procesos · IA aplicada</p>
+                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-1">
+                                    <a href="/contacto/" data-hero-event="hero_automation_click"  class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 sm:px-7 bg-primary text-white text-sm sm:text-base font-bold shadow-neon transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Evaluar mi proyecto<span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span></a>
+                                    <a href="servicios/software-empresarial.html" class="inline-flex items-center justify-center gap-2 rounded-full h-12 px-6 border border-white/20 hover:bg-white/5 text-white text-sm sm:text-base font-semibold transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark">Conocer soluciones empresariales</a>
+                                </div>
+                            </div>
+                            <div class="order-2 w-full flex justify-center lg:justify-end" aria-hidden="true">
+                                <div class="hero-mock w-full max-w-[440px]">
+                                    <div class="rounded-2xl border border-white/10 bg-surface-dark/80 shadow-[0_20px_50px_-25px_rgba(0,0,0,0.8)] p-4 flex flex-col gap-3">
+                                        <div class="flex items-center justify-between mb-1"><span class="text-[10px] uppercase tracking-wider text-gray-500">Flujo automatizado</span><span class="material-symbols-outlined text-secondary text-[18px]">auto_awesome</span></div>
+                                        <div class="grid grid-cols-2 gap-x-3 gap-y-2.5 relative">
+                                            <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"><span class="material-symbols-outlined text-primary text-[18px]">description</span><span class="text-[11px] text-gray-300 whitespace-nowrap">Formulario</span></div>
+                                            <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"><span class="material-symbols-outlined text-primary text-[18px]">contacts</span><span class="text-[11px] text-gray-300 whitespace-nowrap">CRM</span></div>
+                                            <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"><span class="material-symbols-outlined text-secondary text-[18px]">mail</span><span class="text-[11px] text-gray-300 whitespace-nowrap">Correo</span></div>
+                                            <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"><span class="material-symbols-outlined text-primary text-[18px]">inventory_2</span><span class="text-[11px] text-gray-300 whitespace-nowrap">Inventario</span></div>
+                                            <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"><span class="material-symbols-outlined text-primary text-[18px]">monitoring</span><span class="text-[11px] text-gray-300 whitespace-nowrap">Reportes</span></div>
+                                            <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"><span class="material-symbols-outlined text-secondary text-[18px]">smart_toy</span><span class="text-[11px] text-gray-300 whitespace-nowrap">IA</span></div>
+                                        </div>
+                                        <div class="mt-1 flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-3 py-2">
+                                            <span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                                            <span class="text-[11px] text-gray-200">Menos tareas manuales, menos errores</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
                     </div>
                 </section>
 
