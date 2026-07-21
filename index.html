@@ -318,42 +318,21 @@
             })();
         </script>
         <main class="flex-1 flex flex-col items-center w-full">
-                <style>
-                    @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-                    @keyframes heroBadgeFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(9px)} }
-                    @keyframes heroBar { 0%{transform:scaleY(.5)} 50%{transform:scaleY(1)} 100%{transform:scaleY(.72)} }
-                    @keyframes heroLineDraw { to{stroke-dashoffset:0} }
-                    @keyframes heroDot { 0%,100%{opacity:.45;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
-                    @keyframes heroProg { from{transform:scaleX(0)} to{transform:scaleX(1)} }
-                    .hero-mockup-float{animation:heroFloat 6s ease-in-out infinite;will-change:transform}
-                    .hero-badge{animation:heroBadgeFloat 5s ease-in-out infinite;will-change:transform}
-                    .hero-bar{transform-origin:bottom;animation:heroBar 3s ease-in-out infinite alternate;animation-delay:var(--d)}
-                    .hero-line{stroke-dasharray:340;stroke-dashoffset:340;animation:heroLineDraw 2.2s ease-out .3s forwards}
-                    .hero-line-dot{transform-origin:225px 12px;animation:heroDot 2s ease-in-out 2.4s infinite}
-                    .hero-prog{transform-origin:left;animation:heroProg 1.5s cubic-bezier(.22,1,.36,1) both}
-                    @media (prefers-reduced-motion:reduce){
-                        .hero-mockup-float,.hero-badge,.hero-bar,.hero-line,.hero-line-dot,.hero-prog{animation:none!important}
-                        .hero-line{stroke-dashoffset:0}
-                        .hero-bar,.hero-prog{transform:none}
-                    }
-                </style>
-                <section id="hero-slider" class="relative w-full min-h-screen flex items-center overflow-hidden py-28 lg:py-24">
-                    <!-- Fondo: circuit board pattern -->
+                <section id="hero-slider" class="relative w-full min-h-screen flex flex-col [justify-content:safe_center] overflow-hidden pt-32 pb-20">
+                    <!-- Fondo: imagen protagonista -->
                     <div class="absolute inset-0 z-0">
-                        <div class="w-full h-full bg-cover bg-center opacity-25"
+                        <div class="w-full h-full bg-cover bg-center opacity-40"
                             style='background-image: url("images/hero-bg.png");'></div>
-                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark/70 via-background-dark/80 to-background-dark"></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/70 to-background-dark"></div>
                         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[50%] h-[30%] bg-primary/8 rounded-full blur-[120px]"></div>
                         <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[40%] h-[25%] bg-secondary/6 rounded-full blur-[100px]"></div>
                     </div>
 
-                    <!-- Contenido: dos columnas (texto + mockup animado) -->
-                    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    <!-- Columna izquierda: slider de texto -->
-                    <div class="flex flex-col items-center lg:items-start">
-                    <div id="hero-slides-wrap" class="relative w-full min-h-[460px] sm:min-h-[420px] lg:min-h-[480px]" style="pointer-events: none;">
-                        <!-- Slide 1: Propuesta de valor -->
-                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center lg:items-start lg:text-left gap-5 transition-opacity duration-500 opacity-100" style="pointer-events: none;" data-slide="0">
+                    <!-- Contenido: texto centrado (slider con swipe en movil) -->
+                    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center">
+                    <div id="hero-slides-wrap" class="relative w-full min-h-[520px] sm:min-h-[440px]" style="pointer-events: none;">
+                        <!-- Slide 1 -->
+                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center gap-6 transition-opacity duration-500 opacity-100" style="pointer-events: none;" data-slide="0">
                             <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">Software a Medida en Chile</span>
                             <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
                                 Transformamos tu Empresa
@@ -362,21 +341,18 @@
                             <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
                                 Páginas web, tiendas WooCommerce, software a medida, apps y automatización con IA.
                             </p>
-                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start items-center mt-2">
-                                <a href="/contacto/"
-                                    style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-primary hover:bg-white text-white hover:text-primary sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-neon hover:shadow-neon-hover">
+                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
+                                <a href="/contacto/" style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-primary hover:bg-white text-white hover:text-primary sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-neon hover:shadow-neon-hover">
                                     Agendar Diagnóstico Gratis
                                     <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">bolt</span>
                                 </a>
-                                <a href="servicios/index.html"
-                                    style="pointer-events: auto;" class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
+                                <a href="servicios/index.html" style="pointer-events: auto;" class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
                                     Ver Servicios
                                 </a>
                             </div>
                         </div>
-
-                        <!-- Slide 2: Resultados -->
-                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center lg:items-start lg:text-left gap-5 transition-opacity duration-500 opacity-0 pointer-events-none" data-slide="1">
+                        <!-- Slide 2 -->
+                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center gap-6 transition-opacity duration-500 opacity-0 pointer-events-none" data-slide="1">
                             <span class="text-secondary text-sm font-bold tracking-widest uppercase mb-2">Oferta</span>
                             <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
                                 Sitios Web Desde
@@ -385,32 +361,29 @@
                             <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
                                 Páginas web profesionales, tiendas WooCommerce y landing pages de alto rendimiento. Diseño moderno, optimizadas para Google y listas para convertir.
                             </p>
-                            <div class="flex flex-wrap justify-center lg:justify-start gap-3 text-center text-sm text-gray-400">
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10" style="pointer-events: auto;">
+                            <div class="flex flex-wrap justify-center gap-3 text-center text-sm text-gray-400">
+                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
                                     <span class="material-symbols-outlined text-primary text-base">check_circle</span> Diseño responsivo
                                 </span>
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10" style="pointer-events: auto;">
+                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
                                     <span class="material-symbols-outlined text-primary text-base">check_circle</span> Optimizado SEO
                                 </span>
-                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10" style="pointer-events: auto;">
+                                <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
                                     <span class="material-symbols-outlined text-primary text-base">check_circle</span> En 1 semana
                                 </span>
                             </div>
-                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start items-center mt-2">
-                                <a href="/contacto/"
-                                    style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-secondary hover:bg-white text-white hover:text-secondary sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-[0_0_8px_#7a2df6] hover:shadow-[0_0_30px_rgba(122,45,246,0.3)]">
+                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
+                                <a href="/contacto/" style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-secondary hover:bg-white text-white hover:text-secondary sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-[0_0_8px_#7a2df6] hover:shadow-[0_0_30px_rgba(122,45,246,0.3)]">
                                     Quiero la Mía
                                     <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">trending_up</span>
                                 </a>
-                                <a href="servicios/index.html"
-                                    style="pointer-events: auto;" class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
+                                <a href="servicios/index.html" style="pointer-events: auto;" class="flex h-14 items-center justify-center rounded-full px-10 border border-white/20 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all">
                                     Ver Servicios
                                 </a>
                             </div>
                         </div>
-
-                        <!-- Slide 3: Urgencia / Oferta -->
-                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center lg:items-start lg:text-left gap-5 transition-opacity duration-500 opacity-0 pointer-events-none" data-slide="2">
+                        <!-- Slide 3 -->
+                        <div class="hero-slide absolute inset-0 flex flex-col justify-center items-center text-center gap-6 transition-opacity duration-500 opacity-0 pointer-events-none" data-slide="2">
                             <span class="text-[#Eab308] text-sm font-bold tracking-widest uppercase mb-2">Diagnóstico Gratuito</span>
                             <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
                                 Descubre Cómo
@@ -419,7 +392,7 @@
                             <p class="text-gray-400 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
                                 Agenda una sesión gratuita de 30 min. Analizamos tu negocio y te entregamos un plan de acción inmediato — sin compromiso.
                             </p>
-                            <div class="flex flex-wrap justify-center lg:justify-start gap-3 text-center text-sm text-gray-400">
+                            <div class="flex flex-wrap justify-center gap-3 text-center text-sm text-gray-400">
                                 <span class="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
                                     <span class="material-symbols-outlined text-primary text-base">check_circle</span> Sin compromiso
                                 </span>
@@ -430,115 +403,25 @@
                                     <span class="material-symbols-outlined text-primary text-base">check_circle</span> Plan de acción gratis
                                 </span>
                             </div>
-                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start items-center mt-2">
-                                <a href="/contacto/"
-                                    style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-[#Eab308] hover:bg-white text-background-dark hover:text-background-dark sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-[0_0_10px_#Eab308] hover:shadow-[0_0_30px_rgba(234,179,8,0.3)]">
+                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
+                                <a href="/contacto/" style="pointer-events: auto;" class="flex h-14 w-full max-w-xs items-center justify-center gap-2 rounded-full px-8 text-base bg-[#Eab308] hover:bg-white text-background-dark hover:text-background-dark sm:w-auto sm:px-10 font-bold tracking-wide transition-all group shadow-[0_0_10px_#Eab308] hover:shadow-[0_0_30px_rgba(234,179,8,0.3)]">
                                     Reservar Mi Diagnóstico
                                     <span class="material-symbols-outlined shrink-0 group-hover:translate-x-1 transition-transform">calendar_today</span>
                                 </a>
-                                <a href="https://wa.me/56949574770?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
-                                    class="flex h-14 items-center justify-center gap-2 rounded-full px-10 bg-[#25D366] hover:bg-white text-white hover:text-[#25D366] text-base font-bold tracking-wide transition-all group">
+                                <a href="https://wa.me/56949574770?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" style="pointer-events: auto;" class="flex h-14 items-center justify-center gap-2 rounded-full px-10 bg-[#25D366] hover:bg-white text-white hover:text-[#25D366] text-base font-bold tracking-wide transition-all group">
                                     <span class="material-symbols-outlined text-lg">chat</span>
                                     WhatsApp Directo
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <!-- Dots de navegación del slider -->
-                    <div class="flex items-center gap-3 mt-8" style="pointer-events: auto;">
+                    <!-- Dots de navegacion -->
+                    <div class="flex items-center justify-center gap-3 mt-10" style="pointer-events: auto;">
                         <button class="hero-dot size-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 cursor-pointer" data-slide="0" aria-label="Slide 1"></button>
                         <button class="hero-dot size-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 cursor-pointer" data-slide="1" aria-label="Slide 2"></button>
                         <button class="hero-dot size-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 cursor-pointer" data-slide="2" aria-label="Slide 3"></button>
                     </div>
                     </div>
-
-                    <!-- Columna derecha: mockup de producto animado -->
-                    <div class="hero-mockup relative w-full max-w-[520px] mx-auto lg:mx-0 lg:ml-auto" aria-hidden="true" style="pointer-events: none;">
-                        <div class="hero-mockup-float relative rounded-2xl border border-white/10 bg-[#0f171b] overflow-hidden shadow-[0_25px_70px_-20px_rgba(13,166,242,0.35)]">
-                            <!-- Barra del navegador -->
-                            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.03]">
-                                <span class="size-2.5 rounded-full bg-[#ff5f57]"></span>
-                                <span class="size-2.5 rounded-full bg-[#febc2e]"></span>
-                                <span class="size-2.5 rounded-full bg-[#28c840]"></span>
-                                <div class="ml-3 flex-1 h-6 rounded-md bg-white/5 border border-white/10 flex items-center px-3 gap-1">
-                                    <span class="material-symbols-outlined text-primary" style="font-size:13px;">lock</span>
-                                    <span class="text-gray-400" style="font-size:11px;">tiidi.cl/dashboard</span>
-                                </div>
-                            </div>
-                            <!-- Cuerpo del dashboard -->
-                            <div class="p-5 flex flex-col gap-4">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div class="text-gray-500 uppercase tracking-wider" style="font-size:10px;">Ventas del mes</div>
-                                        <div class="text-white text-2xl font-black">$4.820K</div>
-                                    </div>
-                                    <span class="flex items-center gap-1 text-[#28c840] bg-[#28c840]/10 rounded-full px-2 py-1" style="font-size:11px;">
-                                        <span class="material-symbols-outlined" style="font-size:14px;">trending_up</span>+38%
-                                    </span>
-                                </div>
-                                <!-- Gráfico de barras -->
-                                <div class="flex items-end gap-2 h-24">
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-primary/30 to-primary" style="height:40%;--d:0s"></div>
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-primary/30 to-primary" style="height:65%;--d:.15s"></div>
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-secondary/30 to-secondary" style="height:50%;--d:.3s"></div>
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-primary/30 to-primary" style="height:82%;--d:.45s"></div>
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-secondary/30 to-secondary" style="height:60%;--d:.6s"></div>
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-primary/30 to-primary" style="height:95%;--d:.75s"></div>
-                                    <div class="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-secondary/30 to-secondary" style="height:70%;--d:.9s"></div>
-                                </div>
-                                <!-- Sparkline -->
-                                <div class="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-                                    <svg viewBox="0 0 300 70" class="w-full" style="height:56px;">
-                                        <defs>
-                                            <linearGradient id="heroLineGrad" x1="0" y1="0" x2="1" y2="0">
-                                                <stop offset="0" stop-color="#0da6f2"></stop>
-                                                <stop offset="1" stop-color="#7a2df6"></stop>
-                                            </linearGradient>
-                                        </defs>
-                                        <polyline class="hero-line" points="0,55 45,40 90,48 135,25 180,32 225,12 300,20" fill="none" stroke="url(#heroLineGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
-                                        <circle class="hero-line-dot" cx="225" cy="12" r="4" fill="#7a2df6"></circle>
-                                    </svg>
-                                </div>
-                                <!-- Barras de progreso -->
-                                <div class="flex flex-col gap-2.5">
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-gray-500 w-16 shrink-0" style="font-size:10px;">Web &amp; E-com</span>
-                                        <div class="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="hero-prog h-full rounded-full bg-primary" style="width:88%"></div></div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-gray-500 w-16 shrink-0" style="font-size:10px;">Apps</span>
-                                        <div class="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="hero-prog h-full rounded-full bg-secondary" style="width:72%"></div></div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-gray-500 w-16 shrink-0" style="font-size:10px;">IA &amp; Auto</span>
-                                        <div class="flex-1 h-1.5 rounded-full bg-white/5 overflow-hidden"><div class="hero-prog h-full rounded-full bg-primary" style="width:64%"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Badge flotante -->
-                        <div class="hero-badge absolute -bottom-5 -left-4 flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#141c21] px-3 py-2.5 shadow-xl">
-                            <span class="size-8 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined" style="font-size:18px;">rocket_launch</span>
-                            </span>
-                            <div>
-                                <div class="text-white font-bold leading-tight" style="font-size:12px;">Proyecto lanzado</div>
-                                <div class="text-gray-500" style="font-size:10px;">hace 2 segundos</div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-
-                    <!-- Flecha izquierda -->
-                    <button id="hero-prev" class="hidden absolute top-1/2 -translate-y-1/2 z-40 rounded-full items-center justify-center text-white transition-all" style="left: 8px; width: 44px; height: 44px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 2px 12px rgba(0,0,0,0.5); pointer-events: auto; cursor: pointer; z-index: 50;" onmouseover="this.style.background='rgba(255,255,255,0.35)';this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.2)';this.style.transform='translateY(-50%) scale(1)'">
-                        <span class="material-symbols-outlined" style="font-size: 28px;">chevron_left</span>
-                    </button>
-
-                    <!-- Flecha derecha -->
-                    <button id="hero-next" class="hidden absolute top-1/2 -translate-y-1/2 z-40 rounded-full items-center justify-center text-white transition-all" style="right: 8px; width: 44px; height: 44px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 2px 12px rgba(0,0,0,0.5); pointer-events: auto; cursor: pointer; z-index: 50;" onmouseover="this.style.background='rgba(255,255,255,0.35)';this.style.transform='translateY(-50%) scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.2)';this.style.transform='translateY(-50%) scale(1)'">
-                        <span class="material-symbols-outlined" style="font-size: 28px;">chevron_right</span>
-                    </button>
-
                 </section>
 
                 <div class="w-full bg-white py-20 px-4 sm:px-6 lg:px-20">
