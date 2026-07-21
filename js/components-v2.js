@@ -44,14 +44,20 @@ class TiidiHeader extends HTMLElement {
         <style>
             tiidi-header .tiidi-desktop-nav, tiidi-header .tiidi-project-cta { display: none; }
             tiidi-header .tiidi-mobile-toggle { display: flex; }
-            tiidi-header .tiidi-mobile-menu.hidden { display: none; }
             @media (min-width: 640px) { tiidi-header .tiidi-project-cta { display: flex; } }
             @media (min-width: 768px) {
                 tiidi-header .tiidi-desktop-nav { display: flex; }
-                tiidi-header .tiidi-mobile-toggle, tiidi-header .tiidi-mobile-menu { display: none !important; }
+                tiidi-header .tiidi-mobile-toggle, tiidi-header .tiidi-drawer, tiidi-header .tiidi-overlay { display: none !important; }
             }
             tiidi-header .tiidi-header-bar { background: transparent; border-bottom: 1px solid transparent; }
             tiidi-header .tiidi-header-bar.scrolled { background: rgba(11,17,20,0.98); border-bottom: 1px solid rgba(255,255,255,0.08); }
+            tiidi-header .tiidi-drawer { transform: translateX(100%); visibility: hidden; transition: transform .3s ease, visibility 0s linear .3s; }
+            tiidi-header .tiidi-drawer.is-open { transform: translateX(0); visibility: visible; transition: transform .3s ease, visibility 0s linear 0s; }
+            tiidi-header .tiidi-overlay { opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s; }
+            tiidi-header .tiidi-overlay.is-open { opacity: 1; visibility: visible; transition: opacity .3s ease, visibility 0s linear 0s; }
+            @media (prefers-reduced-motion: reduce) {
+                tiidi-header .tiidi-drawer, tiidi-header .tiidi-overlay { transition: none; }
+            }
         </style>
         <header class="tiidi-header-bar fixed top-0 left-0 w-full z-50 px-6 lg:px-12 py-4 flex justify-center">
             <div class="w-full max-w-[1400px] px-2 py-2 flex items-center justify-between relative">
@@ -85,41 +91,49 @@ class TiidiHeader extends HTMLElement {
                     </button>
                 </div>
 
-                <div class="tiidi-mobile-menu hidden absolute top-full left-0 w-full mt-4 rounded-3xl p-6 border border-white/10 flex flex-col gap-4" style="z-index: 100; background: rgba(11,17,20,0.98);">
-                    ${items.map(mobileLink).join('\n                    ')}
-                    <div class="h-[1px] bg-white/10 my-2"></div>
-                    <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">Iniciar Proyecto</a>
-                </div>
             </div>
         </header>
-        <div class="tiidi-mobile-overlay" style="display: none; position: fixed; inset: 0; z-index: 45; background: transparent; cursor: default;"></div>
+        <div class="tiidi-overlay fixed inset-0" style="z-index: 110; background: rgba(0,0,0,0.55);"></div>
+        <div class="tiidi-drawer fixed top-0 right-0 h-full flex flex-col p-6 gap-1" style="width: 82%; max-width: 20rem; z-index: 120; background: rgba(11,17,20,0.99); border-left: 1px solid rgba(255,255,255,0.08); box-shadow: -12px 0 40px rgba(0,0,0,0.55);" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-white text-base font-bold tracking-tight">Menú</span>
+                <button type="button" class="tiidi-drawer-close flex items-center justify-center rounded-full bg-white/5 text-white" style="width: 44px; height: 44px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; cursor: pointer;" aria-label="Cerrar menú">
+                    <span class="material-symbols-outlined" style="pointer-events: none;">close</span>
+                </button>
+            </div>
+            ${items.map(mobileLink).join('\n            ')}
+            <div class="h-[1px] bg-white/10 my-3"></div>
+            <a href="/contacto/" class="flex items-center justify-center rounded-full h-12 bg-primary text-white text-sm font-bold shadow-neon">Iniciar Proyecto</a>
+        </div>
         `;
 
         const btn = this.querySelector('.tiidi-mobile-toggle');
-        const menu = this.querySelector('.tiidi-mobile-menu');
-        const overlay = this.querySelector('.tiidi-mobile-overlay');
-        const icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
+        const menu = this.querySelector('.tiidi-drawer');
+        const overlay = this.querySelector('.tiidi-overlay');
+        const closeBtn = this.querySelector('.tiidi-drawer-close');
         if (!btn || !menu) return;
 
         function open() {
-            menu.classList.remove('hidden');
-            if (overlay) overlay.style.display = 'block';
-            if (icon) icon.textContent = 'close';
+            menu.classList.add('is-open');
+            if (overlay) overlay.classList.add('is-open');
+            menu.setAttribute('aria-hidden', 'false');
             btn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
         }
-        function close() {
-            menu.classList.add('hidden');
-            if (overlay) overlay.style.display = 'none';
-            if (icon) icon.textContent = 'menu';
+        function close(returnFocus) {
+            menu.classList.remove('is-open');
+            if (overlay) overlay.classList.remove('is-open');
+            menu.setAttribute('aria-hidden', 'true');
             btn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            if (returnFocus) btn.focus();
         }
         function toggle() {
-            if (menu.classList.contains('hidden')) open(); else close();
+            if (menu.classList.contains('is-open')) close(true); else open();
         }
 
-        // Respond on pointerdown (earliest touch signal) instead of waiting for the
-        // synthesized click, to avoid the tap latency on mobile. Same fix used in
-        // the direct header of index.html.
+        // Respond on pointerdown (earliest touch signal) para respuesta inmediata al toque.
         let pointerHandledAt = 0;
         if (window.PointerEvent) {
             btn.addEventListener('pointerdown', function(e) {
@@ -131,18 +145,19 @@ class TiidiHeader extends HTMLElement {
         }
         btn.addEventListener('click', function() {
             if (Date.now() - pointerHandledAt < 700) return; // swallow ghost click
-            toggle(); // keyboard / no Pointer Events
+            toggle();
         });
 
-        if (overlay) overlay.onclick = function() { close(); };
+        if (closeBtn) closeBtn.addEventListener('click', function() { close(true); });
+        if (overlay) overlay.addEventListener('click', function() { close(true); });
         menu.querySelectorAll('a').forEach(function(link) {
-            link.onclick = function() { close(); };
+            link.addEventListener('click', function() { close(false); });
         });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') close();
+            if (e.key === 'Escape' && menu.classList.contains('is-open')) close(true);
         });
         window.addEventListener('resize', function() {
-            if (window.innerWidth >= 768) close();
+            if (window.innerWidth >= 768) close(false);
         });
 
         // Scroll state
