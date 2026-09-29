@@ -280,7 +280,7 @@ class TiidiFooter extends HTMLElement {
             </div>
         </footer>
         <!-- Botón flotante de WhatsApp -->
-        <a href="https://wa.me/56949574770?text=Hola%2C%20vengo%20desde%20Hopy%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+        <a href="https://wa.me/56949574770?text=Hola%2C%20vengo%20desde%20Hopy%20y%20quiero%20consultar%20sobre%20los%20servicios%20de%20Tiidi."
             target="_blank" rel="noopener noreferrer"
             class="tiidi-wa-fab fixed bottom-5 right-5 z-40 flex items-center justify-center rounded-full text-white transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark"
             style="width: 56px; height: 56px; background: #25D366; box-shadow: 0 8px 24px rgba(37,211,102,0.45);"
